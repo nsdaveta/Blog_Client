@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import api from '../api'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import './blog-form.css'
@@ -76,15 +77,17 @@ const Create_blog = () => {
 
     try {
 
-      await axios.post(
-        'http://localhost:5000/blog/create',
-        form,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
+      await api.post('/create', form, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
-      )
+      })
+
+      setFormData({
+        title: '',
+        content: '',
+        author: storedUser.name || ''
+      })
 
       toast.success("Blog created successfully! 🎉")
 

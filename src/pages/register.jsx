@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
+import api from '../api'
 import { toast } from 'react-toastify';
 import './auth.css'
 
@@ -17,7 +18,7 @@ export default function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-        axios.post('http://localhost:5000/blog/register', formData)
+        api.post('/register', formData)
             .then(() => {
                 toast.success('Account created! Please log in. 🎉');
                 navigate('/login');

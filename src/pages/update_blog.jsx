@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import api from '../api'
 import { useParams, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import './blog-form.css'
@@ -29,12 +30,10 @@ const Update_blog = () => {
       return;
     }
 
-    axios.get(
-      `http://localhost:5000/blog/read/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+    api.get(`/read/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
       }
     )
       .then(res => {
@@ -93,8 +92,8 @@ const Update_blog = () => {
 
     try {
 
-      const res = await axios.put(
-        `http://localhost:5000/blog/update/${id}`,
+      const res = await api.put(
+        `/update/${id}`,
         form,
         {
           headers: {

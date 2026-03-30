@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
+import api from '../api'
 import { toast } from 'react-toastify'
 import UserContext from './components/UserContext/usercontext'
 import './auth.css'
@@ -16,7 +17,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
-    axios.post('http://localhost:5000/blog/login', { email, password })
+    api.post('/login', { email, password })
       .then(res => {
         toast.success(`Welcome back, ${res.data.user.name}! 🎉`, { autoClose: 2000 });
         setUser(res.data.user);

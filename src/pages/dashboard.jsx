@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios'
+import api from '../api'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -16,7 +16,7 @@ const Dashboard = () => {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
   };
   useEffect(() => {
-    axios.get('http://localhost:5000/blog/dashboard', headers)
+    api.get('/dashboard', headers)
       .then(res => {
         setUser(res.data.user);
         setLoading(false);
@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
-    axios.get('http://localhost:5000/blog/', headers).then(res => {
+    api.get('/blogs', headers).then(res => {
       const myBlogs = res.data.filter(blog => blog.author === storedUser.name);
       setBlogData(myBlogs);
     }).catch(err => console.log(err));
@@ -40,7 +40,7 @@ const Dashboard = () => {
 
   const HandleDelete = (blogId, publicId) => {
     if (!window.confirm('Delete this post permanently?')) return;
-    axios.delete('http://localhost:5000/blog/delete/' + blogId, {
+    api.delete('/blogs/' + blogId, {
       params: { public_id: publicId },
       ...headers
     }).then(() => {

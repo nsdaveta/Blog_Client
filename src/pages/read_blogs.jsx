@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import api from "../api"
 import { useParams } from "react-router-dom"
 import { toast } from "react-toastify"
 
@@ -17,9 +18,7 @@ const ReadMore = () => {
 
       try {
 
-        const res = await axios.get(
-          `http://localhost:5000/blog/read/${id}`
-        )
+        const res = await api.get(`/read/${id}`)
 
         setBlog(res.data)
 

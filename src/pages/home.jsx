@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import api from '../api'
 import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
 import './home.css'
@@ -9,7 +9,7 @@ const Home = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get('http://localhost:5000/blog/').then(res => {
+    api.get('/').then(res => {
       setBlogs(res.data);
       setLoading(false);
       if (res.data.length > 0) toast.success("Blogs loaded!", { autoClose: 1500 });
