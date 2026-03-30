@@ -1,0 +1,94 @@
+import React, { useContext, useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import UserContext from './components/UserContext/usercontext'
+import './auth.css'
+
+const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    axios.post('http://localhost:5000/blog/login', { email, password })
+      .then(res => {
+        toast.success(`Welcome back, ${res.data.user.name}! 🎉`, { autoClose: 2000 });
+        setUser(res.data.user);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('userdata', JSON.stringify(res.data.user));
+        navigate('/');
+      })
+      .catch(error => {
+        console.error('Login error:', error);
+        toast.error(error.response?.data?.message || "Login failed! Check your credentials.");
+      })
+      .finally(() => setLoading(false));
+  }
+
+  return (
+    <>
+    <title>Blogify-Login</title>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <div className="auth-header">
+          <div className="auth-icon">🔐</div>
+          <h2>Welcome Back</h2>
+          <p>Sign in to your account to continue</p>
+        </div>
+
+        <form onSubmit={handleLogin}>
+          <div className="form-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              autoComplete="email"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="password-wrapper">
+              <input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? '🙈' : '👁️'}
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" className="btn btn-primary" disabled={loading}>
+            {loading ? 'Signing in...' : 'Sign In →'}
+          </button>
+        </form>
+
+        <p className="auth-footer">
+          Don't have an account? <Link to="/register">Create one</Link>
+        </p>
+      </div>
+    </div>
+    </>
+  )
+}
+
+export default Login

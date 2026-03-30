@@ -1,0 +1,108 @@
+/* ======================= HOME PAGE ======================= */
+.home-hero {
+    padding: 5rem 0 3rem;
+    text-align: center;
+}
+
+.home-hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    margin-bottom: 1rem;
+}
+
+.home-hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto 2rem;
+}
+
+/* Blog Grid */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.75rem;
+    margin-top: 2rem;
+}
+
+/* Blog Card */
+.blog-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(108, 99, 255, 0.25);
+    box-shadow: var(--shadow-lg), var(--shadow-accent);
+}
+
+.blog-card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: var(--bg-secondary);
+}
+
+.blog-card-body {
+    padding: 1.4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.blog-card-body h3 {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.35;
+}
+
+.blog-card-body p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-card-footer {
+    padding: 1rem 1.4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.blog-card-author {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Section heading */
+.section-title {
+    font-size: 1.75rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 40px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 10px;
+}
