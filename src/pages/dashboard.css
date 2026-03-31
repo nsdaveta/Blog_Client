@@ -144,7 +144,31 @@
     padding: 1rem 1.25rem;
 }
 
+/* ─── Added Dashboard Responsive rules (Tablet & Mobile) ─── */
+@media (max-width: 900px) {
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 600px) {
+    .dashboard-header {
+        margin-bottom: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .welcome-card {
+        padding: 1.15rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .welcome-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
     .dashboard-blog-item {
         grid-template-columns: 1fr;
     }
@@ -157,5 +181,37 @@
     .dashboard-blog-actions {
         flex-direction: row;
         padding: 0.75rem 1rem;
+        justify-content: flex-end;
+    }
+
+    .dashboard-blog-actions .btn {
+        flex: 1;
     }
 }
+
+@media (max-width: 480px) {
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+        text-align: left;
+    }
+    
+    .stat-card .stat-label {
+        margin-top: 0;
+    }
+    
+    .dashboard-blog-info h3 {
+        font-size: 1rem;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1; /* Added standard property */
+        -webkit-box-orient: vertical;
+    }
+}

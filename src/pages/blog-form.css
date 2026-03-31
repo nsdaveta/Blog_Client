@@ -102,7 +102,12 @@
     }
 }
 
+/* ─── Added Blog Form Responsive rules (Tablet & Mobile) ─── */
 @media (max-width: 640px) {
+    .blog-form-header h1 {
+        font-size: 1.75rem;
+    }
+
     .blog-form {
         padding: 1.5rem 1.25rem;
     }
@@ -116,3 +121,17 @@
         width: 100%;
     }
 }
+
+@media (max-width: 480px) {
+    .blog-form-wrapper {
+        padding: 1rem 0.75rem;
+    }
+
+    .blog-form {
+        padding: 1.25rem 1rem;
+    }
+    
+    .upload-area {
+        padding: 1rem;
+    }
+}

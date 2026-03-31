@@ -177,3 +177,48 @@
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
+
+/* ─── Added Auth Responsive rules (Tablet & Mobile) ─── */
+@media (max-width: 640px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius-lg);
+    }
+    
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .otp-container {
+        gap: 0.5rem;
+    }
+    
+    .otp-input {
+        width: 2.8rem;
+        height: 3.2rem;
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .auth-card {
+        padding: 1.5rem 1.1rem;
+    }
+
+    .auth-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .auth-header .auth-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .otp-input {
+        width: 2.5rem;
+        height: 3rem;
+        font-size: 1.15rem;
+    }
+}

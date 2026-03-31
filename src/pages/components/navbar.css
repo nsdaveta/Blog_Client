@@ -75,6 +75,26 @@
     border-color: var(--danger) !important;
 }
 
+/* ─── Added Navbar Responsive rules (Tablet & Mobile) ─── */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0 1.5rem;
+    }
+    
+    .navbar-inner {
+        height: auto;
+        padding: 1rem 0;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .navbar-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+}
+
 @media (max-width: 640px) {
     .navbar {
         padding: 0 1rem;
@@ -84,9 +104,36 @@
         font-size: 1.2rem;
     }
 
+    .navbar-links {
+        gap: 0.15rem;
+    }
+
     .navbar-links li a,
     .navbar-links li button {
-        padding: 0.45rem 0.65rem;
-        font-size: 0.82rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    /* Target the 'Logged in as' text added via inline styles */
+    .navbar-links li[style*="color: var(--text-muted)"] {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0 !important;
+        margin-top: 0.5rem;
+        font-size: 0.75rem !important;
+        border-top: 1px solid var(--border);
+        padding-top: 0.5rem;
     }
 }
+
+@media (max-width: 400px) {
+    .navbar-links li a,
+    .navbar-links li button {
+        font-size: 0.72rem;
+        padding: 0.35rem 0.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}

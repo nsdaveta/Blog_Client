@@ -365,3 +365,44 @@ input[type="file"] {
     padding: 1.25rem 1rem;
   }
 }
+
+/* ─── Added Global Responsive rules (Tablet & Mobile) ─── */
+@media (max-width: 1024px) {
+  :root {
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .glass-card {
+    padding: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+  }
+  
+  body {
+    font-size: 15px;
+  }
+
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  
+  .page-wrapper {
+    padding: 1rem 0.75rem;
+  }
+  
+  .btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
