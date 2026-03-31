@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import api from '../api';
 import { toast } from 'react-toastify';
 import OtpInput from './components/OtpInput';
@@ -10,6 +10,7 @@ const ForgotPassword = () => {
     const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [newPassword, setNewPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -45,18 +46,20 @@ const ForgotPassword = () => {
     };
 
     return (
-        <div className="auth-container">
-            <div className="auth-box">
+        <>
+        <title>Blogify-Forgot Password</title>
+        <div className="auth-wrapper">
+            <div className="auth-card">
                 <div className="auth-header">
                     <div className="auth-icon">🔒</div>
-                    <h1>Forgot Password</h1>
+                    <h2>Forgot Password</h2>
                     <p>{step === 1 ? 'Enter your email to receive a reset code' : 'Enter the OTP and your new password'}</p>
                 </div>
 
                 {step === 1 ? (
-                    <form onSubmit={requestReset} className="auth-form">
-                        <div className="input-group">
-                            <label>EMAIL ADDRESS</label>
+                    <form onSubmit={requestReset}>
+                        <div className="form-group">
+                            <label>Email Address</label>
                             <input
                                 type="email"
                                 value={email}
@@ -65,39 +68,47 @@ const ForgotPassword = () => {
                                 required
                             />
                         </div>
-                        <button type="submit" className="auth-button" disabled={loading}>
+                        <button type="submit" className="btn btn-primary" disabled={loading}>
                             {loading ? <span className="spinner"></span> : 'Send Reset Code'}
                         </button>
                     </form>
                 ) : (
-                    <form onSubmit={resetPassword} className="auth-form">
-                        <div className="input-group">
-                            <label>ENTER 6-DIGIT OTP</label>
-                            <OtpInput length={6} onComplete={(code) => setOtp(code)} />
+                    <form onSubmit={resetPassword}>
+                        <div className="form-group otp-group">
+                            <label>Enter 6-digit OTP</label>
+                            <OtpInput value={otp} onChange={setOtp} />
                         </div>
-                        <div className="input-group" style={{ marginTop: '1.5rem' }}>
-                            <label>NEW PASSWORD</label>
-                            <input
-                                type="password"
-                                value={newPassword}
-                                onChange={(e) => setNewPassword(e.target.value)}
-                                placeholder="Enter a strong password"
-                                required
-                            />
+                        <div className="form-group" style={{ marginTop: '1.5rem' }}>
+                            <label>New Password</label>
+                            <div className="password-wrapper">
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={newPassword}
+                                    onChange={(e) => setNewPassword(e.target.value)}
+                                    placeholder="Enter a strong password"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    className="password-toggle"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                >
+                                    {showPassword ? '🙈' : '👁️'}
+                                </button>
+                            </div>
                         </div>
-                        <button type="submit" className="auth-button" disabled={loading}>
+                        <button type="submit" className="btn btn-primary" disabled={loading}>
                             {loading ? <span className="spinner"></span> : 'Reset Password'}
                         </button>
                     </form>
                 )}
 
-                <div className="auth-link">
-                    <button onClick={() => navigate('/login')} className="text-button">
-                        Back to Login
-                    </button>
+                <div className="auth-footer">
+                    <Link to="/login">Back to Login</Link>
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
