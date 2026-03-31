@@ -94,6 +94,11 @@ const Login = () => {
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Create one</Link>
           <div style={{ marginTop: "1.5rem" }}>
+
+            <span style={{ display: 'block', marginBottom: '0.75rem', color: 'var(--text-muted)' }}>
+              <b>Missed the OTP email? You can verify your account here:</b>
+            </span>
+
               <button 
                 type="button" 
                 className="btn-secondary" 
@@ -102,6 +107,9 @@ const Login = () => {
               >
                 Verify OTP
               </button>
+              <span style={{ display: 'block', marginBottom: '0.75rem', color: 'var(--text-muted)' }}>
+                <b>You can reset your password here:</b>
+              </span>
               <button 
                 type="button" 
                 className="btn-secondary" 
