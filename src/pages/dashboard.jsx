@@ -31,7 +31,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
-    api.get('/blogs', headers).then(res => {
+    api.get('/', headers).then(res => {
       const myBlogs = res.data.filter(blog => blog.author === storedUser.name);
       setBlogData(myBlogs);
     }).catch(err => console.log(err));
