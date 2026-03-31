@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../api';
 import { toast } from 'react-toastify';
-import OtpInput from '../components/OtpInput';
+import OtpInput from './components/OtpInput';
 import './auth.css';
 
 const ForgotPassword = () => {
