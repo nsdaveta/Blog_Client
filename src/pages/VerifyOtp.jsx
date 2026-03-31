@@ -14,6 +14,7 @@ const VerifyOtp = () => {
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [resendCooldown, setResendCooldown] = useState(0);
+    const [otpSentTo, setOtpSentTo] = useState('');
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -68,6 +69,7 @@ const VerifyOtp = () => {
         try {
             const response = await api.post('/resend-otp', { email: email.trim(), type: 'initial' });
             setSuccessMessage(response.data.message || 'Verification code sent.');
+            setOtpSentTo(email.trim());
             setResendCooldown(60);
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to send OTP.');
@@ -85,6 +87,7 @@ const VerifyOtp = () => {
         try {
             const response = await api.post('/resend-otp', { email: email.trim() });
             setSuccessMessage(response.data.message);
+            setOtpSentTo(email.trim());
             setResendCooldown(60);
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to resend OTP. Please try again.');
@@ -100,7 +103,7 @@ const VerifyOtp = () => {
             <div className="auth-card">
                 <div className="auth-header">
                     <h2>Verify OTP</h2>
-                    <p>Enter the 6-digit OTP sent to <strong>{email || 'your email'}</strong></p>
+                    <p>Enter the 6-digit OTP sent to {otpSentTo ? <strong>{otpSentTo}</strong> : 'your email'}</p>
                 </div>
                 
                 <form onSubmit={handleVerifySubmit}>
