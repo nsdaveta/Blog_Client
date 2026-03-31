@@ -35,7 +35,7 @@ const ForgotPassword = () => {
 
         setLoading(true);
         try {
-            const res = await api.post('/reset-password', { email, otp, newPassword });
+            const res = await api.post('/reset-password', { email, otp, newPassword, allowReuse: true });
             toast.success(res.data.message);
             navigate('/login');
         } catch (error) {
