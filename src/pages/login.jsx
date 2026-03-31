@@ -116,7 +116,7 @@ const Login = () => {
                 onClick={() => navigate('/reset-password', { state: { email } })}
                 style={{ width: "100%" }}
               >
-                Password Reset
+                 Reset Password
               </button>
           </div>
         </div>
