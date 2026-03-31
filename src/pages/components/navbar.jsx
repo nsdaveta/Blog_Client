@@ -43,7 +43,6 @@ const Navbar = () => {
             <>
               <li><NavLink to="/dashboard">Dashboard</NavLink></li>
               <li><NavLink to="/create">+ New Post</NavLink></li>
-              <li><NavLink to="/users">Users</NavLink></li>
               <li style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginLeft: '0.5rem', display: 'flex', alignItems: 'center' }}>
                 Logged in as: <strong style={{ color: 'var(--accent)', marginLeft: '4px' }}>{user.name}</strong>
               </li>
