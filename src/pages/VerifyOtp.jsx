@@ -3,6 +3,7 @@ import api from '../api';
 import { useNavigate, useLocation } from 'react-router-dom';
 import OtpInput from './components/OtpInput';
 import './auth.css';
+import './buttons.css';
 
 const Spinner = () => <div className="spinner"></div>;
 

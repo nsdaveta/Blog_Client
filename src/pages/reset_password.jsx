@@ -4,6 +4,7 @@ import api from '../api';
 import { toast } from 'react-toastify';
 import OtpInput from './components/OtpInput';
 import './auth.css';
+import './buttons.css';
 
 const ResetPassword = () => {
     const location = useLocation();

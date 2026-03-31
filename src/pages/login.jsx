@@ -5,6 +5,7 @@ import api from '../api'
 import { toast } from 'react-toastify'
 import UserContext from './components/UserContext/usercontext'
 import './auth.css'
+import './buttons.css'
 
 const Login = () => {
   const [email, setEmail] = useState('')
