@@ -80,6 +80,9 @@ const Login = () => {
                 {showPassword ? '🙈' : '👁️'}
               </button>
             </div>
+            <div style={{ textAlign: 'right', marginTop: '0.5rem' }}>
+                <Link to="/forgot-password" style={{ color: 'var(--accent)', fontSize: '0.85rem', textDecoration: 'none' }}>Forgot Password?</Link>
+            </div>
           </div>
 
           <button type="submit" className="btn btn-primary" disabled={loading}>
@@ -87,9 +90,12 @@ const Login = () => {
           </button>
         </form>
 
-        <p className="auth-footer">
+        <div className="auth-footer">
           Don't have an account? <Link to="/register">Create one</Link>
-        </p>
+          <div style={{ marginTop: "10px" }}>
+              Unverified account? <Link to="/verify-otp">Verify OTP</Link>
+          </div>
+        </div>
       </div>
     </div>
     </>

@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ReadBlog from './pages/read_blogs'
 import ReadMore from './pages/read_blogs'
 import UsersPage from './pages/users'
+import VerifyOtp from './pages/VerifyOtp'
+import ForgotPassword from './pages/forgot_password'
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
         <Route path="/read/:id" element={<ReadMore />} />
         <Route path="/update/:id" element={<Update_blog />} />
         <Route path="/users" element={<UsersPage />} />
+        <Route path="/verify-otp" element={<VerifyOtp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </div>
   )
