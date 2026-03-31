@@ -72,8 +72,6 @@ const Home = () => {
                   <span className="blog-card-author">By {blog.author}</span>
                   <Link
                     to={`/read/${blog._id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="btn btn-outline btn-sm"
                   >
                     Read More →

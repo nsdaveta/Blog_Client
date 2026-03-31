@@ -114,7 +114,7 @@ const Dashboard = () => {
                 />
                 <div className="dashboard-blog-info">
                   <h3>{blog.title}</h3>
-                  <p>{blog.content.slice(0, 100)}... <Link to={`/read/${blog._id}`} target='_blank'>Read more</Link></p>
+                  <p>{blog.content.slice(0, 100)}... <Link to={`/read/${blog._id}`}>Read more</Link></p>
                   <p>By {blog.author}</p>
                 </div>
                 <div className="dashboard-blog-actions">
