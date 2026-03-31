@@ -63,6 +63,8 @@ const ReadMore = () => {
 
 
   return (
+    <>
+    <title>Blogify-Read More</title>
 
     <div className="read-blog-container">
 
@@ -88,8 +90,8 @@ const ReadMore = () => {
       <p style={{ marginTop: "30px", lineHeight: "1.7" }}>
         {blog.content}
       </p>
-
-    </div>
+      </div>
+      </>
 
   )
 

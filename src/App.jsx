@@ -14,6 +14,7 @@ import ReadMore from './pages/read_blogs'
 import UsersPage from './pages/users'
 import VerifyOtp from './pages/VerifyOtp'
 import ForgotPassword from './pages/forgot_password'
+import ResetPassword from './pages/reset_password'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/users" element={<UsersPage />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </div>
   )

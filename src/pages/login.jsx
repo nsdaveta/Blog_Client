@@ -92,14 +92,22 @@ const Login = () => {
 
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Create one</Link>
-          <div style={{ marginTop: "1rem" }}>
+          <div style={{ marginTop: "1.5rem" }}>
               <button 
                 type="button" 
                 className="btn-secondary" 
                 onClick={() => navigate('/verify-otp', { state: { email } })}
-                style={{ width: "100%", marginTop: "0.5rem" }}
+                style={{ width: "100%", marginBottom: "0.75rem" }}
               >
-                Verify Account / Resend OTP
+                Verify OTP
+              </button>
+              <button 
+                type="button" 
+                className="btn-secondary" 
+                onClick={() => navigate('/reset-password', { state: { email } })}
+                style={{ width: "100%" }}
+              >
+                Password Reset
               </button>
           </div>
         </div>
