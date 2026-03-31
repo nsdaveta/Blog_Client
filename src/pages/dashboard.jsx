@@ -23,11 +23,18 @@ const Dashboard = () => {
       })
       .catch(() => {
         toast.error('Failed to load dashboard. Please log in.');
-        navigate('/login');
+        navigate('/');
         setLoading(false);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Listen for spontaneous logout events on an active dashboard session
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate('/');
+    }
+  }, [user, loading, navigate]);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
