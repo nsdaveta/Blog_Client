@@ -17,14 +17,34 @@ const VerifyOtp = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    // Auto-fire OTP logic when arriving from login page with an email preset
     useEffect(() => {
         if (location.state && location.state.email) {
-            setEmail(location.state.email);
+            const passedEmail = location.state.email.trim();
+            setEmail(passedEmail);
+            
             if (location.state.message) {
                 setSuccessMessage(location.state.message);
+            } else {
+                // If they just navigated here with an email (from login link), auto-send the OTP
+                if (passedEmail) {
+                    setIsLoading(true);
+                    api.post('/resend-otp', { email: passedEmail, type: 'initial' })
+                        .then(res => {
+                            setSuccessMessage(res.data.message || 'OTP automatically sent to your email.');
+                            setResendCooldown(60);
+                        })
+                        .catch(err => {
+                            setError(err.response?.data?.message || 'Failed to auto-send OTP.');
+                        })
+                        .finally(() => {
+                            setIsLoading(false);
+                        });
+                }
             }
         }
-    }, [location.state]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     useEffect(() => {
         let timer;
@@ -68,7 +88,7 @@ const VerifyOtp = () => {
             setSuccessMessage(response.data.message);
             setResendCooldown(60);
         } catch (err) {
-            setError(err.response?.data?.message || 'Failed to resend OTP.');
+            setError(err.response?.data?.message || 'Failed to resend OTP. Please try again.');
         } finally {
             setIsLoading(false);
         }
@@ -101,30 +121,56 @@ const VerifyOtp = () => {
                     <div className="form-group otp-group">
                         <label htmlFor="otp">6-Digit OTP</label>
                         <OtpInput value={otp} onChange={setOtp} />
+                        
+                        {/* Red Error Box strictly positioned right under the OTP Field */}
+                        {error && (
+                            <div style={{ 
+                                marginTop: '0.75rem', 
+                                padding: '0.75rem', 
+                                background: 'rgba(239, 68, 68, 0.1)', 
+                                border: '1px solid #ef4444', 
+                                color: '#ef4444', 
+                                borderRadius: '8px', 
+                                fontSize: '0.9rem' 
+                            }}>
+                                🚨 {error}
+                            </div>
+                        )}
+                        
+                        {/* Green Success Box strictly positioned right under the OTP Field */}
+                        {successMessage && (
+                            <div style={{ 
+                                marginTop: '0.75rem', 
+                                padding: '0.75rem', 
+                                background: 'rgba(74, 222, 128, 0.1)', 
+                                border: '1px solid #4ade80', 
+                                color: '#4ade80', 
+                                borderRadius: '8px', 
+                                fontSize: '0.9rem' 
+                            }}>
+                                ✅ {successMessage}
+                            </div>
+                        )}
                     </div>
 
-                    <button type="submit" disabled={isLoading || otp.length !== 6} className="btn-primary">
+                    <button type="submit" disabled={isLoading || otp.length !== 6} className="btn-primary" style={{ marginTop: '1rem' }}>
                         {isLoading ? <Spinner /> : 'Verify Email'}
                     </button>
                     
                     <div className="resend-container" style={{ marginTop: '1rem', textAlign: 'center' }}>
-                        <button type="button" onClick={handleResendOtp} disabled={isLoading || resendCooldown > 0} className="btn-secondary" style={{
-                            background: 'transparent',
-                            color: 'var(--accent)',
-                            border: '1px solid var(--accent)',
-                            padding: '0.5rem 1rem',
-                            borderRadius: 'var(--radius-md)',
-                            cursor: (isLoading || resendCooldown > 0) ? 'not-allowed' : 'pointer'
-                        }}>
+                        <button 
+                            type="button" 
+                            onClick={handleResendOtp} 
+                            disabled={isLoading || resendCooldown > 0} 
+                            className="btn-secondary" 
+                            style={{ width: '100%', cursor: (isLoading || resendCooldown > 0) ? 'not-allowed' : 'pointer' }}
+                        >
                             {resendCooldown > 0 ? `Resend Available in ${resendCooldown}s` : 'Resend OTP'}
                         </button>
                     </div>
                 </form>
-
-                {error && <p className="error-message" style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
-                {successMessage && <p className="success-message" style={{ color: 'lightgreen', marginTop: '1rem' }}>{successMessage}</p>}
                 
-                <p className="auth-footer">
+                <p className="auth-footer" style={{ marginTop: "1.5rem" }}>
                     Back to <span onClick={() => navigate('/login')} style={{cursor: 'pointer', color: 'var(--accent)'}}>Login</span>
                 </p>
             </div>

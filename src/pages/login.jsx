@@ -92,8 +92,15 @@ const Login = () => {
 
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Create one</Link>
-          <div style={{ marginTop: "10px" }}>
-              Unverified account? <Link to="/verify-otp">Verify OTP</Link>
+          <div style={{ marginTop: "1rem" }}>
+              <button 
+                type="button" 
+                className="btn-secondary" 
+                onClick={() => navigate('/verify-otp', { state: { email } })}
+                style={{ width: "100%", marginTop: "0.5rem" }}
+              >
+                Verify Account / Resend OTP
+              </button>
           </div>
         </div>
       </div>
