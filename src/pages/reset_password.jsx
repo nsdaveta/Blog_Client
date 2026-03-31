@@ -13,8 +13,22 @@ const ResetPassword = () => {
     const [newPassword, setNewPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [sendingCode, setSendingCode] = useState(false);
     const [fieldError, setFieldError] = useState('');
     const navigate = useNavigate();
+
+    const handleSendCode = async () => {
+        if (!email) return toast.warn("Please enter your email first");
+        setSendingCode(true);
+        try {
+            const res = await api.post('/forgot-password', { email: email.trim() });
+            toast.success(res.data.message || 'OTP sent to your email.');
+        } catch (error) {
+            toast.error(error.response?.data?.message || 'Failed to send OTP.');
+        } finally {
+            setSendingCode(false);
+        }
+    };
 
     const handleResetPassword = async (e) => {
         e.preventDefault();
@@ -64,6 +78,15 @@ const ResetPassword = () => {
                     </div>
                     <div className="form-group otp-group">
                         <label>Enter 6-digit OTP</label>
+                        <button 
+                            type="button" 
+                            className="btn btn-secondary" 
+                            onClick={handleSendCode} 
+                            disabled={sendingCode || !email}
+                            style={{ margin: '0.2rem auto 1rem', padding: '0.5rem 1rem', fontSize: '0.85rem' }}
+                        >
+                            {sendingCode ? 'Sending...' : 'Send Code'}
+                        </button>
                         <OtpInput value={otp} onChange={setOtp} />
                     </div>
                     <div className="form-group" style={{ marginTop: '1.5rem' }}>

@@ -18,34 +18,15 @@ const VerifyOtp = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    // Auto-fire OTP logic when arriving from login page with an email preset
+    // Auto-fill email if passed from login page, but DO NOT auto-send OTP
     useEffect(() => {
         if (location.state && location.state.email) {
-            const passedEmail = location.state.email.trim();
-            setEmail(passedEmail);
-            
+            setEmail(location.state.email.trim());
             if (location.state.message) {
                 setSuccessMessage(location.state.message);
-            } else {
-                // If they just navigated here with an email (from login link), auto-send the OTP
-                if (passedEmail) {
-                    setIsLoading(true);
-                    api.post('/resend-otp', { email: passedEmail, type: 'initial' })
-                        .then(res => {
-                            setSuccessMessage(res.data.message || 'OTP automatically sent to your email.');
-                            setResendCooldown(60);
-                        })
-                        .catch(err => {
-                            setError(err.response?.data?.message || 'Failed to auto-send OTP.');
-                        })
-                        .finally(() => {
-                            setIsLoading(false);
-                        });
-                }
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [location.state]);
 
     useEffect(() => {
         let timer;
@@ -73,6 +54,23 @@ const VerifyOtp = () => {
             }, 2000);
         } catch (err) {
             setError(err.response?.data?.message || 'An unexpected error occurred during OTP verification.');
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleSendCode = async () => {
+        if (!email) return;
+
+        setIsLoading(true);
+        setError('');
+        setSuccessMessage('');
+        try {
+            const response = await api.post('/resend-otp', { email: email.trim(), type: 'initial' });
+            setSuccessMessage(response.data.message || 'Verification code sent.');
+            setResendCooldown(60);
+        } catch (err) {
+            setError(err.response?.data?.message || 'Failed to send OTP.');
         } finally {
             setIsLoading(false);
         }
@@ -121,6 +119,15 @@ const VerifyOtp = () => {
                     
                     <div className="form-group otp-group">
                         <label htmlFor="otp">6-Digit OTP</label>
+                        <button 
+                            type="button" 
+                            className="btn btn-secondary" 
+                            onClick={handleSendCode} 
+                            disabled={isLoading || !email}
+                            style={{ margin: '0.2rem auto 1rem', padding: '0.5rem 1rem', fontSize: '0.85rem' }}
+                        >
+                            Send Code
+                        </button>
                         <OtpInput value={otp} onChange={setOtp} />
                         
                         {/* Red Error Box strictly positioned right under the OTP Field */}
