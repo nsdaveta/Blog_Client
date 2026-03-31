@@ -28,8 +28,7 @@ const Login = () => {
       .catch(error => {
         console.error('Login error:', error);
         if (error.response?.data?.message === 'Please verify your email first!') {
-            toast.warn('Please verify your email to continue.');
-            navigate('/verify-otp', { state: { email } });
+            toast.warn('Please verify your email first! Check your inbox for the OTP sent during registration.');
             return;
         }
         toast.error(error.response?.data?.message || "Login failed! Check your credentials.");
