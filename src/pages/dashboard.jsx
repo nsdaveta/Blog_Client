@@ -39,8 +39,12 @@ const Dashboard = () => {
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
     api.get('/', headers).then(res => {
-      const myBlogs = res.data.filter(blog => blog.author === storedUser.name);
-      setBlogData(myBlogs);
+      if (Array.isArray(res.data)) {
+        const myBlogs = res.data.filter(blog => blog.author === storedUser.name);
+        setBlogData(myBlogs);
+      } else {
+        console.error("Dashboard API returned non-array data:", res.data);
+      }
     }).catch(err => console.log(err));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -120,9 +124,9 @@ const Dashboard = () => {
                   onError={(e) => { e.target.style.background = 'var(--bg-secondary)'; e.target.style.display = 'flex'; }}
                 />
                 <div className="dashboard-blog-info">
-                  <h3>{blog.title}</h3>
-                  <p>{blog.content.slice(0, 100)}... <Link to={`/read/${blog._id}`}>Read more</Link></p>
-                  <p>By {blog.author}</p>
+                  <h3>{blog.title || 'Untitled'}</h3>
+                  <p>{(blog.content || "").slice(0, 100)}... <Link to={`/read/${blog._id}`}>Read more</Link></p>
+                  <p>By {blog.author || 'Unknown'}</p>
                 </div>
                 <div className="dashboard-blog-actions">
                   <button

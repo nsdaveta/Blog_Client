@@ -63,6 +63,21 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;
+  
+  /* Disable text selection everywhere to mimic native app */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Re-enable text selection for input fields and textareas */
+input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Make images non-draggable */
+img {
+  -webkit-user-drag: none;
 }
 
 #root {

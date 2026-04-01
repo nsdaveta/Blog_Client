@@ -10,9 +10,14 @@ const Home = () => {
 
   useEffect(() => {
     api.get('/').then(res => {
-      setBlogs(res.data);
+      if (Array.isArray(res.data)) {
+        setBlogs(res.data);
+        if (res.data.length > 0) toast.success("Blogs loaded!", { autoClose: 1500 });
+      } else {
+        console.error("API returned non-array data:", res.data);
+        toast.error("Failed to load valid blog data");
+      }
       setLoading(false);
-      if (res.data.length > 0) toast.success("Blogs loaded!", { autoClose: 1500 });
     }).catch(error => {
       console.error('Error fetching blogs:', error);
       toast.error("Failed to fetch blogs!");
@@ -41,7 +46,7 @@ const Home = () => {
         )}
 
         {/* Empty State */}
-        {!loading && blogs.length === 0 && (
+        {!loading && (!Array.isArray(blogs) || blogs.length === 0) && (
           <div className="empty-state">
             <h3>No posts yet</h3>
             <p>Be the first to publish something great!</p>
@@ -49,27 +54,27 @@ const Home = () => {
         )}
 
         {/* Blog Grid */}
-        {!loading && blogs.length > 0 && (
+        {!loading && Array.isArray(blogs) && blogs.length > 0 && (
           <div className="blog-grid">
             {blogs.map((blog, i) => (
               <article
                 className="blog-card fade-in-up"
-                key={blog._id}
+                key={blog._id || Math.random()}
                 style={{ animationDelay: `${i * 0.07}s` }}
               >
                 <img
                   className="blog-card-img"
                   src={blog.image?.url}
-                  alt={blog.title}
+                  alt={blog.title || 'Blog Post'}
                   onError={(e) => { e.target.style.display = 'none'; }}
                 />
                 <div className="blog-card-body">
                   <span className="badge badge-accent">Article</span>
-                  <h3>{blog.title}</h3>
-                  <p>{blog.content.slice(0, 100)}...</p>
+                  <h3>{blog.title || 'Untitled'}</h3>
+                  <p>{(blog.content || "").slice(0, 100)}...</p>
                 </div>
                 <div className="blog-card-footer">
-                  <span className="blog-card-author">By {blog.author}</span>
+                  <span className="blog-card-author">By {blog.author || 'Unknown'}</span>
                   <Link
                     to={`/read/${blog._id}`}
                     className="btn btn-outline btn-sm"
