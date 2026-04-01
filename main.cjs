@@ -1,14 +1,21 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
+// Disable window occlusion tracking to prevent the renderer from being paused 
+// when the window is minimized or covered by other windows.
+app.commandLine.appendSwitch('disable-features', 'CalculateNativeWinOcclusion');
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 1200,
     height: 800,
+    show: false,
+    backgroundColor: '#0d0f14',
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      devTools: false
+      devTools: false,
+      backgroundThrottling: false
     }
   });
 
@@ -28,6 +35,10 @@ function createWindow() {
   });
 
   win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+
+  win.once('ready-to-show', () => {
+    win.show();
+  });
 }
 
 app.whenReady().then(() => {

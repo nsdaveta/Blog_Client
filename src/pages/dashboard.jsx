@@ -51,7 +51,7 @@ const Dashboard = () => {
 
   const HandleDelete = (blogId, publicId) => {
     if (!window.confirm('Delete this post permanently?')) return;
-    api.delete('/blogs/' + blogId, {
+    api.delete('/delete/' + blogId, {
       params: { public_id: publicId },
       ...headers
     }).then(() => {
