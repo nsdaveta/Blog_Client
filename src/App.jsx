@@ -14,8 +14,11 @@ import ReadMore from './pages/read_blogs'
 import VerifyOtp from './pages/VerifyOtp'
 import ForgotPassword from './pages/forgot_password'
 import ResetPassword from './pages/reset_password'
+import { useBackButton } from './hooks/useBackButton'
 
 function App() {
+  // Handle Android back button
+  useBackButton()
   return (
     <div>
       <ToastContainer

@@ -11,10 +11,8 @@
     "start:electron": "electron .",
     "build:electron": "vite build && electron-builder"
   },
-  "dependencies": {
-  
-  },
   "devDependencies": {
+    "@capacitor/cli": "^8.3.0",
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
@@ -31,6 +29,7 @@
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.13.1",
     "react-toastify": "^11.0.5",
+    "typescript": "^6.0.2",
     "vite": "^7.3.1"
   },
   "main": "main.cjs",
@@ -61,5 +60,11 @@
       "createStartMenuShortcut": true,
       "runAfterFinish": false
     }
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/ios": "^8.3.0"
   }
 }
