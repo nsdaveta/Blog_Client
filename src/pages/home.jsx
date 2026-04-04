@@ -63,6 +63,7 @@ const BlogCard = ({ blog, index }) => {
 
   // ── Share ────────────────────────────────────────────────
   const handleShare = async () => {
+    if (!isLoggedIn) { toast.info('Please log in to share posts'); return }
     const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`
     const shareData = {
       title: blog.title,
