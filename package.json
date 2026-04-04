@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start:electron": "electron .",
-    "build:electron": "vite build && electron-builder"
+    "build:electron": "vite build --outDir dist-temp && electron-builder build --win"
   },
   "devDependencies": {
     "@capacitor/cli": "^8.3.0",
@@ -17,6 +17,10 @@
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/app": "^8.1.0",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/ios": "^8.3.0",
     "axios": "^1.13.5",
     "cloudinary": "^2.9.0",
     "electron": "^41.1.0",
@@ -38,19 +42,22 @@
   "build": {
     "appId": "com.blog.app",
     "productName": "Blog App",
-    "asar": true,
+    "copyright": "2026 Navjot Singh Daveta",
     "directories": {
-      "output": "dist_electron"
+      "output": "build-output"
     },
     "files": [
-      "dist/**/*",
+      "dist-temp",
       "main.cjs",
       "package.json"
     ],
     "win": {
       "target": "msi",
       "executableName": "BlogApp",
-      "icon": "public/favicon.png"
+      "icon": "public/favicon.png",
+      "forceCodeSigning": true,
+      "cscLink": "cert.pfx",
+      "cscKeyPassword": "password123"
     },
     "msi": {
       "oneClick": false,
@@ -60,11 +67,5 @@
       "createStartMenuShortcut": true,
       "runAfterFinish": false
     }
-  },
-  "dependencies": {
-    "@capacitor/android": "^8.3.0",
-    "@capacitor/app": "^8.1.0",
-    "@capacitor/core": "^8.3.0",
-    "@capacitor/ios": "^8.3.0"
   }
 }

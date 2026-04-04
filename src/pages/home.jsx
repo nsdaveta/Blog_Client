@@ -7,11 +7,17 @@ import './home.css'
 // Decode userId from the stored JWT
 const getCurrentUserId = () => {
   try {
-    const token = localStorage.getItem('token')
-    if (!token) return null
-    return JSON.parse(atob(token.split('.')[1])).id || null
-  } catch {
-    return null
+    const token = localStorage.getItem('token');
+    if (!token) return null;
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload).id || null;
+  } catch (e) {
+    console.error("JWT Decode Error:", e);
+    return null;
   }
 }
 
@@ -25,64 +31,83 @@ const myCount = (arr = [], userId) =>
 // Individual blog card — owns its own per-user state
 const BlogCard = ({ blog, index }) => {
   const currentUserId = getCurrentUserId()
-  const isLoggedIn    = !!currentUserId
+  const isLoggedIn = !!currentUserId
 
-  const [likes,        setLikes      ] = useState(totalCount(blog.likes))
-  const [dislikes,     setDislikes   ] = useState(totalCount(blog.dislikes))
-  const [shares,       setShares     ] = useState(totalCount(blog.shares))
-  const [comments,     setComments   ] = useState(blog.comments ?? [])
-  const [myLikes,      setMyLikes    ] = useState(myCount(blog.likes,    currentUserId))
-  const [myDislikes,   setMyDislikes ] = useState(myCount(blog.dislikes, currentUserId))
-  const [myShares,     setMyShares   ] = useState(myCount(blog.shares,   currentUserId))
+  const [likes, setLikes] = useState(totalCount(blog.likes))
+  const [dislikes, setDislikes] = useState(totalCount(blog.dislikes))
+  const [shares, setShares] = useState(totalCount(blog.shares))
+  const [comments, setComments] = useState(blog.comments ?? [])
+  const [myLikes, setMyLikes] = useState(myCount(blog.likes, currentUserId))
+  const [myDislikes, setMyDislikes] = useState(myCount(blog.dislikes, currentUserId))
+  const [myShares, setMyShares] = useState(myCount(blog.shares, currentUserId))
   const [showComments, setShowComments] = useState(false)
-  const [commentText,  setCommentText ] = useState('')
-  const [submitting,   setSubmitting  ] = useState(false)
+  const [commentText, setCommentText] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
   // ── Like ──────────────────────────────────────────────────
   const handleLike = async () => {
     if (!isLoggedIn) { toast.info('Please log in to like posts'); return }
+    const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
+    if (blog.author === storedUser.name) {
+      toast.error("The same user who has created the blog can't like the post");
+      return;
+    }
     try {
       const res = await api.post(`/like/${blog._id}`)
       setLikes(res.data.total)
       setMyLikes(res.data.userCount)
-    } catch {
-      toast.error('Could not like post')
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Could not like post')
+    }
+  }
+
+  // ── Share ────────────────────────────────────────────────
+  const handleShare = async () => {
+    const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`
+    const shareData = {
+      title: blog.title,
+      text: `Check out this blog: ${blog.title}`,
+      url: shareUrl
+    }
+
+    try {
+      // Trigger native share if supported
+      if (navigator.share) {
+        await navigator.share(shareData)
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(shareUrl)
+        toast.info('Link copied to clipboard!')
+      }
+
+      // Record share count on server
+      const res = await api.post(`/share/${blog._id}`)
+      setShares(res.data.total)
+      setMyShares(res.data.userCount)
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        toast.error('Could not share post')
+      }
     }
   }
 
   // ── Dislike ───────────────────────────────────────────────
   const handleDislike = async () => {
     if (!isLoggedIn) { toast.info('Please log in to rate posts'); return }
+    const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
+    if (blog.author === storedUser.name) {
+      toast.error("The same user who has created the blog can't dislike the post");
+      return;
+    }
     try {
       const res = await api.post(`/dislike/${blog._id}`)
       setDislikes(res.data.total)
       setMyDislikes(res.data.userCount)
-    } catch {
-      toast.error('Could not dislike post')
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Could not dislike post')
     }
   }
 
-  // ── Share ─────────────────────────────────────────────────
-  const handleShare = async () => {
-    if (!isLoggedIn) { toast.info('Please log in to share posts'); return }
-    const url = `${window.location.origin}/read/${blog._id}`
-    if (navigator.share) {
-      try { await navigator.share({ title: blog.title, url }) } catch {}
-    } else {
-      try {
-        await navigator.clipboard.writeText(url)
-        toast.success('Link copied to clipboard!')
-      } catch {
-        toast.error('Could not copy link')
-      }
-    }
-    // Record share server-side
-    try {
-      const res = await api.post(`/share/${blog._id}`)
-      setShares(res.data.total)
-      setMyShares(res.data.userCount)
-    } catch {}
-  }
 
   // ── Comment ───────────────────────────────────────────────
   const handleComment = async (e) => {
@@ -230,7 +255,7 @@ const BlogCard = ({ blog, index }) => {
 
 // Main home component
 const Home = () => {
-  const [blogs,   setBlogs  ] = useState([])
+  const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {

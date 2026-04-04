@@ -34,7 +34,7 @@ function createWindow() {
     return { action: 'deny' };
   });
 
-  win.loadFile(path.join(__dirname, 'dist', 'index.html'));
+  win.loadFile(path.join(__dirname, 'dist-temp', 'index.html'));
 
   win.once('ready-to-show', () => {
     win.show();
