@@ -4,6 +4,7 @@ const path = require('path');
 // Disable window occlusion tracking to prevent the renderer from being paused 
 // when the window is minimized or covered by other windows.
 app.commandLine.appendSwitch('disable-features', 'CalculateNativeWinOcclusion');
+app.commandLine.appendSwitch('enable-experimental-web-platform-features');
 
 function createWindow() {
   const win = new BrowserWindow({

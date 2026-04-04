@@ -28,6 +28,63 @@ const totalCount = (arr = []) => arr.reduce((sum, e) => sum + (e.count || 0), 0)
 const myCount = (arr = [], userId) =>
   arr.find(e => e.userId === userId || e.userId?._id === userId)?.count || 0
 
+// ── Adaptive Share Modal (Fallback for Legacy Desktop/Linux) ─────────────
+const ShareModal = ({ blog, onClose, onShareRecorded }) => {
+  const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Copy failed', err)
+    }
+  }
+
+  const socialLinks = [
+    { name: 'WhatsApp', icon: '💬', url: `https://wa.me/?text=${encodeURIComponent(blog.title + ': ' + shareUrl)}` },
+    { name: 'Telegram', icon: '✈️', url: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}` },
+    { name: '𝕏', icon: '𝕏', url: `https://x.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(shareUrl)}` },
+    { name: 'Facebook', icon: '📘', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
+    { name: 'Instagram', icon: '📸', url: `https://www.instagram.com/` }
+  ]
+
+  const onSocialClick = (url) => {
+    window.open(url, '_blank', 'width=600,height=500')
+    onShareRecorded()
+  }
+
+  return (
+    <div className="share-overlay active">
+      <div className="share-overlay-backdrop" onClick={onClose} />
+      <div className="share-modal-content share-windows">
+        <div className="share-header">
+          <h3>Share to Social Media</h3>
+          <button className="share-close-btn" onClick={onClose}>✕</button>
+        </div>
+
+        <div className="share-url-container">
+          <input readOnly value={shareUrl} className="share-url-input" />
+          <button onClick={handleCopy} className={`share-copy-btn ${copied ? 'copied' : ''}`}>
+             {copied ? '✓' : 'Copy'}
+          </button>
+        </div>
+
+        <div className="share-social-grid">
+          {socialLinks.map(s => (
+            <button key={s.name} className="share-social-item" onClick={() => onSocialClick(s.url)}>
+              <span className="share-social-icon">{s.icon}</span>
+              <span className="share-social-name">{s.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // Individual blog card — owns its own per-user state
 const BlogCard = ({ blog, index }) => {
   const currentUserId = getCurrentUserId()
@@ -41,6 +98,7 @@ const BlogCard = ({ blog, index }) => {
   const [myDislikes, setMyDislikes] = useState(myCount(blog.dislikes, currentUserId))
   const [myShares, setMyShares] = useState(myCount(blog.shares, currentUserId))
   const [showComments, setShowComments] = useState(false)
+  const [showShareModal, setShowShareModal] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
@@ -56,6 +114,11 @@ const BlogCard = ({ blog, index }) => {
       const res = await api.post(`/like/${blog._id}`)
       setLikes(res.data.total)
       setMyLikes(res.data.userCount)
+      // Clear dislike locally if server removed it
+      if (res.data.dislikesTotal !== undefined) {
+        setDislikes(res.data.dislikesTotal)
+        setMyDislikes(0)
+      }
     } catch (err) {
       toast.error(err.response?.data?.message || 'Could not like post')
     }
@@ -71,30 +134,38 @@ const BlogCard = ({ blog, index }) => {
       url: shareUrl
     }
 
-    try {
-      // Trigger native share if supported
-      if (navigator.share) {
+    // DUAL-MODE LOGIC:
+    // 1. First attempt native OS share (Windows 10/11, Android, iOS)
+    if (navigator.share) {
+      try {
         await navigator.share(shareData)
-      } else {
-        // Fallback: Copy to clipboard
-        await navigator.clipboard.writeText(shareUrl)
-        toast.info('Link copied to clipboard!')
+        recordShare()
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          // If native share fails/denies but is NOT a manual cancel, use fallback
+          setShowShareModal(true)
+        }
       }
+    } else {
+      // 2. Fallback for Windows 7/8, Linux, etc. (Show our custom sleek modal)
+      setShowShareModal(true)
+    }
+  }
 
-      // Record share count on server
+  const recordShare = async () => {
+    try {
       const res = await api.post(`/share/${blog._id}`)
       setShares(res.data.total)
       setMyShares(res.data.userCount)
     } catch (err) {
-      if (err.name !== 'AbortError') {
-        toast.error('Could not share post')
-      }
+      console.error('Share record failed:', err)
+      toast.error('Please login to share posts')
     }
   }
 
   // ── Dislike ───────────────────────────────────────────────
   const handleDislike = async () => {
-    if (!isLoggedIn) { toast.info('Please log in to rate posts'); return }
+    if (!isLoggedIn) { toast.info('Please log in to dislike posts'); return }
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
     if (blog.author === storedUser.name) {
       toast.error("The same user who has created the blog can't dislike the post");
@@ -104,6 +175,11 @@ const BlogCard = ({ blog, index }) => {
       const res = await api.post(`/dislike/${blog._id}`)
       setDislikes(res.data.total)
       setMyDislikes(res.data.userCount)
+      // Clear like locally if server removed it
+      if (res.data.likesTotal !== undefined) {
+        setLikes(res.data.likesTotal)
+        setMyLikes(0)
+      }
     } catch (err) {
       toast.error(err.response?.data?.message || 'Could not dislike post')
     }
@@ -249,6 +325,14 @@ const BlogCard = ({ blog, index }) => {
           )}
 
         </div>
+      )}
+      {/* ── Adaptive Share Modal Fallback ── */}
+      {showShareModal && (
+        <ShareModal 
+          blog={blog} 
+          onClose={() => setShowShareModal(false)}
+          onShareRecorded={recordShare} 
+        />
       )}
     </article>
   )

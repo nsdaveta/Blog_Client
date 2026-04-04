@@ -11,6 +11,9 @@
     "start:electron": "electron .",
     "build:electron": "vite build --outDir dist-temp && electron-builder build --win"
   },
+  "dependencies": {
+    "electron-log": "^5.0.0"
+  },
   "devDependencies": {
     "@capacitor/cli": "^8.3.0",
     "@eslint/js": "^9.39.1",
@@ -44,7 +47,7 @@
     "productName": "Blog App",
     "copyright": "2026 Navjot Singh Daveta",
     "directories": {
-      "output": "build-output"
+      "output": "build-final-new"
     },
     "files": [
       "dist-temp",

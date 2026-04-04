@@ -9,7 +9,6 @@ import Create_blog from './pages/create_blog'
 import Update_blog from './pages/update_blog'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ReadBlog from './pages/read_blogs'
 import ReadMore from './pages/read_blogs'
 import VerifyOtp from './pages/VerifyOtp'
 import ForgotPassword from './pages/forgot_password'
@@ -30,6 +29,7 @@ function App() {
           color: 'var(--text-primary)',
           borderRadius: '12px',
         }}
+        hideProgressBar={true}
       />
       <Routes>
         <Route path="/" element={<Home />} />

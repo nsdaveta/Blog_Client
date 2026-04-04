@@ -153,8 +153,15 @@
 }
 
 @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .card-comment-form {
@@ -266,11 +273,11 @@
     .home-hero {
         padding: 4rem 0 2rem;
     }
-    
+
     .home-hero h1 {
         font-size: 2.2rem;
     }
-    
+
     .blog-grid {
         grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1.25rem;
@@ -306,4 +313,149 @@
     .blog-card-footer {
         padding: 0.85rem 1.1rem;
     }
-}
+}
+
+/* ======================= ADAPTIVE SHARE MODAL (DESKTOP) ======================= */
+.share-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.share-overlay.active {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.share-overlay-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+}
+
+.share-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    padding: 1.5rem;
+    z-index: 2;
+    border-radius: 12px;
+    background: rgba(25, 27, 33, 0.85); /* Acrylic backdrop */
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.share-overlay.active .share-modal-content {
+    transform: scale(1);
+}
+
+.share-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.share-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.share-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.share-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.share-url-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.share-url-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.share-copy-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.share-copy-btn:hover {
+    filter: brightness(1.2);
+}
+
+.share-copy-btn.copied {
+    background: #4caf50;
+}
+
+.share-social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.share-social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    border-radius: 12px;
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.share-social-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.share-social-icon {
+    font-size: 1.5rem;
+}
+
+.share-social-name {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
