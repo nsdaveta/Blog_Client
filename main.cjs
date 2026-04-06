@@ -1,9 +1,8 @@
-const { app, BrowserWindow, protocol, shell } = require('electron');
+const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// GLOBAL SECURITY HUB (Enables Native APIs like Share)
-app.commandLine.appendSwitch('enable-features', 'WebShare');
+// GLOBAL SECURITY HUB (Enables Native APIs)
 app.enableSandbox(); 
 app.disableHardwareAcceleration();
 
@@ -84,7 +83,6 @@ function createWindow() {
 }
 
 // ── NATIVE SHARE BRIDGE (PowerShell Native Pane Trigger) ──────────────
-const { ipcMain, shell } = require('electron');
 ipcMain.on('native-share', async (event, data) => {
   const { title, url } = data;
   try {
