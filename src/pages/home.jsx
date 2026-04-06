@@ -139,23 +139,25 @@ const BlogCard = ({ blog, index }) => {
 
     // ── NATIVE OVERRIDE (Windows 11 Share Pane) ──
     try {
-      // 1. Primary: Use our secure Native Bridge (Stable in Electron + Windows 11)
       if (window.electronAPI) {
+         // Trigger Native System Call (Priority)
          window.electronAPI.nativeShare(shareData);
          recordShare(); 
+         
+         // Smart Fallback Detection: 
+         // Since native sharing can be blocked by system settings,
+         // we show the modal as a convenience backdrop after a tiny delay.
+         setTimeout(() => setShowShareModal(true), 250);
       } 
-      // 2. Secondary: Try standard browser API (works on macOS or newer Electron builds)
       else if (navigator.share) {
          await navigator.share(shareData);
          recordShare();
       } 
       else {
-         throw new Error('Native share unavailable');
+         setShowShareModal(true);
       }
     } catch (err) {
-      // STABLE FALLBACK MODAL (If Native fails or user cancels)
       if (err.name !== 'AbortError') {
-         console.warn('Native share bridge issue, showing fallback modal:', err);
          setShowShareModal(true);
       }
     }
