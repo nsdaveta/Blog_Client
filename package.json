@@ -45,7 +45,7 @@
   "description": "Blog App",
   "build": {
     "appId": "com.blog.app",
-    "productName": "Blog-Production-Final",
+    "productName": "Blog App",
     "icon": "public/favicon.png",
     "copyright": "2026 Navjot Singh Daveta",
     "directories": {
@@ -58,7 +58,8 @@
     ],
     "win": {
       "target": "msi",
-      "executableName": "Blog-Production-Final",
+      "executableName": "BlogApp",
+      "icon": "public/favicon.png",
       "signAndEditExecutable": false,
       "asar": true,
       
