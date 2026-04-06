@@ -85,14 +85,29 @@ ipcMain.on('native-share', async (event, data) => {
   try {
     // We use a PowerShell snippet to safely trigger the Windows 11 Share UI
     // without using the unstable Chromium WebShare implementation.
+    // Advanced PowerShell bridge for Windows 11 Share Pane
+    const { execPath } = require('process');
     const { exec } = require('child_process');
-    const command = `powershell -ExecutionPolicy Bypass -Command "Add-Type -AssemblyName System.Runtime.WindowsRuntime; [Windows.ApplicationModel.DataTransfer.DataTransferManager, Windows.ApplicationModel.DataTransfer, ContentType = WindowsRuntime] | Out-Null; [Windows.ApplicationModel.DataTransfer.DataTransferManager]::ShowShareUI()"`;
     
-    // For raw link sharing on Windows 11, the most stable way is social URI protocols
-    // but the Share UI is what the user wants.
-    // If we can't invoke WinRT, we fallback to the social share pane.
+    // This command uses the Windows Runtime (WinRT) assembly to trigger the Share UI 
+    // for the currently active window identifed by the Shell.
+    const psScript = `
+      $url = '${url}'
+      $title = '${title}'
+      Add-Type -AssemblyName System.Runtime.WindowsRuntime
+      [Windows.ApplicationModel.DataTransfer.DataTransferManager, Windows.ApplicationModel.DataTransfer, ContentType = WindowsRuntime] | Out-Null
+      try {
+        [Windows.ApplicationModel.DataTransfer.DataTransferManager]::ShowShareUI()
+      } catch {
+        # Fallback to social URI if ShowShareUI is blocked by policy
+        Start-Process "https://www.facebook.com/sharer/sharer.php?u=$url"
+      }
+    `;
+    
+    const command = `powershell -ExecutionPolicy Bypass -Command "${psScript.replace(/\n/g, ' ')}"`;
+    
     exec(command, (err) => {
-       if(err) log.error('Native Share UI Trigger Error:', err);
+       if(err) log.error('Native Share Bridge Execution Error:', err);
     });
   } catch (err) {
     log.error('Native Share Bridge Error:', err);
