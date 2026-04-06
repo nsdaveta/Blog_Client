@@ -59,16 +59,16 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
   return (
     <div className="share-overlay active">
       <div className="share-overlay-backdrop" onClick={onClose} />
-      <div className="share-modal-content share-windows">
+      <div className="share-modal-content fade-in-up">
         <div className="share-header">
-          <h3>Share to Social Media</h3>
+          <h3>🚀 Share this Story</h3>
           <button className="share-close-btn" onClick={onClose}>✕</button>
         </div>
 
         <div className="share-url-container">
           <input readOnly value={shareUrl} className="share-url-input" />
           <button onClick={handleCopy} className={`share-copy-btn ${copied ? 'copied' : ''}`}>
-             {copied ? '✓' : 'Copy'}
+            {copied ? '✓ Copied' : 'Copy Link'}
           </button>
         </div>
 
@@ -85,7 +85,7 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
   )
 }
 
-// Individual blog card — owns its own per-user state
+// Individual blog card
 const BlogCard = ({ blog, index }) => {
   const currentUserId = getCurrentUserId()
   const isLoggedIn = !!currentUserId
@@ -107,7 +107,7 @@ const BlogCard = ({ blog, index }) => {
     if (!isLoggedIn) { toast.info('Please log in to like posts'); return }
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
     if (blog.author === storedUser.name) {
-      toast.error("The same user who has created the blog can't like the post");
+      toast.error("Author cannot like their own post");
       return;
     }
     try {
@@ -125,35 +125,41 @@ const BlogCard = ({ blog, index }) => {
   }
 
   // ── Share ────────────────────────────────────────────────
-  const handleShare = async () => {
+  const handleShare = async (e) => {
+    // Explicitly prevent any parent link interaction or navigation
+    if (e) { e.preventDefault(); e.stopPropagation(); }
     if (!isLoggedIn) { toast.info('Please log in to share posts'); return }
+
     const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`
     const shareData = {
-      title: blog.title,
+      title: blog.title || 'Blog Post',
       text: `Check out this blog: ${blog.title}`,
       url: shareUrl
     }
 
-    // DUAL-MODE LOGIC:
-    // 1. First attempt native OS share (Windows 10/11, Android, iOS)
-    if (navigator.share) {
+    // NATIVE FIRST (Only if secure context exists)
+    // MSI apps on file:// are often considered 'insecure' by Chromium
+    if (navigator.share && window.isSecureContext) {
       try {
-        await navigator.share(shareData)
-        recordShare()
+        await navigator.share(shareData);
+        await recordShare();
       } catch (err) {
+        // If native share is cancelled (AbortError), do nothing.
+        // If it actually fails, use the custom modal fallback.
         if (err.name !== 'AbortError') {
-          // If native share fails/denies but is NOT a manual cancel, use fallback
-          setShowShareModal(true)
+          console.error("Native share failed:", err);
+          setShowShareModal(true);
         }
       }
     } else {
-      // 2. Fallback for Windows 7/8, Linux, etc. (Show our custom sleek modal)
-      setShowShareModal(true)
+      // SAFE FALLBACK: Use our custom modal when on file:// protocol
+      setShowShareModal(true);
     }
   }
 
   const recordShare = async () => {
     try {
+      if (!blog || !blog._id) return;
       const res = await api.post(`/share/${blog._id}`)
       setShares(res.data.total)
       setMyShares(res.data.userCount)
@@ -328,10 +334,10 @@ const BlogCard = ({ blog, index }) => {
       )}
       {/* ── Adaptive Share Modal Fallback ── */}
       {showShareModal && (
-        <ShareModal 
-          blog={blog} 
+        <ShareModal
+          blog={blog}
           onClose={() => setShowShareModal(false)}
-          onShareRecorded={recordShare} 
+          onShareRecorded={recordShare}
         />
       )}
     </article>

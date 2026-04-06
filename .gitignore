@@ -24,4 +24,17 @@ dist-temp
 *.ntvs*
 *.njsproj
 *.sln
+# Electron Build Output
+release
+dist-electron
+dist-temp
+
+# Security
+cert.pfx
+*.pfx
+
+# Executables
+*.exe
+*.msi
+
 *.sw?

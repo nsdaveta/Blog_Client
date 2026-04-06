@@ -9,23 +9,24 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start:electron": "electron .",
-    "build:electron": "vite build --outDir dist-temp && electron-builder build --win"
+    "build:electron": "cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build --outDir dist-temp && electron-builder build --win"
   },
   "dependencies": {
     "electron-log": "^5.0.0"
   },
   "devDependencies": {
+    "@capacitor/android": "^8.3.0",
+    "@capacitor/app": "^8.1.0",
     "@capacitor/cli": "^8.3.0",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/ios": "^8.3.0",
     "@eslint/js": "^9.39.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
-    "@capacitor/android": "^8.3.0",
-    "@capacitor/app": "^8.1.0",
-    "@capacitor/core": "^8.3.0",
-    "@capacitor/ios": "^8.3.0",
     "axios": "^1.13.5",
     "cloudinary": "^2.9.0",
+    "cross-env": "^10.1.0",
     "electron": "^41.1.0",
     "electron-builder": "^26.8.1",
     "eslint": "^9.39.1",
@@ -47,7 +48,7 @@
     "productName": "Blog App",
     "copyright": "2026 Navjot Singh Daveta",
     "directories": {
-      "output": "build-final-new"
+      "output": "release"
     },
     "files": [
       "dist-temp",
@@ -56,11 +57,15 @@
     ],
     "win": {
       "target": "msi",
-      "executableName": "BlogApp",
+      "executableName": "Blogify-Final",
       "icon": "public/favicon.png",
-      "forceCodeSigning": true,
-      "cscLink": "cert.pfx",
-      "cscKeyPassword": "password123"
+      "signAndEditExecutable": false,
+      "asar": true,
+      "signtoolOptions": {
+        "signingHashAlgorithms": [
+          "sha256"
+        ]
+      }
     },
     "msi": {
       "oneClick": false,

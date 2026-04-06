@@ -1,10 +1,36 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, protocol, shell } = require('electron');
 const path = require('path');
+const log = require('electron-log');
 
-// Disable window occlusion tracking to prevent the renderer from being paused 
-// when the window is minimized or covered by other windows.
-app.commandLine.appendSwitch('disable-features', 'CalculateNativeWinOcclusion');
+// CRITICAL MSI STABILITY FIXES
+app.disableHardwareAcceleration(); // Prevents GPU-related blank screens common in MSIs
+
+// Setup logging
+log.transports.file.level = 'info';
+log.info('Blog App Initializing in Production Mode...');
+
+// SYSTEM-LEVEL SWITCHES (Must be at the very top)
+app.commandLine.appendSwitch('enable-features', 'WebShare');
 app.commandLine.appendSwitch('enable-experimental-web-platform-features');
+
+if (process.platform === 'win32') {
+  app.setAppUserModelId('com.blog.app');
+}
+
+// REGISTER PROTOCOLS BEFORE READY
+protocol.registerSchemesAsPrivileged([
+  {
+    scheme: 'file',
+    privileges: {
+      secure: true,
+      standard: true,
+      supportFetchAPI: true,
+      corsEnabled: true,
+      allowServiceWorkers: true,
+      bypassCSP: true
+    }
+  }
+]);
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -15,45 +41,55 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      sandbox: false,
       devTools: false,
+      webSecurity: true,
       backgroundThrottling: false
     }
   });
 
-  // Completely remove the default menu so keyboard shortcuts like Ctrl+Shift+I or F12 are removed
+  // NAVIGATION HANDLER - RELAXED FOR NATIVE APIS
+  win.webContents.on('will-navigate', (event, url) => {
+    // ONLY block and externalize actual web domains
+    if (url.startsWith('http') && !url.includes('localhost')) {
+      event.preventDefault();
+      shell.openExternal(url);
+    }
+    // Allow ALL file:// navigations (internal routing + share hooks)
+  });
+
   win.setMenu(null);
 
-  // Prevent developer tools from being opened via shortcut just in case
   win.webContents.on('devtools-opened', () => {
     win.webContents.closeDevTools();
   });
 
-  // Prevent popup windows and unstyled child windows
-  // Instead, open external links in the default OS browser
   win.webContents.setWindowOpenHandler(({ url }) => {
-    require('electron').shell.openExternal(url);
+    shell.openExternal(url);
     return { action: 'deny' };
   });
 
-  win.loadFile(path.join(__dirname, 'dist-temp', 'index.html'));
+  // Use a relative load path which is safer in production
+  win.loadFile(path.join(__dirname, 'dist-temp', 'index.html'))
+    .catch(err => log.error('Load failure:', err));
 
   win.once('ready-to-show', () => {
     win.show();
+    win.focus();
+  });
+
+  // Handle renderer crashes without a restart loop
+  win.webContents.on('render-process-gone', (event, details) => {
+    log.error('Renderer process crash detected:', details);
   });
 }
 
-app.whenReady().then(() => {
-  createWindow();
+app.whenReady().then(createWindow);
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow();
-    }
-  });
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  if (process.platform !== 'darwin') app.quit();
 });
