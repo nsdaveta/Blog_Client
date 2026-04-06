@@ -140,14 +140,13 @@ const BlogCard = ({ blog, index }) => {
     // ── NATIVE OVERRIDE (Windows 11 Share Pane) ──
     try {
       if (window.electronAPI) {
-         // Trigger Native System Call (Priority)
+         // Trigger Native Bridge (Priority)
          window.electronAPI.nativeShare(shareData);
          recordShare(); 
          
          // Smart Fallback Detection: 
-         // Since native sharing can be blocked by system settings,
-         // we show the modal as a convenience backdrop after a tiny delay.
-         setTimeout(() => setShowShareModal(true), 250);
+         // Shows modal as convenience if native is blocked/delayed
+         setTimeout(() => setShowShareModal(true), 300);
       } 
       else if (navigator.share) {
          await navigator.share(shareData);

@@ -95,11 +95,11 @@ ipcMain.on('native-share', async (event, data) => {
   const { title, url } = data;
   try {
     const { exec } = require('child_process');
-    // Using -Sta mode to ensure compatibility with Windows 11 Shell
+    // Using -Sta mode for Windows 11 Shell compatibility
     const command = `powershell -Sta -Command "Add-Type -AssemblyName System.Runtime.WindowsRuntime; [Windows.ApplicationModel.DataTransfer.DataTransferManager, Windows.ApplicationModel.DataTransfer, ContentType = WindowsRuntime] | Out-Null; [Windows.ApplicationModel.DataTransfer.DataTransferManager]::ShowShareUI()"`;
     exec(command);
   } catch (err) {
-    log.error('Native Bridge Selection Exception:', err);
+    log.error('Native Bridge Exception:', err);
   }
 });
 
