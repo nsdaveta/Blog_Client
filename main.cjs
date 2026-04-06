@@ -2,8 +2,7 @@ const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// GLOBAL SECURITY HUB (Enables Native APIs like Share)
-app.commandLine.appendSwitch('enable-features', 'WebShare');
+// GLOBAL SECURITY HUB (Enables Native APIs via Bridge)
 app.enableSandbox(); 
 app.disableHardwareAcceleration();
 
@@ -39,12 +38,12 @@ function createWindow() {
     icon: path.join(__dirname, 'dist-temp', 'favicon.png'),
     backgroundColor: '#0d0f14',
     webPreferences: {
-      nodeIntegration: false, // Set to false to follow contextIsolation best practices
-      contextIsolation: true,  // REQUIRED for stable native API binding
+      nodeIntegration: true,
+      contextIsolation: false,
       preload: path.join(__dirname, 'preload.cjs'),
       sandbox: false,
       webSecurity: true,
-      devTools: false
+      devTools: true
     }
   });
 
@@ -59,10 +58,6 @@ function createWindow() {
   });
 
   win.setMenu(null);
-
-  win.webContents.on('devtools-opened', () => {
-    win.webContents.closeDevTools();
-  });
 
   win.webContents.setWindowOpenHandler(({ url }) => {
     shell.openExternal(url);

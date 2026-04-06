@@ -1,5 +1,12 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { ipcRenderer, contextBridge } = require('electron');
 
-contextBridge.exposeInMainWorld('electronAPI', {
+// Stable bridge injection for both isolated and non-isolated contexts
+const bridge = {
   nativeShare: (data) => ipcRenderer.send('native-share', data)
-});
+};
+
+if (process.contextIsolated) {
+  contextBridge.exposeInMainWorld('electronAPI', bridge);
+} else {
+  window.electronAPI = bridge;
+}
