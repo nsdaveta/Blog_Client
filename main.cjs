@@ -65,8 +65,18 @@ function createWindow() {
   });
 
   // Use a relative load path which is safer in production
-  win.loadFile(path.join(__dirname, 'dist-temp', 'index.html'))
-    .catch(err => log.error('Load failure:', err));
+  // SMART LOADING: Check for dist-temp first (electron-builder), then dist (vite)
+  const fs = require('fs');
+  const distTempPath = path.join(__dirname, 'dist-temp', 'index.html');
+  const distPath = path.join(__dirname, 'dist', 'index.html');
+  const targetPath = fs.existsSync(distTempPath) ? distTempPath : distPath;
+
+  win.loadFile(targetPath)
+    .catch(err => {
+       log.error('Navigation Failure:', err);
+       // Last resort: Development Fallback
+       win.loadURL('http://localhost:5173');
+    });
 
   win.once('ready-to-show', () => {
     win.show();
