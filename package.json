@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "start:electron": "electron .",
-    "build:electron": "cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build --outDir dist-temp && electron-builder build --win"
+    "build:electron": "git add . && git commit -m \"Production Build Sync\" && git push origin main && cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build --outDir dist-temp && electron-builder build --win"
   },
   "dependencies": {
     "electron-log": "^5.0.0"
