@@ -2,7 +2,8 @@ const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// GLOBAL SECURITY HUB (Enables Native APIs via Bridge)
+// GLOBAL SECURITY HUB (Enables Native APIs like Share)
+app.commandLine.appendSwitch('enable-features', 'WebShare');
 app.enableSandbox(); 
 app.disableHardwareAcceleration();
 
@@ -65,11 +66,11 @@ function createWindow() {
   });
 
   // Use a relative load path which is safer in production
-  // SMART LOADING: Check for dist-temp first (electron-builder), then dist (vite)
+  // SMART LOADING: Check for dist first (vite), then dist-temp (electron-builder)
   const fs = require('fs');
-  const distTempPath = path.join(__dirname, 'dist-temp', 'index.html');
   const distPath = path.join(__dirname, 'dist', 'index.html');
-  const targetPath = fs.existsSync(distTempPath) ? distTempPath : distPath;
+  const distTempPath = path.join(__dirname, 'dist-temp', 'index.html');
+  const targetPath = fs.existsSync(distPath) ? distPath : distTempPath;
 
   win.loadFile(targetPath)
     .catch(err => {
