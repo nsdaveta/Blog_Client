@@ -46,6 +46,7 @@
   "build": {
     "appId": "com.blog.app",
     "productName": "Blog-Production-Final",
+    "icon": "public/favicon.png",
     "copyright": "2026 Navjot Singh Daveta",
     "directories": {
       "output": "release"
