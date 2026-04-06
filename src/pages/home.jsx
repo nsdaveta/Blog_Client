@@ -137,22 +137,22 @@ const BlogCard = ({ blog, index }) => {
       url: shareUrl
     }
 
-    // NATIVE FIRST (Only if secure context exists)
-    // MSI apps on file:// are often considered 'insecure' by Chromium
-    if (navigator.share && window.isSecureContext) {
+    // NATIVE WINDOWS 11 SHARE PANE (Re-enabled per request)
+    if (navigator.share) {
       try {
         await navigator.share(shareData);
-        await recordShare();
+        // Record share count upon successful trigger
+        recordShare();
       } catch (err) {
-        // If native share is cancelled (AbortError), do nothing.
-        // If it actually fails, use the custom modal fallback.
+        // On error or manual cancel (AbortError), fallback to custom modal 
+        // to ensure user accessibility.
         if (err.name !== 'AbortError') {
-          console.error("Native share failed:", err);
+          console.error('Native share failed, using fallback:', err);
           setShowShareModal(true);
         }
       }
     } else {
-      // SAFE FALLBACK: Use our custom modal when on file:// protocol
+      // Fallback for systems without WebShare Support
       setShowShareModal(true);
     }
   }

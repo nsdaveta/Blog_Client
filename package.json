@@ -45,8 +45,7 @@
   "description": "Blog App",
   "build": {
     "appId": "com.blog.app",
-    "productName": "Blog App",
-    "icon": "public/favicon.png",
+    "productName": "Blog-Production-Final",
     "copyright": "2026 Navjot Singh Daveta",
     "directories": {
       "output": "release"
@@ -58,9 +57,10 @@
     ],
     "win": {
       "target": "msi",
-      "executableName": "Blog-Ultimate",
+      "executableName": "Blog-Production-Final",
       "signAndEditExecutable": false,
       "asar": true,
+      
       "signtoolOptions": {
         "signingHashAlgorithms": [
           "sha256"

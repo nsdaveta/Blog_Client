@@ -2,17 +2,16 @@ const { app, BrowserWindow, protocol, shell } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// CRITICAL MSI STABILITY FIXES
-app.disableHardwareAcceleration(); // Prevents GPU-related blank screens common in MSIs
+// GLOBAL SECURITY HUB (Enables Native APIs like Share)
+app.commandLine.appendSwitch('enable-features', 'WebShare');
+app.enableSandbox(); 
+app.disableHardwareAcceleration();
 
 // Setup logging
 log.transports.file.level = 'info';
 log.info('Blog App Initializing in Production Mode...');
 
-// SYSTEM-LEVEL SWITCHES (Must be at the very top)
-app.commandLine.appendSwitch('enable-features', 'WebShare');
-app.commandLine.appendSwitch('enable-experimental-web-platform-features');
-
+// SYSTEM-LEVEL SWITCHES
 if (process.platform === 'win32') {
   app.setAppUserModelId('com.blog.app');
 }
@@ -34,8 +33,8 @@ protocol.registerSchemesAsPrivileged([
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 1200, 
-    height: 800, 
+    width: 1200,
+    height: 800,
     show: false,
     icon: path.join(__dirname, 'dist-temp', 'favicon.png'),
     backgroundColor: '#0d0f14',
@@ -43,9 +42,8 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
       sandbox: false,
-      devTools: false,
       webSecurity: true,
-      backgroundThrottling: false
+      devTools: false
     }
   });
 
