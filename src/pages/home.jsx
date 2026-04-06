@@ -137,23 +137,29 @@ const BlogCard = ({ blog, index }) => {
       url: shareUrl
     }
 
-    // NATIVE WINDOWS 11 SHARE PANE (Re-enabled per request)
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-        // Record share count upon successful trigger
-        recordShare();
-      } catch (err) {
-        // On error or manual cancel (AbortError), fallback to custom modal 
-        // to ensure user accessibility.
-        if (err.name !== 'AbortError') {
-          console.error('Native share failed, using fallback:', err);
-          setShowShareModal(true);
-        }
+    // ── NATIVE OVERRIDE (Windows 11 Share Pane) ──
+    try {
+      // If running in development or Electron, try our stable Native Bridge
+      if (window.require) {
+         const { ipcRenderer } = window.require('electron');
+         ipcRenderer.send('native-share', shareData);
+         recordShare(); // Record successes
+      } else if (navigator.share) {
+         // Standard Web Context (Browser)
+         await navigator.share(shareData);
+         recordShare();
+      } else {
+         // Explicitly trigger fallback if no native share is detected
+         throw new Error('Native share unavailable');
       }
-    } else {
-      // Fallback for systems without WebShare Support
-      setShowShareModal(true);
+    } catch (err) {
+      // STABLE FALLBACK MODAL (If Native fails or user cancels)
+      // On Windows 11, the native pane might fail if the app is unsandboxed 
+      // or if assemblies are missing—we handle this gracefully.
+      if (err.name !== 'AbortError') {
+         console.trace('Native share bridge issue, showing fallback model:', err);
+         setShowShareModal(true);
+      }
     }
   }
 

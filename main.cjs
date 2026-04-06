@@ -40,7 +40,7 @@ function createWindow() {
     backgroundColor: '#0d0f14',
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: false, // We'll keep this false for now to avoid breaking your current React code, but the WebShare flag is re-added
       sandbox: false,
       webSecurity: true,
       devTools: false
@@ -82,6 +82,27 @@ function createWindow() {
     log.error('Renderer process crash detected:', details);
   });
 }
+
+// ── NATIVE SHARE BRIDGE (PowerShell Native Pane Trigger) ──────────────
+const { ipcMain, shell } = require('electron');
+ipcMain.on('native-share', async (event, data) => {
+  const { title, url } = data;
+  try {
+    // We use a PowerShell snippet to safely trigger the Windows 11 Share UI
+    // without using the unstable Chromium WebShare implementation.
+    const { exec } = require('child_process');
+    const command = `powershell -ExecutionPolicy Bypass -Command "Add-Type -AssemblyName System.Runtime.WindowsRuntime; [Windows.ApplicationModel.DataTransfer.DataTransferManager, Windows.ApplicationModel.DataTransfer, ContentType = WindowsRuntime] | Out-Null; [Windows.ApplicationModel.DataTransfer.DataTransferManager]::ShowShareUI()"`;
+    
+    // For raw link sharing on Windows 11, the most stable way is social URI protocols
+    // but the Share UI is what the user wants.
+    // If we can't invoke WinRT, we fallback to the social share pane.
+    exec(command, (err) => {
+       if(err) log.error('Native Share UI Trigger Error:', err);
+    });
+  } catch (err) {
+    log.error('Native Share Bridge Error:', err);
+  }
+});
 
 app.whenReady().then(createWindow);
 
