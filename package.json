@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:electron": "git add . && (git commit -m \"Production Build Sync\" || echo No changes to commit) && git push origin main && electron .",
+    "start:electron": "git add . && (git commit -m \"Production Build Sync\" || echo No changes to commit) && git push origin main && vite build && electron .",
     "build:electron": "git add . && (git commit -m \"Production Build Sync\" || echo No changes to commit) && git push origin main && cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build --outDir dist-temp && electron-builder build --win"
   },
   "dependencies": {
