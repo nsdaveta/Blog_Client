@@ -2,7 +2,8 @@ const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// GLOBAL SECURITY HUB (Enables Native APIs)
+// GLOBAL SECURITY HUB (Enables Native APIs like Share)
+app.commandLine.appendSwitch('enable-features', 'WebShare');
 app.enableSandbox(); 
 app.disableHardwareAcceleration();
 
@@ -38,8 +39,9 @@ function createWindow() {
     icon: path.join(__dirname, 'dist-temp', 'favicon.png'),
     backgroundColor: '#0d0f14',
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false, // We'll keep this false for now to avoid breaking your current React code, but the WebShare flag is re-added
+      nodeIntegration: false, // Set to false to follow contextIsolation best practices
+      contextIsolation: true,  // REQUIRED for stable native API binding
+      preload: path.join(__dirname, 'preload.cjs'),
       sandbox: false,
       webSecurity: true,
       devTools: false
