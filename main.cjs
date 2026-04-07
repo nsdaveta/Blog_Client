@@ -7,20 +7,32 @@ app.commandLine.appendSwitch('enable-features', 'WebShare');
 app.commandLine.appendSwitch('disable-site-isolation-trials');
 app.commandLine.appendSwitch('log-level', '3');
 
-// ── BUILD-TIME CONFIGURATION HUB ──
-let APP_URL = 'https://blog-app-01.vercel.app';
-try {
-  // Read official domain from packaged config
-  const buildConfig = require(path.join(__dirname, 'config.json'));
-  if (buildConfig.CLIENT_URL) APP_URL = buildConfig.CLIENT_URL;
-} catch (e) {
-  // Fallback to Vercel default if config is missing (e.g. in dev)
-  log.info('Using default fallback URL for domain interception.');
-}
-
 // Setup logging
 log.transports.file.level = 'info';
-log.info(`Blog App Initializing with identity: ${APP_URL}`);
+log.info('Blog App Initializing in Dynamic Discovery Mode...');
+
+// ── DYNAMIC IDENTITY HUB ──
+let APP_URL = 'https://blog-app-01.vercel.app';
+async function discoverIdentity() {
+  const { net } = require('electron');
+  try {
+    // Attempt to fetch current official domain from your backend (Render)
+    // This allows Zero-Rebuild domain changes via your server environment variables
+    const response = await net.fetch('https://blog-server-7c1i.onrender.com/blog/client-config', {
+      method: 'GET',
+      signal: AbortSignal.timeout(1500) // Don't delay launch for more than 1.5s
+    });
+    if (response.ok) {
+       const config = await response.json();
+       if (config.CLIENT_URL) {
+          APP_URL = config.CLIENT_URL;
+          log.info(`Dynamic Identity Found: ${APP_URL}`);
+       }
+    }
+  } catch (e) {
+    log.info('Discovery failed or timed out (offline mode). Using cached/default identity.');
+  }
+}
 
 // SYSTEM-LEVEL SWITCHES
 if (process.platform === 'win32') {
@@ -144,7 +156,10 @@ ipcMain.on('native-share', async (event, data) => {
   // For now, we allow the renderer to handle it (or use fallback)
 });
 
-app.whenReady().then(createWindow);
+app.whenReady().then(async () => {
+  await discoverIdentity();
+  createWindow();
+});
 
 app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
