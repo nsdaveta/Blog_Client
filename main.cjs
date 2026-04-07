@@ -2,7 +2,8 @@ const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// GLOBAL SYSTEM HUB (Stability Optimized)
+// GLOBAL SYSTEM HUB (Native Windows 11 Enabled)
+app.commandLine.appendSwitch('enable-features', 'WebShare');
 app.commandLine.appendSwitch('disable-site-isolation-trials');
 app.commandLine.appendSwitch('log-level', '3'); 
 
@@ -15,10 +16,10 @@ if (process.platform === 'win32') {
   app.setAppUserModelId('com.blog.app');
 }
 
-// REGISTER PROTOCOLS BEFORE READY
+// REGISTER CUSTOM PROTOCOL FOR STABLE NATIVE APIS
 protocol.registerSchemesAsPrivileged([
   {
-    scheme: 'file',
+    scheme: 'app',
     privileges: {
       secure: true,
       standard: true,
@@ -66,17 +67,40 @@ function createWindow() {
     return { action: 'deny' };
   });
 
-  // Use a relative load path which is safer in production
-  // SMART LOADING: Check for dist first (vite), then dist-temp (electron-builder)
-  const fs = require('fs');
-  const distPath = path.join(__dirname, 'dist', 'index.html');
-  const distTempPath = path.join(__dirname, 'dist-temp', 'index.html');
-  const targetPath = fs.existsSync(distPath) ? distPath : distTempPath;
+  // SMART PROTOCOL HANDLER: Serve from build folders
+  protocol.handle('app', async (request) => {
+    const urlStr = request.url.replace('app://', '');
+    const cleanPath = urlStr.split('?')[0].split('#')[0]; // Remove query/hash
+    const fs = require('fs');
+    
+    // Check various possible locations
+    const possiblePaths = [
+      path.join(__dirname, 'dist', cleanPath || 'index.html'),
+      path.join(__dirname, 'dist-temp', cleanPath || 'index.html'),
+      path.join(__dirname, cleanPath || 'index.html')
+    ];
+    
+    let finalPath = '';
+    for (const p of possiblePaths) {
+      if (fs.existsSync(p)) {
+        finalPath = p;
+        break;
+      }
+    }
+    
+    if (!finalPath) {
+      log.error(`Protocol Error: File not found for ${request.url}`);
+      return new Response('Not Found', { status: 404 });
+    }
 
-  win.loadFile(targetPath)
+    const { net } = require('electron');
+    const pathToFile = require('url').pathToFileURL(finalPath).toString();
+    return net.fetch(pathToFile);
+  });
+
+  win.loadURL('app://index.html')
     .catch(err => {
-       log.error('Navigation Failure:', err);
-       // Last resort: Development Fallback
+       log.error('Protocol Load Failure:', err);
        win.loadURL('http://localhost:5173');
     });
 

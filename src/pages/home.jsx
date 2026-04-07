@@ -135,11 +135,29 @@ const BlogCard = ({ blog, index }) => {
       text: `Check out this blog: ${blog.title}`,
       url: shareUrl
     }
-    // ── ADAPTIVE SHARE FLOW (100% Crash-Proof) ──
+    // ── ADAPTIVE SHARE FLOW (Native Priority) ──
     try {
-      // Directly show the themed glassmorphism modal for a stable, high-end experience
-      setShowShareModal(true);
-      recordShare();
+      let shareHandled = false;
+
+      // 1. Attempt Native Web Share ONLY if available (now stable via app:// protocol)
+      if (navigator.share && typeof navigator.share === 'function') {
+        try {
+          await navigator.share(shareData);
+          shareHandled = true;
+          recordShare();
+        } catch (err) {
+          // If aborted by user, we're done. Otherwise, show fallback modal.
+          if (err.name !== 'AbortError') {
+             setShowShareModal(true);
+          }
+        }
+      } 
+      
+      // 2. Fallback to custom modal if not handled
+      if (!shareHandled) {
+        setShowShareModal(true);
+        recordShare();
+      }
     } catch (err) {
       console.error('Critical Share System Failure:', err);
       setShowShareModal(true);
