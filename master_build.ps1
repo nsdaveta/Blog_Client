@@ -1,19 +1,17 @@
 $buildDir = "build-final-new"
 $distTemp = "dist-temp"
 
-Write-Host "Stopping all Electron and MSI related processes..."
-Stop-Process -Name BlogApp, electron, msiexec, light, candle -ErrorAction SilentlyContinue
-Start-Sleep -Seconds 2
+Write-Host "Stopping all Electron, MSI, and app-builder related processes..."
+Stop-Process -Name BlogApp, electron, msiexec, light, candle, node, app-builder -ErrorAction SilentlyContinue
+Start-Sleep -Seconds 3
 
-Write-Host "Cleaning build directories..."
-if (Test-Path $buildDir) {
-    Write-Host "Removing $buildDir..."
-    Remove-Item -Recurse -Force $buildDir -ErrorAction SilentlyContinue
-}
-
-if (Test-Path $distTemp) {
-    Write-Host "Removing $distTemp..."
-    Remove-Item -Recurse -Force $distTemp -ErrorAction SilentlyContinue
+Write-Host "Cleaning build and temporary directories..."
+$dirsToClean = @($buildDir, $distTemp, "release")
+foreach ($dir in $dirsToClean) {
+    if (Test-Path $dir) {
+        Write-Host "Forcing removal of $dir..."
+        Remove-Item -Recurse -Force $dir -ErrorAction SilentlyContinue
+    }
 }
 
 # Check if directories are still there (they might be if locked)

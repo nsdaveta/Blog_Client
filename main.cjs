@@ -42,8 +42,8 @@ function createWindow() {
     icon: path.join(__dirname, 'dist-temp', 'favicon.png'),
     backgroundColor: '#0d0f14',
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false, 
+      nodeIntegration: false, // Node Integration disabled for security
+      contextIsolation: true, // MODERN STABILITY Standard
       preload: path.join(__dirname, 'preload.cjs'),
       sandbox: false,
       webSecurity: true, 
@@ -93,9 +93,16 @@ function createWindow() {
   });
 }
 
-// ── SYSTEM STATE HUB ──
+// ── SYSTEM STATE HUB (@ipcMain) ──
 ipcMain.on('get-is-packaged', (event) => {
   event.returnValue = app.isPackaged;
+});
+
+// A safe stub for native share calls via IPC bridge
+ipcMain.on('native-share', async (event, data) => {
+  log.info('[IPC] Native Share requested from main process bridge:', data?.title);
+  // Optional: In the future, we could trigger OS native share from here
+  // For now, we allow the renderer to handle it (or use fallback)
 });
 
 app.whenReady().then(createWindow);

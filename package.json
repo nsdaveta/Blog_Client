@@ -61,14 +61,7 @@
       "target": "msi",
       "executableName": "BlogApp",
       "icon": "public/favicon.png",
-      "signAndEditExecutable": false,
-      "asar": true,
-      
-      "signtoolOptions": {
-        "signingHashAlgorithms": [
-          "sha256"
-        ]
-      }
+      "asar": true
     },
     "msi": {
       "oneClick": false,

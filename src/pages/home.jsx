@@ -135,34 +135,44 @@ const BlogCard = ({ blog, index }) => {
       text: `Check out this blog: ${blog.title}`,
       url: shareUrl
     }
-    // ── ADAPTIVE SHARE FLOW (High Reliability) ──
+    // ── ADAPTIVE SHARE FLOW (Extreme Reliability) ──
     try {
-      let nativeOccurred = false;
+      let shareHandled = false;
 
-      // 1. Try Native Share if supported
-      if (navigator.share) {
-        // We set a small race-condition timeout to show the custom modal if native is slow/blocked
-        const timer = setTimeout(() => {
-          if (!nativeOccurred) setShowShareModal(true);
-        }, 800);
+      // Ensure we show the beautiful fallback modal quickly as a safety net
+      const timer = setTimeout(() => {
+        if (!shareHandled) {
+          console.info('Native share slow or unsupported - falling back to custom modal');
+          setShowShareModal(true);
+        }
+      }, 500);
 
+      // 1. Attempt Native Web Share ONLY if available (unstable in some Win11/Electron builds)
+      if (navigator.share && typeof navigator.share === 'function') {
         try {
           await navigator.share(shareData);
-          nativeOccurred = true;
+          shareHandled = true;
           clearTimeout(timer);
           recordShare();
         } catch (err) {
           clearTimeout(timer);
-          if (err.name !== 'AbortError') setShowShareModal(true);
+          // Only show modal if the user didn't abort it manually
+          if (err.name !== 'AbortError') {
+             console.warn('Native share failed or was blocked:', err);
+             setShowShareModal(true);
+          } else {
+             shareHandled = true; // User cancelled, so we consider it handled
+          }
         }
       } 
-      // 2. Direct custom modal for environments without Web Share
+      // 2. Direct fallback to themed glassmorphism modal
       else {
+        clearTimeout(timer);
         setShowShareModal(true);
         recordShare();
       }
     } catch (err) {
-      console.error('Share system error:', err);
+      console.error('Critical Share System Failure:', err);
       setShowShareModal(true);
     }
   }
