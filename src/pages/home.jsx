@@ -46,8 +46,8 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
   const socialLinks = [
     { name: 'WhatsApp', icon: '💬', url: `https://wa.me/?text=${encodeURIComponent(blog.title + ': ' + shareUrl)}` },
     { name: 'Telegram', icon: '✈️', url: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}` },
-    { name: '𝕏', icon: '𝕏', url: `https://x.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(shareUrl)}` },
-    { name: 'Facebook', icon: '👥', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
+    { name: 'Twitter (X)', icon: '𝕏', url: `https://x.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(shareUrl)}` },
+    { name: 'Facebook', icon: '🫂', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
     { name: 'Instagram', icon: '📸', url: `https://www.instagram.com/` }
   ]
 
@@ -59,7 +59,7 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
   return (
     <div className="share-overlay active">
       <div className="share-overlay-backdrop" onClick={onClose} />
-      <div className="share-modal-content fade-in-up">
+      <div className="share-modal-content">
         <div className="share-header">
           <h3><span>🚀</span> Share this Story</h3>
           <button className="share-close-btn" onClick={onClose} aria-label="Close">✕</button>
@@ -137,26 +137,21 @@ const BlogCard = ({ blog, index }) => {
       url: shareUrl
     }
 
-    // ── NATIVE OVERRIDE (Windows 11 Share Pane) ──
+    // ── NATIVE SHARE (Primary) with Legacy Fallback ──
     try {
-      // 1. In Electron, prioritize the custom bridge to avoid navigator.share crashes
-      if (window.electronAPI && window.electronAPI.nativeShare) {
-        window.electronAPI.nativeShare(shareData);
-        recordShare();
-        // Show the beautiful fallback modal after a delay in case the native pane is blocked
-        setTimeout(() => { if (!showShareModal) setShowShareModal(true); }, 800);
-      }
-      // 2. Fallback for Web/Browser environments
-      else if (navigator.share) {
+      if (navigator.share) {
+        // Windows 10/11 Native Pane (Secure Context Required)
         await navigator.share(shareData);
         recordShare();
-      } 
-      else {
+      } else {
+        // Fallback for older Windows, Linux, or restricted environments
         setShowShareModal(true);
       }
     } catch (err) {
-      console.error('Share operation failed:', err);
-      setShowShareModal(true);
+      if (err.name !== 'AbortError') {
+        console.error('Native Share Unavailable:', err);
+        setShowShareModal(true);
+      }
     }
   }
 
