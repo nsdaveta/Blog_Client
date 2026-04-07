@@ -47,7 +47,7 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
     { name: 'WhatsApp', icon: '💬', url: `https://wa.me/?text=${encodeURIComponent(blog.title + ': ' + shareUrl)}` },
     { name: 'Telegram', icon: '✈️', url: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}` },
     { name: '𝕏', icon: '𝕏', url: `https://x.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(shareUrl)}` },
-    { name: 'Facebook', icon: '📘', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
+    { name: 'Facebook', icon: '👥', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
     { name: 'Instagram', icon: '📸', url: `https://www.instagram.com/` }
   ]
 
@@ -61,8 +61,8 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
       <div className="share-overlay-backdrop" onClick={onClose} />
       <div className="share-modal-content fade-in-up">
         <div className="share-header">
-          <h3>🚀 Share this Story</h3>
-          <button className="share-close-btn" onClick={onClose}>✕</button>
+          <h3><span>🚀</span> Share this Story</h3>
+          <button className="share-close-btn" onClick={onClose} aria-label="Close">✕</button>
         </div>
 
         <div className="share-url-container">
@@ -139,25 +139,26 @@ const BlogCard = ({ blog, index }) => {
 
     // ── NATIVE OVERRIDE (Windows 11 Share Pane) ──
     try {
-      if (window.electronAPI) {
-         // Trigger Native Bridge (Priority)
-         window.electronAPI.nativeShare(shareData);
-         recordShare(); 
-         
-         // Smart Fallback Detection: 
-         // Shows modal as convenience if native is blocked/delayed
-         setTimeout(() => setShowShareModal(true), 300);
+      // 1. Try modern Web Share API (Primary for Electron 41+)
+      if (navigator.share) {
+        await navigator.share(shareData);
+        recordShare();
       } 
-      else if (navigator.share) {
-         await navigator.share(shareData);
-         recordShare();
+      // 2. Fallback to custom bridge if legacy environment
+      else if (window.electronAPI && window.electronAPI.nativeShare) {
+        window.electronAPI.nativeShare(shareData);
+        recordShare();
+        // Only show modal if user has likely skipped/missed the native one
+        setTimeout(() => { if (!showShareModal) setShowShareModal(true); }, 1000);
       } 
       else {
-         setShowShareModal(true);
+        setShowShareModal(true);
       }
     } catch (err) {
+      // If user cancels (AbortError), do nothing. For other errors, show modal.
       if (err.name !== 'AbortError') {
-         setShowShareModal(true);
+        console.error('Share failed:', err);
+        setShowShareModal(true);
       }
     }
   }

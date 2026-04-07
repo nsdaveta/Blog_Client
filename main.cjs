@@ -4,7 +4,9 @@ const log = require('electron-log');
 
 // GLOBAL SECURITY HUB (Enables Native APIs like Share)
 app.commandLine.appendSwitch('enable-features', 'WebShare');
+app.commandLine.appendSwitch('log-level', '3'); // Reduce noise
 app.enableSandbox(); 
+// Hardware acceleration remains off for maximum compatibility in VMs/RDP
 app.disableHardwareAcceleration();
 
 // Setup logging
@@ -90,14 +92,22 @@ function createWindow() {
   });
 }
 
-// ── NATIVE SHARE BRIDGE (PowerShell Native Pane Trigger) ──────────────
+// ── NATIVE SHARE BRIDGE (PowerShell Native Pane Trigger - Legacy Fallback) ──
 ipcMain.on('native-share', async (event, data) => {
   const { title, url } = data;
+  log.info(`Attempting Native Share fallback for: ${title}`);
+  
   try {
     const { exec } = require('child_process');
-    // Using -Sta mode for Windows 11 Shell compatibility
-    const command = `powershell -Sta -Command "Add-Type -AssemblyName System.Runtime.WindowsRuntime; [Windows.ApplicationModel.DataTransfer.DataTransferManager, Windows.ApplicationModel.DataTransfer, ContentType = WindowsRuntime] | Out-Null; [Windows.ApplicationModel.DataTransfer.DataTransferManager]::ShowShareUI()"`;
-    exec(command);
+    // We attempt to trigger the share UI. Note: This is an OS-level call.
+    // If navigator.share fails, this PowerShell method is the only secondary option.
+    const command = `powershell -Sta -WindowStyle Hidden -Command "Add-Type -AssemblyName System.Runtime.WindowsRuntime; try { [Windows.ApplicationModel.DataTransfer.DataTransferManager]::ShowShareUI() } catch { exit 1 }"`;
+    
+    exec(command, (error) => {
+      if (error) {
+        log.error('Native Share PowerShell Fallback Failed:', error);
+      }
+    });
   } catch (err) {
     log.error('Native Bridge Exception:', err);
   }
