@@ -126,7 +126,6 @@ const BlogCard = ({ blog, index }) => {
 
   // ── Share ────────────────────────────────────────────────
   const handleShare = async (e) => {
-    // Explicitly prevent any parent link interaction or navigation
     if (e) { e.preventDefault(); e.stopPropagation(); }
     if (!isLoggedIn) { toast.info('Please log in to share posts'); return }
 
@@ -136,28 +135,35 @@ const BlogCard = ({ blog, index }) => {
       text: `Check out this blog: ${blog.title}`,
       url: shareUrl
     }
-
-    // ── SYSTEM-AWARE SHARE FLOW ──
+    // ── ADAPTIVE SHARE FLOW (High Reliability) ──
     try {
-      // 1. Detect if we are on modern Windows in Electron
-      const isWindows = navigator.userAgent.includes('Windows');
+      let nativeOccurred = false;
 
-      if (window.electronAPI && isWindows) {
-        // STRICT NATIVE for Windows 10/11 (No Modal)
-        window.electronAPI.nativeShare(shareData);
-        recordShare();
+      // 1. Try Native Share if supported
+      if (navigator.share) {
+        // We set a small race-condition timeout to show the custom modal if native is slow/blocked
+        const timer = setTimeout(() => {
+          if (!nativeOccurred) setShowShareModal(true);
+        }, 800);
+
+        try {
+          await navigator.share(shareData);
+          nativeOccurred = true;
+          clearTimeout(timer);
+          recordShare();
+        } catch (err) {
+          clearTimeout(timer);
+          if (err.name !== 'AbortError') setShowShareModal(true);
+        }
       } 
-      // 2. Web Share fallback for Browser or non-Windows Electron
-      else if (navigator.share) {
-        await navigator.share(shareData);
-        recordShare();
-      } 
-      // 3. Custom Modal Fallback for legacy systems
+      // 2. Direct custom modal for environments without Web Share
       else {
         setShowShareModal(true);
+        recordShare();
       }
     } catch (err) {
-      if (err.name !== 'AbortError') setShowShareModal(true);
+      console.error('Share system error:', err);
+      setShowShareModal(true);
     }
   }
 

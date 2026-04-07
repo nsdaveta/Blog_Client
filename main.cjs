@@ -93,10 +93,10 @@ function createWindow() {
   });
 }
 
-// ── NATIVE SHARE HUB ──
-// We use the premium custom modal as the stable primary share interface 
-// to avoid Windows protocol registration errors (ms-windows-share) 
-// and renderer crashes (navigator.share).
+// ── SYSTEM STATE HUB ──
+ipcMain.on('get-is-packaged', (event) => {
+  event.returnValue = app.isPackaged;
+});
 
 app.whenReady().then(createWindow);
 
