@@ -28,7 +28,7 @@ const totalCount = (arr = []) => arr.reduce((sum, e) => sum + (e.count || 0), 0)
 const myCount = (arr = [], userId) =>
   arr.find(e => e.userId === userId || e.userId?._id === userId)?.count || 0
 
-// ── Adaptive Share Modal (Fallback for Legacy Desktop/Linux) ─────────────
+// ── Windows 11 High-Fidelity Share Pane (AOS Replacement) ─────────────
 const ShareModal = ({ blog, onClose, onShareRecorded }) => {
   const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`
   const [copied, setCopied] = useState(false)
@@ -44,42 +44,87 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
   }
 
   const socialLinks = [
+    { name: 'Copy Link', icon: '🔗', action: handleCopy, isCopy: true },
     { name: 'WhatsApp', icon: '💬', url: `https://wa.me/?text=${encodeURIComponent(blog.title + ': ' + shareUrl)}` },
     { name: 'Telegram', icon: '✈️', url: `https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(blog.title)}` },
     { name: 'Twitter (X)', icon: '𝕏', url: `https://x.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(shareUrl)}` },
     { name: 'Facebook', icon: '🫂', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
-    { name: 'Instagram', icon: '📸', url: `https://www.instagram.com/` }
+    { name: 'Gmail', icon: '✉️', url: `mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(shareUrl)}` },
+    { name: 'OneDrive', icon: '☁️', url: '#' },
+    { name: 'More Apps', icon: '···', url: '#' }
   ]
 
-  const onSocialClick = (url) => {
-    window.open(url, '_blank', 'width=600,height=500')
-    onShareRecorded()
+  const onSocialClick = (item) => {
+    if (item.action) {
+       item.action();
+    } else if (item.url && item.url !== '#') {
+      window.open(item.url, '_blank', 'width=600,height=500')
+      onShareRecorded()
+    }
   }
+
+  const suggestedContacts = [
+    { name: 'Recent', icon: '👤' },
+    { name: 'Frequent', icon: '👥' },
+    { name: 'Family', icon: '🏠' }
+  ]
 
   return (
     <div className="share-overlay active">
       <div className="share-overlay-backdrop" onClick={onClose} />
       <div className="share-modal-content">
-        <div className="share-header">
-          <h3><span>🚀</span> Share this Story</h3>
-          <button className="share-close-btn" onClick={onClose} aria-label="Close">✕</button>
+        
+        {/* Windows 11 Style Header */}
+        <div className="win11-share-header">
+          <div className="win11-share-title">Share</div>
+          <button className="win11-close-btn" onClick={onClose}>✕</button>
         </div>
 
-        <div className="share-url-container">
-          <input readOnly value={shareUrl} className="share-url-input" />
-          <button onClick={handleCopy} className={`share-copy-btn ${copied ? 'copied' : ''}`}>
-            {copied ? '✓ Copied' : 'Copy Link'}
-          </button>
+        {/* App & Content Preview */}
+        <div className="win11-preview-section">
+          <div className="win11-app-icon">📑</div>
+          <strong className="win11-preview-title">{blog.title}</strong>
+          <span className="win11-preview-subtitle">Blogify App • Story</span>
         </div>
 
-        <div className="share-social-grid">
-          {socialLinks.map(s => (
-            <button key={s.name} className="share-social-item" onClick={() => onSocialClick(s.url)}>
-              <span className="share-social-icon">{s.icon}</span>
-              <span className="share-social-name">{s.name}</span>
-            </button>
-          ))}
+        {/* Suggested Contacts Section */}
+        <div className="win11-section">
+          <span className="win11-section-label">Suggested</span>
+          <div className="win11-contacts-row">
+            {suggestedContacts.map(c => (
+              <div key={c.name} className="win11-contact-item">
+                <div className="win11-contact-avatar">{c.icon}</div>
+                <span className="win11-contact-name">{c.name}</span>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Apps Section */}
+        <div className="win11-section">
+          <span className="win11-section-label">Share with apps</span>
+          <div className="win11-apps-grid">
+            {socialLinks.map(s => (
+              <div 
+                key={s.name} 
+                className={`win11-app-item ${s.isCopy && copied ? 'copied' : ''}`}
+                onClick={() => onSocialClick(s)}
+              >
+                <div className="win11-app-circle">{s.isCopy && copied ? '✓' : s.icon}</div>
+                <span className="win11-app-label">{s.isCopy && copied ? 'Copied' : s.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="win11-footer">
+          <div className="win11-nearby-toggle">
+             📶 Nearby sharing: Off
+          </div>
+          <div style={{opacity: 0.5}}>More options</div>
+        </div>
+
       </div>
     </div>
   )
@@ -129,38 +174,27 @@ const BlogCard = ({ blog, index }) => {
     if (e) { e.preventDefault(); e.stopPropagation(); }
     if (!isLoggedIn) { toast.info('Please log in to share posts'); return }
 
-    const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`
-    const shareData = {
-      title: blog.title || 'Blog Post',
-      text: `Check out this blog: ${blog.title}`,
-      url: shareUrl
-    }
-    // ── ADAPTIVE SHARE FLOW (Native Priority) ──
-    try {
-      let shareHandled = false;
-
-      // 1. Attempt Native Web Share ONLY if available (now stable via app:// protocol)
-      if (navigator.share && typeof navigator.share === 'function') {
-        try {
-          await navigator.share(shareData);
-          shareHandled = true;
-          recordShare();
-        } catch (err) {
-          // If aborted by user, we're done. Otherwise, show fallback modal.
-          if (err.name !== 'AbortError') {
-             setShowShareModal(true);
-          }
-        }
-      } 
-      
-      // 2. Fallback to custom modal if not handled
-      if (!shareHandled) {
-        setShowShareModal(true);
+    // ── NATIVE vs CUSTOM PRIORITY ──
+    // On Mobile (Android/iOS), Native Share is still superior and stable.
+    // On Desktop, we now use our high-fidelity Windows 11 replica.
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile && navigator.share) {
+      try {
+        const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`;
+        await navigator.share({
+          title: blog.title || 'Blog Post',
+          text: `Check out this blog: ${blog.title}`,
+          url: shareUrl
+        });
         recordShare();
+      } catch (err) {
+        if (err.name !== 'AbortError') setShowShareModal(true);
       }
-    } catch (err) {
-      console.error('Critical Share System Failure:', err);
+    } else {
+      // Primary High-Fidelity Windows 11 Replica for Desktop
       setShowShareModal(true);
+      recordShare();
     }
   }
 
