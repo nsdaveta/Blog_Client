@@ -16,16 +16,14 @@ if (process.platform === 'win32') {
   app.setAppUserModelId('com.blog.app');
 }
 
-// REGISTER CUSTOM PROTOCOL FOR STABLE NATIVE APIS
+// Standard secure contexts already privileged, but we keep protocol hooks clean
 protocol.registerSchemesAsPrivileged([
   {
-    scheme: 'app',
+    scheme: 'app-internal',
     privileges: {
       secure: true,
       standard: true,
       supportFetchAPI: true,
-      corsEnabled: true,
-      allowServiceWorkers: true,
     }
   }
 ]);
@@ -67,42 +65,52 @@ function createWindow() {
     return { action: 'deny' };
   });
 
-  // SMART PROTOCOL HANDLER: Serve from build folders
-  protocol.handle('app', async (request) => {
-    const urlStr = request.url.replace('app://', '');
-    const cleanPath = urlStr.split('?')[0].split('#')[0]; // Remove query/hash
-    const fs = require('fs');
-    
-    // Check various possible locations
-    const possiblePaths = [
-      path.join(__dirname, 'dist', cleanPath || 'index.html'),
-      path.join(__dirname, 'dist-temp', cleanPath || 'index.html'),
-      path.join(__dirname, cleanPath || 'index.html')
-    ];
-    
-    let finalPath = '';
-    for (const p of possiblePaths) {
-      if (fs.existsSync(p)) {
-        finalPath = p;
-        break;
-      }
-    }
-    
-    if (!finalPath) {
-      log.error(`Protocol Error: File not found for ${request.url}`);
-      return new Response('Not Found', { status: 404 });
-    }
+  // ── DOMAIN INTERCEPTION: Spoof Vercel domain for Native Share stability ──
+  const APP_URL = 'https://blog-app-01.vercel.app';
 
+  protocol.handle('https', async (request) => {
+    if (request.url.startsWith(APP_URL)) {
+      const urlStr = request.url.replace(APP_URL, '').split('?')[0].split('#')[0];
+      const cleanPath = urlStr || 'index.html';
+      const fs = require('fs');
+      
+      const possiblePaths = [
+        path.join(__dirname, 'dist', cleanPath),
+        path.join(__dirname, 'dist-temp', cleanPath),
+        path.join(__dirname, cleanPath)
+      ];
+      
+      let finalPath = '';
+      for (const p of possiblePaths) {
+        if (fs.existsSync(p) && !fs.lstatSync(p).isDirectory()) {
+          finalPath = p;
+          break;
+        }
+      }
+      
+      // Fallback to index.html for SPA routing
+      if (!finalPath) {
+        finalPath = fs.existsSync(path.join(__dirname, 'dist', 'index.html')) 
+                    ? path.join(__dirname, 'dist', 'index.html') 
+                    : path.join(__dirname, 'dist-temp', 'index.html');
+      }
+
+      const { net } = require('electron');
+      const pathToFile = require('url').pathToFileURL(finalPath).toString();
+      return net.fetch(pathToFile);
+    }
+    
+    // Standard internet requests go through normally
     const { net } = require('electron');
-    const pathToFile = require('url').pathToFileURL(finalPath).toString();
-    return net.fetch(pathToFile);
+    return net.fetch(request, { bypassCustomProtocolHandlers: true });
   });
 
-  win.loadURL('app://index.html')
+  win.loadURL(APP_URL)
     .catch(err => {
-       log.error('Protocol Load Failure:', err);
+       log.error('Domain Load Failure:', err);
        win.loadURL('http://localhost:5173');
     });
+
 
   win.once('ready-to-show', () => {
     win.show();
