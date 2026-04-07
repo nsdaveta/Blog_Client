@@ -3,11 +3,12 @@ const path = require('path');
 const log = require('electron-log');
 
 // GLOBAL SECURITY HUB (Enables Native APIs like Share)
+// WebShare is extremely unstable in some Electron versions when un-packaged.
 app.commandLine.appendSwitch('enable-features', 'WebShare');
-app.commandLine.appendSwitch('log-level', '3'); // Reduce noise
-app.enableSandbox(); 
-// Hardware acceleration remains off for maximum compatibility in VMs/RDP
-app.disableHardwareAcceleration();
+app.commandLine.appendSwitch('disable-site-isolation-trials');
+app.commandLine.appendSwitch('no-sandbox'); 
+app.commandLine.appendSwitch('disable-setuid-sandbox');
+app.commandLine.appendSwitch('log-level', '3'); 
 
 // Setup logging
 log.transports.file.level = 'info';
@@ -42,10 +43,10 @@ function createWindow() {
     backgroundColor: '#0d0f14',
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: false, // Required for the legacy bridge to be stable
       preload: path.join(__dirname, 'preload.cjs'),
       sandbox: false,
-      webSecurity: true,
+      webSecurity: true, // Re-enable for site safety
       devTools: true
     }
   });
