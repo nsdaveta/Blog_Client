@@ -2,12 +2,8 @@ const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 
-// GLOBAL SYSTEM HUB (Enables Native Windows 11 APIs)
-app.commandLine.appendSwitch('enable-features', 'WebShare');
-// Disable all sandbox features that interfere with native shell APIs
-app.commandLine.appendSwitch('no-sandbox'); 
-app.commandLine.appendSwitch('disable-gpu-sandbox');
-app.commandLine.appendSwitch('disable-setuid-sandbox');
+// GLOBAL SYSTEM HUB (Stability Optimized)
+app.commandLine.appendSwitch('disable-site-isolation-trials');
 app.commandLine.appendSwitch('log-level', '3'); 
 
 // Setup logging
@@ -38,8 +34,10 @@ function createWindow() {
     width: 1200,
     height: 800,
     show: false,
-    title: 'Blogify', // Explicit title required for some native Win11 APIs
-    icon: path.join(__dirname, 'dist-temp', 'favicon.png'),
+    title: 'Blogify', 
+    icon: fs.existsSync(path.join(__dirname, 'dist-temp', 'favicon.png')) 
+          ? path.join(__dirname, 'dist-temp', 'favicon.png') 
+          : path.join(__dirname, 'public', 'favicon.png'),
     backgroundColor: '#0d0f14',
     webPreferences: {
       nodeIntegration: false, // Node Integration disabled for security

@@ -135,42 +135,11 @@ const BlogCard = ({ blog, index }) => {
       text: `Check out this blog: ${blog.title}`,
       url: shareUrl
     }
-    // ── ADAPTIVE SHARE FLOW (Extreme Reliability) ──
+    // ── ADAPTIVE SHARE FLOW (100% Crash-Proof) ──
     try {
-      let shareHandled = false;
-
-      // Ensure we show the beautiful fallback modal quickly as a safety net
-      const timer = setTimeout(() => {
-        if (!shareHandled) {
-          console.info('Native share slow or unsupported - falling back to custom modal');
-          setShowShareModal(true);
-        }
-      }, 500);
-
-      // 1. Attempt Native Web Share ONLY if available (unstable in some Win11/Electron builds)
-      if (navigator.share && typeof navigator.share === 'function') {
-        try {
-          await navigator.share(shareData);
-          shareHandled = true;
-          clearTimeout(timer);
-          recordShare();
-        } catch (err) {
-          clearTimeout(timer);
-          // Only show modal if the user didn't abort it manually
-          if (err.name !== 'AbortError') {
-             console.warn('Native share failed or was blocked:', err);
-             setShowShareModal(true);
-          } else {
-             shareHandled = true; // User cancelled, so we consider it handled
-          }
-        }
-      } 
-      // 2. Direct fallback to themed glassmorphism modal
-      else {
-        clearTimeout(timer);
-        setShowShareModal(true);
-        recordShare();
-      }
+      // Directly show the themed glassmorphism modal for a stable, high-end experience
+      setShowShareModal(true);
+      recordShare();
     } catch (err) {
       console.error('Critical Share System Failure:', err);
       setShowShareModal(true);
