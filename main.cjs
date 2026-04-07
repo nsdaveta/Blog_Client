@@ -98,16 +98,16 @@ function createWindow() {
 ipcMain.on('native-share', async (event, data) => {
   const { title, url } = data;
   const log = require('electron-log');
-  log.info(`Broadcasting Strict Native Share: ${title}`);
+  log.info(`Attempting Native Shell Share: ${title}`);
   
   try {
     const { shell } = require('electron');
     const encodedTitle = encodeURIComponent(title);
     const encodedUri = encodeURIComponent(url);
     
-    // Using the official Windows Store Share protocol to trigger the OS flyout.
-    // This is the most stable method for un-packaged apps to get the real Win11 Share Pane.
-    const shareUrl = `ms-windows-store://share/?title=${encodedTitle}&uri=${encodedUri}`;
+    // ms-windows-share: is the official protocol for triggering the Share Pane flyout.
+    // We avoid the Store protocol as it may redirect to the Microsoft Store app.
+    const shareUrl = `ms-windows-share:?title=${encodedTitle}&uri=${encodedUri}`;
     
     shell.openExternal(shareUrl).catch(err => {
       log.error('Native Shell execution failed:', err);
