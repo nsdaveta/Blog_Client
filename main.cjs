@@ -94,24 +94,26 @@ function createWindow() {
   });
 }
 
-// ── NATIVE SHARE HUB (Stable Shell Integration) ──
+// ── NATIVE SHARE HUB (Strict Windows 11 Integration) ──
 ipcMain.on('native-share', async (event, data) => {
   const { title, url } = data;
-  log.info(`Broadcasting Native Share request for: ${title}`);
+  const log = require('electron-log');
+  log.info(`Broadcasting Strict Native Share: ${title}`);
   
   try {
-    const { exec } = require('child_process');
-    // We use the Windows Shell Protocol to trigger the Share UI without touching the renderer context.
-    // This avoids the 'exitCode: 3' renderer crash entirely.
-    const encodedUri = encodeURIComponent(url);
+    const { shell } = require('electron');
     const encodedTitle = encodeURIComponent(title);
-    const command = `powershell -WindowStyle Hidden -Command "Start-Process 'ms-windows-share:?title=${encodedTitle}&uri=${encodedUri}'"`;
+    const encodedUri = encodeURIComponent(url);
     
-    exec(command, (error) => {
-      if (error) log.error('Native Shell Share Failed:', error);
+    // Using the official Windows Store Share protocol to trigger the OS flyout.
+    // This is the most stable method for un-packaged apps to get the real Win11 Share Pane.
+    const shareUrl = `ms-windows-store://share/?title=${encodedTitle}&uri=${encodedUri}`;
+    
+    shell.openExternal(shareUrl).catch(err => {
+      log.error('Native Shell execution failed:', err);
     });
   } catch (err) {
-    log.error('Native Bridge Exception:', err);
+    log.error('Native Share Hub Exception:', err);
   }
 });
 

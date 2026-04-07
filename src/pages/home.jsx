@@ -137,26 +137,27 @@ const BlogCard = ({ blog, index }) => {
       url: shareUrl
     }
 
-    // ── STABLE SHARE FLOW (Crash-Proof) ──
+    // ── SYSTEM-AWARE SHARE FLOW ──
     try {
-      // 1. In Electron, ALWAYS use the Main Process Bridge to avoid renderer crashes
-      if (window.electronAPI && window.electronAPI.nativeShare) {
+      // 1. Detect if we are on modern Windows in Electron
+      const isWindows = navigator.userAgent.includes('Windows');
+
+      if (window.electronAPI && isWindows) {
+        // STRICT NATIVE for Windows 10/11 (No Modal)
         window.electronAPI.nativeShare(shareData);
         recordShare();
-        // Show the custom modal as a secondary UI fallback after a buffer
-        setTimeout(() => { if (!showShareModal) setShowShareModal(true); }, 1200);
-      }
-      // 2. Browser Fallback
+      } 
+      // 2. Web Share fallback for Browser or non-Windows Electron
       else if (navigator.share) {
         await navigator.share(shareData);
         recordShare();
       } 
+      // 3. Custom Modal Fallback for legacy systems
       else {
         setShowShareModal(true);
       }
     } catch (err) {
-      console.error('Share system error:', err);
-      setShowShareModal(true);
+      if (err.name !== 'AbortError') setShowShareModal(true);
     }
   }
 
