@@ -29,7 +29,6 @@ protocol.registerSchemesAsPrivileged([
       supportFetchAPI: true,
       corsEnabled: true,
       allowServiceWorkers: true,
-      bypassCSP: true
     }
   }
 ]);
@@ -94,28 +93,10 @@ function createWindow() {
   });
 }
 
-// ── NATIVE SHARE HUB (Strict Windows 11 Integration) ──
-ipcMain.on('native-share', async (event, data) => {
-  const { title, url } = data;
-  const log = require('electron-log');
-  log.info(`Attempting Native Shell Share: ${title}`);
-  
-  try {
-    const { shell } = require('electron');
-    const encodedTitle = encodeURIComponent(title);
-    const encodedUri = encodeURIComponent(url);
-    
-    // ms-windows-share: is the official protocol for triggering the Share Pane flyout.
-    // We avoid the Store protocol as it may redirect to the Microsoft Store app.
-    const shareUrl = `ms-windows-share:?title=${encodedTitle}&uri=${encodedUri}`;
-    
-    shell.openExternal(shareUrl).catch(err => {
-      log.error('Native Shell execution failed:', err);
-    });
-  } catch (err) {
-    log.error('Native Share Hub Exception:', err);
-  }
-});
+// ── NATIVE SHARE HUB ──
+// We use the premium custom modal as the stable primary share interface 
+// to avoid Windows protocol registration errors (ms-windows-share) 
+// and renderer crashes (navigator.share).
 
 app.whenReady().then(createWindow);
 
