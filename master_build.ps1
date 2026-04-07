@@ -1,5 +1,9 @@
 $buildDir = "build-final-new"
 $distTemp = "dist-temp"
+$clientUrl = if ($env:CLIENT_URL) { $env:CLIENT_URL } else { "https://blog-app-01.vercel.app" }
+
+Write-Host "Setting Official App Identity to: $clientUrl"
+"{\`"CLIENT_URL\`": \`"$clientUrl\`"}" | Out-File -FilePath "config.json" -Encoding utf8
 
 Write-Host "Stopping all Electron, MSI, and app-builder related processes..."
 Stop-Process -Name BlogApp, electron, msiexec, light, candle, node, app-builder -ErrorAction SilentlyContinue

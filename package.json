@@ -55,7 +55,8 @@
       "dist-temp",
       "main.cjs",
       "package.json",
-      "preload.cjs"
+      "preload.cjs",
+      "config.json"
     ],
     "win": {
       "target": "msi",
