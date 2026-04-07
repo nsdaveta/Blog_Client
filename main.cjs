@@ -1,4 +1,4 @@
-const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
+const { app, BrowserWindow, protocol, shell, ipcMain, net } = require('electron');
 const path = require('path');
 const log = require('electron-log');
 const fs = require('fs');
@@ -12,27 +12,31 @@ app.commandLine.appendSwitch('log-level', '3');
 log.transports.file.level = 'info';
 log.info('Blog App Initializing in Dynamic Discovery Mode...');
 
-// ── DYNAMIC IDENTITY HUB ──
+// ── DYNAMIC IDENTITY HUB (Secure & Robust) ──
 let APP_URL = 'https://blog-app-01.vercel.app';
 async function discoverIdentity() {
-  const { net } = require('electron');
-  try {
-    // Attempt to fetch current official domain from your backend (Render)
-    // This allows Zero-Rebuild domain changes via your server environment variables
-    const response = await net.fetch('https://blog-server-7c1i.onrender.com/blog/client-config', {
-      method: 'GET',
-      signal: AbortSignal.timeout(1500) // Don't delay launch for more than 1.5s
-    });
-    if (response.ok) {
-       const config = await response.json();
-       if (config.CLIENT_URL) {
-          APP_URL = config.CLIENT_URL;
-          log.info(`Dynamic Identity Found: ${APP_URL}`);
-       }
-    }
-  } catch (e) {
-    log.info('Discovery failed or timed out (offline mode). Using cached/default identity.');
-  }
+  return new Promise((resolve) => {
+    // 1.5s Discovery Window
+    const timeout = setTimeout(() => resolve(), 1500);
+    
+    net.fetch('https://blog-server-7c1i.onrender.com/blog/client-config')
+      .then(async (response) => {
+        if (response.ok) {
+           const config = await response.json();
+           if (config.CLIENT_URL) {
+              APP_URL = config.CLIENT_URL;
+              log.info(`Dynamic Identity Found: ${APP_URL}`);
+           }
+        }
+        clearTimeout(timeout);
+        resolve();
+      })
+      .catch((e) => {
+        log.info('Discovery failed or was cancelled.');
+        clearTimeout(timeout);
+        resolve();
+      });
+  });
 }
 
 // SYSTEM-LEVEL SWITCHES
