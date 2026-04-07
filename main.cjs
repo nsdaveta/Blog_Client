@@ -1,6 +1,7 @@
 const { app, BrowserWindow, protocol, shell, ipcMain } = require('electron');
 const path = require('path');
 const log = require('electron-log');
+const fs = require('fs');
 
 // GLOBAL SYSTEM HUB (Native Windows 11 Enabled)
 app.commandLine.appendSwitch('enable-features', 'WebShare');
@@ -93,7 +94,6 @@ function createWindow() {
     if (request.url.startsWith(APP_URL)) {
       const urlStr = request.url.replace(APP_URL, '').split('?')[0].split('#')[0];
       const cleanPath = urlStr || 'index.html';
-      const fs = require('fs');
       
       const possiblePaths = [
         path.join(__dirname, 'dist', cleanPath),
