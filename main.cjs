@@ -5,7 +5,7 @@ const log = require('electron-log');
 // GLOBAL SYSTEM HUB (Native Windows 11 Enabled)
 app.commandLine.appendSwitch('enable-features', 'WebShare');
 app.commandLine.appendSwitch('disable-site-isolation-trials');
-app.commandLine.appendSwitch('log-level', '3'); 
+app.commandLine.appendSwitch('log-level', '3');
 
 // Setup logging
 log.transports.file.level = 'info';
@@ -33,17 +33,17 @@ function createWindow() {
     width: 1200,
     height: 800,
     show: false,
-    title: 'Blogify', 
-    icon: fs.existsSync(path.join(__dirname, 'dist-temp', 'favicon.png')) 
-          ? path.join(__dirname, 'dist-temp', 'favicon.png') 
-          : path.join(__dirname, 'public', 'favicon.png'),
+    title: 'Blogify',
+    icon: fs.existsSync(path.join(__dirname, 'dist-temp', 'favicon.png'))
+      ? path.join(__dirname, 'dist-temp', 'favicon.png')
+      : path.join(__dirname, 'public', 'favicon.png'),
     backgroundColor: '#0d0f14',
     webPreferences: {
       nodeIntegration: false, // Node Integration disabled for security
       contextIsolation: true, // MODERN STABILITY Standard
       preload: path.join(__dirname, 'preload.cjs'),
       sandbox: false,
-      webSecurity: true, 
+      webSecurity: true,
       devTools: true
     }
   });
