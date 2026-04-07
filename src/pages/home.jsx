@@ -137,21 +137,26 @@ const BlogCard = ({ blog, index }) => {
       url: shareUrl
     }
 
-    // ── NATIVE SHARE (Primary) with Legacy Fallback ──
+    // ── STABLE SHARE FLOW (Crash-Proof) ──
     try {
-      if (navigator.share) {
-        // Windows 10/11 Native Pane (Secure Context Required)
+      // 1. In Electron, ALWAYS use the Main Process Bridge to avoid renderer crashes
+      if (window.electronAPI && window.electronAPI.nativeShare) {
+        window.electronAPI.nativeShare(shareData);
+        recordShare();
+        // Show the custom modal as a secondary UI fallback after a buffer
+        setTimeout(() => { if (!showShareModal) setShowShareModal(true); }, 1200);
+      }
+      // 2. Browser Fallback
+      else if (navigator.share) {
         await navigator.share(shareData);
         recordShare();
-      } else {
-        // Fallback for older Windows, Linux, or restricted environments
+      } 
+      else {
         setShowShareModal(true);
       }
     } catch (err) {
-      if (err.name !== 'AbortError') {
-        console.error('Native Share Unavailable:', err);
-        setShowShareModal(true);
-      }
+      console.error('Share system error:', err);
+      setShowShareModal(true);
     }
   }
 

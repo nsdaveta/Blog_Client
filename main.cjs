@@ -4,9 +4,10 @@ const log = require('electron-log');
 
 // GLOBAL SYSTEM HUB (Enables Native Windows 11 APIs)
 app.commandLine.appendSwitch('enable-features', 'WebShare');
-app.commandLine.appendSwitch('unsafely-treat-insecure-origin-as-secure', 'file:///');
-app.commandLine.appendSwitch('disable-site-isolation-trials');
+// Disable all sandbox features that interfere with native shell APIs
 app.commandLine.appendSwitch('no-sandbox'); 
+app.commandLine.appendSwitch('disable-gpu-sandbox');
+app.commandLine.appendSwitch('disable-setuid-sandbox');
 app.commandLine.appendSwitch('log-level', '3'); 
 
 // Setup logging
@@ -93,8 +94,26 @@ function createWindow() {
   });
 }
 
-// ── NATIVE SHARE HUB ──
-// Handled exclusively by navigator.share in renderer via WebShare feature flag
+// ── NATIVE SHARE HUB (Stable Shell Integration) ──
+ipcMain.on('native-share', async (event, data) => {
+  const { title, url } = data;
+  log.info(`Broadcasting Native Share request for: ${title}`);
+  
+  try {
+    const { exec } = require('child_process');
+    // We use the Windows Shell Protocol to trigger the Share UI without touching the renderer context.
+    // This avoids the 'exitCode: 3' renderer crash entirely.
+    const encodedUri = encodeURIComponent(url);
+    const encodedTitle = encodeURIComponent(title);
+    const command = `powershell -WindowStyle Hidden -Command "Start-Process 'ms-windows-share:?title=${encodedTitle}&uri=${encodedUri}'"`;
+    
+    exec(command, (error) => {
+      if (error) log.error('Native Shell Share Failed:', error);
+    });
+  } catch (err) {
+    log.error('Native Bridge Exception:', err);
+  }
+});
 
 app.whenReady().then(createWindow);
 
