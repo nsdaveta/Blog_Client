@@ -5,7 +5,12 @@
 $ProjectDir = "c:\Blog_Client"
 Set-Location -Path $ProjectDir
 
-# 2. Check for Administrator privileges
+# 2. Add Signtool to PATH and check for Administrator privileges
+$SigntoolPath = "C:\Program Files (x86)\Windows Kits\10\App Certification Kit"
+if ($env:PATH -notlike "*$SigntoolPath*") {
+    $env:PATH = "$SigntoolPath;$env:PATH"
+}
+
 $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 if (-not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
     Write-Host "--------------------------------------------------------" -ForegroundColor Yellow
