@@ -177,9 +177,7 @@ const BlogCard = ({ blog, index }) => {
     // ── NATIVE vs CUSTOM PRIORITY ──
     // On Mobile (Android/iOS), Native Share is still superior and stable.
     // On Desktop, we now use our high-fidelity Windows 11 replica.
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
-    if (isMobile && navigator.share) {
+    if (navigator.share) {
       try {
         const shareUrl = `https://blog-server-7c1i.onrender.com/blog/preview/${blog._id}`;
         await navigator.share({

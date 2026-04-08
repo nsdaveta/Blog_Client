@@ -8,11 +8,22 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:electron": "git add . && (git commit -m \"Production Build Sync\" || echo No changes to commit) && git push origin main && vite build && electron .",
-    "build:electron": "git add . && (git commit -m \"Production Build Sync\" || echo No changes to commit) && git push origin main && cross-env NODE_OPTIONS=--max-old-space-size=4096 vite build --outDir dist-temp && electron-builder build --win"
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "push:build": "git add . && git commit -m \"Sync before build\" && git push && npm run tauri:build"
   },
   "dependencies": {
-    "electron-log": "^5.0.0"
+    "@tauri-apps/api": "^2.1.1",
+    "@tauri-apps/plugin-opener": "^2.1.0",
+    "@tauri-apps/plugin-os": "^2.1.0",
+    "@tauri-apps/plugin-shell": "^2.1.0",
+    "axios": "^1.13.5",
+    "cloudinary": "^2.9.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.13.1",
+    "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@capacitor/android": "^8.3.0",
@@ -21,56 +32,18 @@
     "@capacitor/core": "^8.3.0",
     "@capacitor/ios": "^8.3.0",
     "@eslint/js": "^9.39.1",
+    "@tauri-apps/cli": "^2.1.0",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
-    "axios": "^1.13.5",
-    "cloudinary": "^2.9.0",
     "cross-env": "^10.1.0",
-    "electron": "^41.1.0",
-    "electron-builder": "^26.8.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.1",
-    "react-toastify": "^11.0.5",
     "typescript": "^6.0.2",
     "vite": "^7.3.1"
   },
-  "main": "main.cjs",
   "author": "Navjot Singh Daveta",
-  "description": "Blog App",
-  "build": {
-    "appId": "com.blog.app",
-    "productName": "Blog App",
-    "icon": "public/favicon.png",
-    "copyright": "2026 Navjot Singh Daveta",
-    "directories": {
-      "output": "release"
-    },
-    "files": [
-      "dist-temp",
-      "main.cjs",
-      "package.json",
-      "preload.cjs",
-      "config.json"
-    ],
-    "win": {
-      "target": "msi",
-      "executableName": "BlogApp",
-      "icon": "public/favicon.png",
-      "asar": true
-    },
-    "msi": {
-      "oneClick": false,
-      "perMachine": true,
-      "shortcutName": "Blog App",
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "runAfterFinish": false
-    }
-  }
+  "description": "Blog App"
 }
