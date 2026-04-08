@@ -27,7 +27,7 @@
     "active": true,
     "targets": "all",
     "windows": {
-      "signCommand": "signtool sign /f \"C:\\Blog_Client\\cert.pfx\" /p password123 /tr http://timestamp.digicert.com /td sha256 /fd sha256 %1"
+      "signCommand": "C:/Blog_Client/sign-app.bat %1"
     },
     "icon": [
       "icons/32x32.png",
