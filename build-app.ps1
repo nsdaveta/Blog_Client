@@ -29,7 +29,12 @@ git push
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`n[3/3] Starting Tauri Build..." -ForegroundColor Green
     npm run tauri:build
-    Write-Host "`nDone! Build complete." -ForegroundColor Green
+    if ($LASTEXITCODE -eq 0) {
+        Write-Host "`nDone! Build complete. Check src-tauri/target/release/bundle/msi/ for your installer." -ForegroundColor Green
+    } else {
+        Write-Host "`nError: Tauri build failed. Please check the logs above for specific error details." -ForegroundColor Red
+        exit $LASTEXITCODE
+    }
 } else {
     Write-Host "`nError: Git push failed. Build aborted to prevent out-of-sync releases." -ForegroundColor Red
     exit $LASTEXITCODE
