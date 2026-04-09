@@ -26,7 +26,10 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <span className="navbar-brand">✍ Blogify</span>
+        <div className="navbar-brand">
+          <img src="/favicon.svg" alt="App Icon" className="navbar-logo" />
+          <span>Blogify</span>
+        </div>
         <ul className="navbar-links">
           <li><NavLink to="/" end>Home</NavLink></li>
           {!user && <li><NavLink to="/register">Register</NavLink></li>}

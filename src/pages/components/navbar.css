@@ -19,6 +19,8 @@
 }
 
 .navbar-brand {
+    display: flex;
+    align-items: center;
     font-family: 'Playfair Display', serif;
     font-size: 1.45rem;
     font-weight: 700;
@@ -27,6 +29,14 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.02em;
+}
+
+.navbar-logo {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-right: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .navbar-links {

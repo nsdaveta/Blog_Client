@@ -82,7 +82,9 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
 
         {/* App & Content Preview */}
         <div className="win11-preview-section">
-          <div className="win11-app-icon">📑</div>
+          <div className="win11-app-icon">
+            <img src="/favicon.svg" alt="App Icon" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          </div>
           <strong className="win11-preview-title">{blog.title}</strong>
           <span className="win11-preview-subtitle">Blogify App • Story</span>
         </div>

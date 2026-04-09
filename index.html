@@ -5,6 +5,22 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blog App</title>
+    <script>
+      // Disable right-click context menu
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+      // Disable specific browser-style hotkeys
+      document.addEventListener('keydown', (e) => {
+        // Prevent F5 / Ctrl+R / Command+R (Reload)
+        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) {
+          e.preventDefault();
+        }
+        // Prevent Ctrl+Shift+I / F12 (DevTools - additional layer)
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+          e.preventDefault();
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
