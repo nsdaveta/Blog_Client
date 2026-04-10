@@ -53,7 +53,7 @@ const Dashboard = () => {
 
   const HandleDelete = async (blogId, publicId) => {
     const confirmation = await ask('Delete this post permanently?', {
-      title: 'Blog App',
+      title: 'Blogify',
       kind: 'warning',
     });
     if (!confirmation) return;
