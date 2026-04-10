@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import UserContext from './components/UserContext/usercontext'
+import { ask } from '@tauri-apps/plugin-dialog'
 import './dashboard.css'
 
 const Dashboard = () => {
@@ -49,8 +50,12 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const HandleDelete = (blogId, publicId) => {
-    if (!window.confirm('Delete this post permanently?')) return;
+  const HandleDelete = async (blogId, publicId) => {
+    const confirmation = await ask('Delete this post permanently?', {
+      title: 'Blog App',
+      kind: 'warning',
+    });
+    if (!confirmation) return;
     api.delete('/delete/' + blogId, {
       params: { public_id: publicId },
       ...headers
