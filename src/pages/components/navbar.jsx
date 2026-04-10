@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import UserContext from './UserContext/usercontext'
+import { useDialog } from './Dialog/DialogContext'
 import './navbar.css'
 
 const Navbar = () => {
   const { user, setUser } = useContext(UserContext);
+  const { ask } = useDialog();
 
   React.useEffect(() => {
     const storedUser = localStorage.getItem('userdata');
@@ -14,8 +16,12 @@ const Navbar = () => {
     }
   }, [user, setUser]);
 
-  const handleLogout = () => {
-    if (window.confirm('Are you sure you want to logout?')) {
+  const handleLogout = async () => {
+    const confirmation = await ask('Are you sure you want to logout?', {
+      title: 'Logout',
+      kind: 'info'
+    });
+    if (confirmation) {
       setUser(null);
       localStorage.removeItem('userdata');
       localStorage.removeItem('token');

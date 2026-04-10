@@ -14,12 +14,14 @@ import VerifyOtp from './pages/VerifyOtp'
 import ForgotPassword from './pages/forgot_password'
 import ResetPassword from './pages/reset_password'
 import { useBackButton } from './hooks/useBackButton'
+import Dialog from './pages/components/Dialog/Dialog'
 
 function App() {
   // Handle Android back button
   useBackButton()
   return (
     <div>
+      <Dialog />
       <ToastContainer
         position="top-right"
         theme="dark"

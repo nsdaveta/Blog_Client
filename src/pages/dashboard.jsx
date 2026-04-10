@@ -4,12 +4,13 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import UserContext from './components/UserContext/usercontext'
-import { ask } from '@tauri-apps/plugin-dialog'
+import { useDialog } from './components/Dialog/DialogContext'
 import './dashboard.css'
 
 const Dashboard = () => {
   const navigate = useNavigate()
   const { user, setUser } = React.useContext(UserContext)
+  const { ask } = useDialog()
   const [loading, setLoading] = useState(true)
   const [blogData, setBlogData] = useState([])
 

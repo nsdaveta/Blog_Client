@@ -215,7 +215,7 @@ const BlogCard = ({ blog, index }) => {
     if (!isLoggedIn) { toast.info('Please log in to dislike posts'); return }
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
     if (blog.author === storedUser.name) {
-      toast.error("The same user who has created the blog can't dislike the post");
+      toast.error("Author cannot dislike their own post");
       return;
     }
     try {
