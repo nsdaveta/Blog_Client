@@ -1,6 +1,6 @@
 use std::process::{Command, Stdio};
 use std::io::{BufRead, BufReader};
-use tauri::{Emitter, Window, AppHandle};
+use tauri::{Emitter, Window};
 use serde::Serialize;
 use std::path::Path;
 
@@ -120,7 +120,7 @@ async fn run_build(window: Window) -> Result<(), String> {
     window.emit("step-update", StepUpdate { step: "env".to_string(), status: "completed".to_string() }).unwrap();
 
     // Step 3: Tauri Build
-    run_step(&window, "build", "npm", vec!["run", "tauri:build"], project_dir)?;
+    run_step(&window, "build", "npm", vec!["run", "tauri:build:x86"], project_dir)?;
 
     Ok(())
 }

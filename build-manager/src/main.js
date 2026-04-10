@@ -109,7 +109,7 @@ function showSuccessUI() {
   openBtn.textContent = "Open MSI Folder";
   openBtn.onclick = () => {
     // Reveal the generated installer
-    invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\release\\bundle\\msi");
+    invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\i686-pc-windows-msvc\\release\\bundle\\msi");
   };
 
   actionArea.appendChild(openBtn);
