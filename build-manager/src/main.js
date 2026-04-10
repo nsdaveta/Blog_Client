@@ -28,6 +28,7 @@ function appendLog(text, type = "info") {
   if (type === "error") line.style.color = "#f87171";
   if (type === "success") line.style.color = "#34d399";
   if (type === "command") line.style.color = "#60a5fa";
+  if (type === "warning") line.style.color = "#fbbf24";
   
   line.textContent = text;
   terminal.appendChild(line);
@@ -36,6 +37,7 @@ function appendLog(text, type = "info") {
 
 function updateStep(stepName, state) {
   const step = steps[stepName];
+  if (!step) return;
   step.classList.remove("active", "completed", "failed");
   if (state) step.classList.add(state);
 
@@ -78,7 +80,13 @@ function stopTimer() {
 
 // Listen for backend events
 listen('process-output', (event) => {
-  appendLog(event.payload);
+  const { content, is_error } = event.payload;
+  // Some logs are standard progress but go to stderr, we filter those
+  let type = is_error ? "error" : "info";
+  if (content.toLowerCase().includes("warning")) type = "warning";
+  if (content.startsWith(">")) type = "command";
+  
+  appendLog(content, type);
 });
 
 listen('step-update', (event) => {
@@ -87,7 +95,31 @@ listen('step-update', (event) => {
   statusText.textContent = `Processing ${step}...`;
 });
 
+function showSuccessUI() {
+  const container = document.querySelector(".terminal-container");
+  const actionArea = document.createElement("div");
+  actionArea.style.display = "flex";
+  actionArea.style.gap = "1rem";
+  actionArea.style.marginTop = "1rem";
+  actionArea.id = "post-build-actions";
+
+  const openBtn = document.createElement("button");
+  openBtn.className = "build-btn";
+  openBtn.style.background = "linear-gradient(135deg, #34d399 0%, #10b981 100%)";
+  openBtn.textContent = "Open MSI Folder";
+  openBtn.onclick = () => {
+    // Reveal the generated installer
+    invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\release\\bundle\\msi");
+  };
+
+  actionArea.appendChild(openBtn);
+  container.parentNode.insertBefore(actionArea, container.nextSibling);
+}
+
 buildBtn.addEventListener("click", async () => {
+  const existingActions = document.querySelector("#post-build-actions");
+  if (existingActions) existingActions.remove();
+
   buildBtn.disabled = true;
   buildBtn.textContent = "Build in Progress...";
   terminal.innerHTML = "";
@@ -107,6 +139,7 @@ buildBtn.addEventListener("click", async () => {
     statusText.textContent = "Build Success";
     appendLog(">>> BUILD PIPELINE COMPLETED SUCCESSFULLY <<<", "success");
     buildBtn.textContent = "Restart Build";
+    showSuccessUI();
   } catch (err) {
     statusText.textContent = "Build Failed";
     appendLog(`FATAL ERROR: ${err}`, "error");
@@ -120,3 +153,4 @@ buildBtn.addEventListener("click", async () => {
 // Initialization
 checkAdmin();
 appendLog("System ready. Project path: c:\\Blog_Client");
+

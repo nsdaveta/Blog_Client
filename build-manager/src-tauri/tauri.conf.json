@@ -16,7 +16,7 @@
         "resizable": true,
         "transparent": true,
         "decorations": true
-      }
+      }                                                   
     ],
     "security": {
       "csp": null
