@@ -98,9 +98,25 @@ async fn run_build(window: Window) -> Result<(), String> {
     let project_dir = "c:\\Blog_Client";
 
     // Step 1: Git Sync
-    run_step(&window, "git", "git", vec!["add", "."], project_dir)?;
-    run_step(&window, "git", "git", vec!["commit", "-m", "'Sync before build (automated)'"], project_dir)?;
-    run_step(&window, "git", "git", vec!["push"], project_dir)?;
+    window.emit("step-update", StepUpdate { step: "git".to_string(), status: "active".to_string() }).unwrap();
+    
+    // Check if there are changes to commit
+    let status_output = Command::new("git")
+        .args(["status", "--porcelain"])
+        .current_dir(project_dir)
+        .output()
+        .map_err(|e| format!("Failed to check git status: {}", e))?;
+    
+    if !status_output.stdout.is_empty() {
+        run_step(&window, "git", "git", vec!["add", "."], project_dir)?;
+        run_step(&window, "git", "git", vec!["commit", "-m", "'Sync before build (automated)'"], project_dir)?;
+        // We push if we committed
+        let _ = run_step(&window, "git", "git", vec!["push"], project_dir);
+    } else {
+        window.emit("process-output", ProcessOutput { content: "Working tree clean, skipping commit.".to_string(), is_error: false }).unwrap();
+        // Still try to push in case of unpushed commits
+        let _ = run_step(&window, "git", "git", vec!["push"], project_dir);
+    }
 
     // Step 2: Environment
     window.emit("step-update", StepUpdate { step: "env".to_string(), status: "active".to_string() }).unwrap();
