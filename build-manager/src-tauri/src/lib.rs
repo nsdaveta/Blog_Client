@@ -3,6 +3,11 @@ use std::io::{BufRead, BufReader};
 use tauri::{Emitter, Window};
 use serde::Serialize;
 use std::path::Path;
+#[cfg(target_os = "windows")]
+use std::os::windows::process::CommandExt;
+
+#[cfg(target_os = "windows")]
+const CREATE_NO_WINDOW: u32 = 0x08000000;
 
 #[derive(Clone, Serialize)]
 struct StepUpdate {
@@ -18,8 +23,11 @@ struct ProcessOutput {
 
 #[tauri::command]
 fn check_admin() -> bool {
-    let output = Command::new("powershell")
-        .args(["-Command", "([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')"])
+    let mut cmd = Command::new("powershell");
+    #[cfg(target_os = "windows")]
+    cmd.creation_flags(CREATE_NO_WINDOW);
+
+    let output = cmd.args(["-Command", "([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')"])
         .output();
     
     if let Ok(out) = output {
@@ -50,8 +58,11 @@ fn reveal_in_explorer(path: String) -> Result<(), String> {
 fn run_step(window: &Window, step_id: &str, command: &str, args: Vec<&str>, cwd: &str) -> Result<(), String> {
     window.emit("step-update", StepUpdate { step: step_id.to_string(), status: "active".to_string() }).unwrap();
     
-    let mut child = Command::new("powershell")
-        .args(["-ExecutionPolicy", "Bypass", "-Command"])
+    let mut cmd = Command::new("powershell");
+    #[cfg(target_os = "windows")]
+    cmd.creation_flags(CREATE_NO_WINDOW);
+
+    let mut child = cmd.args(["-ExecutionPolicy", "Bypass", "-Command"])
         .arg(format!("{} {}", command, args.join(" "))) // PowerShell still likes the command string sometimes
         .current_dir(cwd)
         .stdout(Stdio::piped())
@@ -94,15 +105,18 @@ fn run_step(window: &Window, step_id: &str, command: &str, args: Vec<&str>, cwd:
 }
 
 #[tauri::command]
-async fn run_build(window: Window) -> Result<(), String> {
+async fn run_build(window: Window, target: String) -> Result<(), String> {
     let project_dir = "c:\\Blog_Client";
 
     // Step 1: Git Sync
     window.emit("step-update", StepUpdate { step: "git".to_string(), status: "active".to_string() }).unwrap();
     
+    let mut cmd = Command::new("git");
+    #[cfg(target_os = "windows")]
+    cmd.creation_flags(CREATE_NO_WINDOW);
+
     // Check if there are changes to commit
-    let status_output = Command::new("git")
-        .args(["status", "--porcelain"])
+    let status_output = cmd.args(["status", "--porcelain"])
         .current_dir(project_dir)
         .output()
         .map_err(|e| format!("Failed to check git status: {}", e))?;
@@ -120,27 +134,37 @@ async fn run_build(window: Window) -> Result<(), String> {
 
     // Step 2: Environment
     window.emit("step-update", StepUpdate { step: "env".to_string(), status: "active".to_string() }).unwrap();
-    let signtool_path = "C:\\Program Files (x86)\\Windows Kits\\10\\App Certification Kit\\signtool.exe";
-    let exists = Path::new(signtool_path).exists();
     
-    window.emit("process-output", ProcessOutput { 
-        content: format!("Checking Signtool existence: {}", if exists { "FOUND" } else { "MISSING" }), 
-        is_error: !exists 
-    }).unwrap();
+    if target == "windows" {
+        let signtool_path = "C:\\Program Files (x86)\\Windows Kits\\10\\App Certification Kit\\signtool.exe";
+        let exists = Path::new(signtool_path).exists();
+        
+        window.emit("process-output", ProcessOutput { 
+            content: format!("Checking Signtool existence: {}", if exists { "FOUND" } else { "MISSING" }), 
+            is_error: !exists 
+        }).unwrap();
 
-    if !exists {
-        window.emit("step-update", StepUpdate { step: "env".to_string(), status: "failed".to_string() }).unwrap();
-        return Err("Signtool not found. Please install Windows SDK.".to_string());
+        if !exists {
+            window.emit("step-update", StepUpdate { step: "env".to_string(), status: "failed".to_string() }).unwrap();
+            return Err("Signtool not found. Please install Windows SDK.".to_string());
+        }
+    } else if target == "android" {
+        window.emit("process-output", ProcessOutput { content: "Skipping Windows Signtool check for Android build.".to_string(), is_error: false }).unwrap();
+        // You could add Android SDK/NDK checks here if desired
     }
 
     window.emit("step-update", StepUpdate { step: "env".to_string(), status: "completed".to_string() }).unwrap();
 
-    // Step 3: Tauri Build
-    #[cfg(target_arch = "x86")]
-    run_step(&window, "build", "npm", vec!["run", "tauri:build:x86"], project_dir)?;
-
-    #[cfg(target_arch = "x86_64")]
-    run_step(&window, "build", "npm", vec!["run", "tauri:build"], project_dir)?;
+    // Step 3: Build
+    if target == "android" {
+        run_step(&window, "build", "npx", vec!["tauri", "android", "build"], project_dir)?;
+    } else if target == "windows-x86" {
+        run_step(&window, "build", "npm", vec!["run", "tauri:build:x86"], project_dir)?;
+    } else if target == "windows-x64" {
+        run_step(&window, "build", "npm", vec!["run", "tauri:build"], project_dir)?;
+    } else {
+        return Err(format!("Unknown target: {}", target));
+    }
 
     Ok(())
 }

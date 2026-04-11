@@ -1,89 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri Build Master</title>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="/style.css" />
-  </head>
 
-  <body>
-    <div id="app">
-      <div class="header">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tauri Build Master</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="header">
+      <div>
+        <h1>Build Manager Pro</h1>
+        <p style="color: #94a3b8; margin-top: 0.5rem;">Automated pipeline for Blog_Client</p>
+      </div>
+      <div class="header-actions">
+        <button id="build-x64" class="build-btn">
+          <i data-lucide="monitor"></i>
+          Windows x64
+        </button>
+        <button id="build-x86" class="build-btn">
+          <i data-lucide="monitor-dot"></i>
+          Windows x86
+        </button>
+        <button id="android-trigger" class="build-btn android-btn">
+          <i data-lucide="smartphone"></i>
+          Build Android
+        </button>
+      </div>
+    </div>
+
+    <div id="admin-banner" class="admin-warning" style="display: none;">
+      <i data-lucide="alert-triangle"></i>
+      <span>Restricted Privileges: Administrator rights recommended for signing.</span>
+    </div>
+
+    <div class="status-grid">
+      <!-- Step 1: Git Sync -->
+      <div id="step-git" class="glass-card step-card">
+        <div class="step-icon">
+          <i data-lucide="git-branch"></i>
+        </div>
         <div>
-          <h1>Build Manager Pro</h1>
-          <p style="color: #94a3b8; margin-top: 0.5rem;">Automated pipeline for Blog_Client</p>
+          <div style="font-weight: 600;">Git Sync</div>
+          <div style="font-size: 0.8rem; color: #94a3b8;">Stage & Push</div>
         </div>
-        <button id="build-trigger" class="build-btn">Start Release Build</button>
-      </div>
-
-      <div id="admin-banner" class="admin-warning" style="display: none;">
-        <i data-lucide="alert-triangle"></i>
-        <span>Restricted Privileges: Administrator rights recommended for signing.</span>
-      </div>
-
-      <div class="status-grid">
-        <!-- Step 1: Git Sync -->
-        <div id="step-git" class="glass-card step-card">
-          <div class="step-icon">
-            <i data-lucide="git-branch"></i>
-          </div>
-          <div>
-            <div style="font-weight: 600;">Git Sync</div>
-            <div style="font-size: 0.8rem; color: #94a3b8;">Stage & Push</div>
-          </div>
-          <div class="progress-bar-container">
-            <div id="progress-git" class="progress-bar-fill"></div>
-          </div>
-        </div>
-
-        <!-- Step 2: Environment -->
-        <div id="step-env" class="glass-card step-card">
-          <div class="step-icon">
-            <i data-lucide="settings"></i>
-          </div>
-          <div>
-            <div style="font-weight: 600;">Environment</div>
-            <div style="font-size: 0.8rem; color: #94a3b8;">Paths & Tools</div>
-          </div>
-          <div class="progress-bar-container">
-            <div id="progress-env" class="progress-bar-fill"></div>
-          </div>
-        </div>
-
-        <!-- Step 3: Tauri Build -->
-        <div id="step-build" class="glass-card step-card">
-          <div class="step-icon">
-            <i data-lucide="package"></i>
-          </div>
-          <div>
-            <div style="font-weight: 600;">Distribution</div>
-            <div style="font-size: 0.8rem; color: #94a3b8;">Tauri Compile</div>
-            <div id="build-timer" style="font-size: 0.8rem; color: #60a5fa; margin-top: 4px;">--:--</div>
-          </div>
-          <div class="progress-bar-container">
-            <div id="progress-build" class="progress-bar-fill"></div>
-          </div>
+        <div class="progress-bar-container">
+          <div id="progress-git" class="progress-bar-fill"></div>
         </div>
       </div>
 
-      <div class="terminal-container glass-card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-          <div style="font-size: 0.8rem; font-weight: 600; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
-            <i data-lucide="terminal" style="width: 14px; height: 14px;"></i>
-            BASH OUTPUT
-          </div>
-          <div id="status-text" style="font-size: 0.8rem; color: #94a3b8;">Ready to build</div>
+      <!-- Step 2: Environment -->
+      <div id="step-env" class="glass-card step-card">
+        <div class="step-icon">
+          <i data-lucide="settings"></i>
         </div>
-        <div id="terminal">
-          <div class="terminal-line" style="color: #60a5fa;">> Log initialized. Waiting for action...</div>
+        <div>
+          <div style="font-weight: 600;">Environment</div>
+          <div style="font-size: 0.8rem; color: #94a3b8;">Paths & Tools</div>
+        </div>
+        <div class="progress-bar-container">
+          <div id="progress-env" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- Step 3: Tauri Build -->
+      <div id="step-build" class="glass-card step-card">
+        <div class="step-icon">
+          <i data-lucide="package"></i>
+        </div>
+        <div>
+          <div style="font-weight: 600;">Distribution</div>
+          <div style="font-size: 0.8rem; color: #94a3b8;">Tauri Compile</div>
+          <div id="build-timer" style="font-size: 0.8rem; color: #60a5fa; margin-top: 4px;">--:--</div>
+        </div>
+        <div class="progress-bar-container">
+          <div id="progress-build" class="progress-bar-fill"></div>
         </div>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
-    <script>
-      lucide.createIcons();
-    </script>
-  </body>
+
+    <div class="terminal-container glass-card">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+        <div
+          style="font-size: 0.8rem; font-weight: 600; color: #94a3b8; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="terminal" style="width: 14px; height: 14px;"></i>
+          BASH OUTPUT
+        </div>
+        <div id="status-text" style="font-size: 0.8rem; color: #94a3b8;">Ready to build</div>
+      </div>
+      <div id="terminal">
+        <div class="terminal-line" style="color: #60a5fa;">> Log initialized. Waiting for action...</div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+
 </html>

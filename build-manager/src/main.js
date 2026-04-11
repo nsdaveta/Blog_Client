@@ -95,7 +95,11 @@ listen('step-update', (event) => {
   statusText.textContent = `Processing ${step}...`;
 });
 
-function showSuccessUI() {
+let buildBtnX64 = document.querySelector("#build-x64");
+let buildBtnX86 = document.querySelector("#build-x86");
+let androidBtn = document.querySelector("#android-trigger");
+
+function showSuccessUI(target) {
   const container = document.querySelector(".terminal-container");
   const actionArea = document.createElement("div");
   actionArea.style.display = "flex";
@@ -106,24 +110,54 @@ function showSuccessUI() {
   const openBtn = document.createElement("button");
   openBtn.className = "build-btn";
   openBtn.style.background = "linear-gradient(135deg, #34d399 0%, #10b981 100%)";
-  openBtn.textContent = "Open MSI Folder";
-  openBtn.onclick = () => {
-    // Reveal the generated installer
-    invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\i686-pc-windows-msvc\\release\\bundle\\msi");
-  };
+  
+  if (target === "android") {
+    openBtn.textContent = "Open APK Folder";
+    openBtn.onclick = () => {
+      invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\gen\\android\\app\\build\\outputs\\apk\\release");
+    };
+  } else if (target === "windows-x86") {
+    openBtn.textContent = "Open x86 MSI Folder";
+    openBtn.onclick = () => {
+      invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\i686-pc-windows-msvc\\release\\bundle\\msi");
+    };
+  } else {
+    openBtn.textContent = "Open x64 MSI Folder";
+    openBtn.onclick = () => {
+      invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\release\\bundle\\msi");
+    };
+  }
 
   actionArea.appendChild(openBtn);
   container.parentNode.insertBefore(actionArea, container.nextSibling);
 }
 
-buildBtn.addEventListener("click", async () => {
+async function startBuild(target) {
   const existingActions = document.querySelector("#post-build-actions");
   if (existingActions) existingActions.remove();
 
-  buildBtn.disabled = true;
-  buildBtn.textContent = "Build in Progress...";
+  // Disable all buttons
+  buildBtnX64.disabled = true;
+  buildBtnX86.disabled = true;
+  androidBtn.disabled = true;
+  
+  let activeBtn;
+  let originalText;
+
+  if (target === "windows-x64") {
+    activeBtn = buildBtnX64;
+    originalText = "Windows x64";
+  } else if (target === "windows-x86") {
+    activeBtn = buildBtnX86;
+    originalText = "Windows x86";
+  } else {
+    activeBtn = androidBtn;
+    originalText = "Build Android";
+  }
+  
+  activeBtn.textContent = "Building...";
   terminal.innerHTML = "";
-  appendLog("> Initializing build sequence...", "command");
+  appendLog(`> Initializing ${target.toUpperCase()} build sequence...`, "command");
   
   // Reset UI
   Object.keys(steps).forEach(s => updateStep(s, null));
@@ -135,20 +169,26 @@ buildBtn.addEventListener("click", async () => {
   startTimer();
 
   try {
-    await invoke("run_build");
-    statusText.textContent = "Build Success";
-    appendLog(">>> BUILD PIPELINE COMPLETED SUCCESSFULLY <<<", "success");
-    buildBtn.textContent = "Restart Build";
-    showSuccessUI();
+    await invoke("run_build", { target });
+    statusText.textContent = `${target.toUpperCase()} Build Success`;
+    appendLog(`>>> ${target.toUpperCase()} PIPELINE COMPLETED SUCCESSFULLY <<<`, "success");
+    activeBtn.textContent = originalText;
+    showSuccessUI(target);
   } catch (err) {
     statusText.textContent = "Build Failed";
     appendLog(`FATAL ERROR: ${err}`, "error");
-    buildBtn.textContent = "Retry Build";
+    activeBtn.textContent = "Retry Build";
   } finally {
-    buildBtn.disabled = false;
+    buildBtnX64.disabled = false;
+    buildBtnX86.disabled = false;
+    androidBtn.disabled = false;
     stopTimer();
   }
-});
+}
+
+buildBtnX64.addEventListener("click", () => startBuild("windows-x64"));
+buildBtnX86.addEventListener("click", () => startBuild("windows-x86"));
+androidBtn.addEventListener("click", () => startBuild("android"));
 
 // Initialization
 checkAdmin();
