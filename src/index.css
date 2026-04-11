@@ -192,6 +192,12 @@ select {
   outline: none;
 }
 
+/* Hide browser's default eye icon (Edge/IE) to prevent duplicates */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,

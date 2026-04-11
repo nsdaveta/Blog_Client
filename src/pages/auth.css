@@ -58,6 +58,12 @@
     padding-right: 3rem;
 }
 
+/* Hide browser's default eye icon (Edge/IE) to prevent duplicates */
+input::-ms-reveal,
+input::-ms-clear {
+    display: none;
+}
+
 .password-toggle {
     position: absolute;
     right: 0.85rem;
