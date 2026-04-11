@@ -1,0 +1,18 @@
+THIRD-PARTY SOFTWARE NOTICES
+
+This application uses components from the following open-source projects:
+
+1. TAURI (Apache License 2.0 / MIT License)
+   - https://tauri.app
+
+2. REACT (MIT License)
+   - https://reactjs.org
+
+3. AXIOS (MIT License)
+   - https://github.com/axios/axios
+
+4. REACT-TOASTIFY (MIT License)
+   - https://github.com/fkhadra/react-toastify
+
+Full text of individual licenses are available upon request and within project source distributions.
+Thank you to the global community of contributors.
