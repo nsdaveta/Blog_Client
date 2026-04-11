@@ -29,6 +29,7 @@
     "active": true,
     "publisher": "Navjot Singh Daveta",
     "targets": "all",
+    "licenseFile": "LICENSE.txt",
     "resources": [
       "LICENSE.txt",
       "README.txt",
@@ -41,11 +42,9 @@
       "digestAlgorithm": "sha256",
       "timestampUrl": "",
       "wix": {
-          "language": [ "en-US" ],
-          "license": "LICENSE.txt"
+          "language": "en-US"
        },
       "nsis": {
-          "license": "LICENSE.txt",
           "displayLanguageSelector": true
       },
       "signCommand": "C:/Blog_Client/sign-app.bat %1"
