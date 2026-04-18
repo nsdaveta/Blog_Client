@@ -1,0 +1,20 @@
+LICENSE AGREEMENT
+
+Blogify Application - Professional Edition
+Copyright (c) 2026 Navjot Singh Daveta
+
+BY INSTALLING, COPYING, OR USING THE SOFTWARE, YOU AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE.
+
+1. GRANT OF LICENSE:
+This license grants you a personal, non-transferable right to use the Blogify Application on a single workstation.
+
+2. RESTRICTIONS:
+You may not reverse engineer, decompile, or disassemble the software. 
+
+3. DISCLAIMER OF WARRANTY:
+THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.
+
+4. LIMITATION OF LIABILITY:
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DAMAGES WHATSOEVER.
+
+Thank you for choosing Blogify.

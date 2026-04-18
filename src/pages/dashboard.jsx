@@ -2,8 +2,8 @@ import React from 'react'
 import api from '../api'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import UserContext from './components/UserContext/usercontext'
+
 import { useDialog } from './components/Dialog/DialogContext'
 import './dashboard.css'
 
@@ -24,7 +24,6 @@ const Dashboard = () => {
         setLoading(false);
       })
       .catch(() => {
-        toast.error('Failed to load dashboard. Please log in.');
         navigate('/');
         setLoading(false);
       });
@@ -61,9 +60,8 @@ const Dashboard = () => {
       params: { public_id: publicId },
       ...headers
     }).then(() => {
-      toast.success('Blog deleted successfully!');
       setBlogData(prev => prev.filter(b => b._id !== blogId));
-    }).catch(() => toast.error('Failed to delete blog post'));
+    }).catch(() => console.error('Failed to delete blog post'));
   };
 
   if (loading) {

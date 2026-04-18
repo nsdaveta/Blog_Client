@@ -1,7 +1,7 @@
 const { invoke } = window.__TAURI__.core;
 const { listen } = window.__TAURI__.event;
+import { playSuccessSound, playErrorSound, playStartSound } from './utils.js';
 
-let buildBtn = document.querySelector("#build-trigger");
 let terminal = document.querySelector("#terminal");
 let statusText = document.querySelector("#status-text");
 let timerDisplay = document.querySelector("#build-timer");
@@ -81,10 +81,11 @@ function stopTimer() {
 // Listen for backend events
 listen('process-output', (event) => {
   const { content, is_error } = event.payload;
-  // Some logs are standard progress but go to stderr, we filter those
   let type = is_error ? "error" : "info";
   if (content.toLowerCase().includes("warning")) type = "warning";
   if (content.startsWith(">")) type = "command";
+  if (content.startsWith("--- STARTING BUILD")) type = "command";
+  if (content.startsWith("--- COMPLETED BUILD")) type = "success";
   
   appendLog(content, type);
 });
@@ -97,7 +98,10 @@ listen('step-update', (event) => {
 
 let buildBtnX64 = document.querySelector("#build-x64");
 let buildBtnX86 = document.querySelector("#build-x86");
+let buildBtnBoth = document.querySelector("#build-windows-both");
 let androidBtn = document.querySelector("#android-trigger");
+let buildAllBtn = document.querySelector("#build-all");
+let quickTestBtn = document.querySelector("#quick-test");
 
 function showSuccessUI(target) {
   const container = document.querySelector(".terminal-container");
@@ -111,20 +115,26 @@ function showSuccessUI(target) {
   openBtn.className = "build-btn";
   openBtn.style.background = "linear-gradient(135deg, #34d399 0%, #10b981 100%)";
   
+  const projectPath = document.querySelector("#project-path-display").textContent;
   if (target === "android") {
-    openBtn.textContent = "Open APK Folder";
+    openBtn.textContent = "Open Android APK Folder";
     openBtn.onclick = () => {
-      invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\gen\\android\\app\\build\\outputs\\apk\\release");
+      invoke("reveal_in_explorer", `${projectPath}\\src-tauri\\gen\\android\\app\\build\\outputs\\apk\\release`);
     };
   } else if (target === "windows-x86") {
     openBtn.textContent = "Open x86 MSI Folder";
     openBtn.onclick = () => {
-      invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\i686-pc-windows-msvc\\release\\bundle\\msi");
+      invoke("reveal_in_explorer", `${projectPath}\\src-tauri\\target\\i686-pc-windows-msvc\\release\\bundle\\msi`);
+    };
+  } else if (target === "windows-both" || target === "all") {
+    openBtn.textContent = "Open Build target Folder";
+    openBtn.onclick = () => {
+      invoke("reveal_in_explorer", `${projectPath}\\src-tauri\\target`);
     };
   } else {
     openBtn.textContent = "Open x64 MSI Folder";
     openBtn.onclick = () => {
-      invoke("reveal_in_explorer", "C:\\Blog_Client\\src-tauri\\target\\release\\bundle\\msi");
+      invoke("reveal_in_explorer", `${projectPath}\\src-tauri\\target\\release\\bundle\\msi`);
     };
   }
 
@@ -138,8 +148,11 @@ async function startBuild(target) {
 
   // Disable all buttons
   buildBtnX64.disabled = true;
-  buildBtnX86.disabled = true;
-  androidBtn.disabled = true;
+  if (buildBtnX86) buildBtnX86.disabled = true;
+  if (buildBtnBoth) buildBtnBoth.disabled = true;
+  if (androidBtn) androidBtn.disabled = true;
+  if (buildAllBtn) buildAllBtn.disabled = true;
+  if (quickTestBtn) quickTestBtn.disabled = true;
   
   let activeBtn;
   let originalText;
@@ -150,14 +163,28 @@ async function startBuild(target) {
   } else if (target === "windows-x86") {
     activeBtn = buildBtnX86;
     originalText = "Windows x86";
-  } else {
+  } else if (target === "windows-both") {
+    activeBtn = buildBtnBoth;
+    originalText = "Windows (x64 & x86)";
+  } else if (target === "android") {
     activeBtn = androidBtn;
     originalText = "Build Android";
+  } else if (target === "quick-test") {
+    activeBtn = quickTestBtn;
+    originalText = "Quick Test";
+  } else {
+    activeBtn = buildAllBtn;
+    originalText = "Build All";
   }
   
-  activeBtn.textContent = "Building...";
+  if (activeBtn) activeBtn.textContent = target === "quick-test" ? "Testing..." : "Building...";
   terminal.innerHTML = "";
-  appendLog(`> Initializing ${target.toUpperCase()} build sequence...`, "command");
+  if (target === "quick-test") {
+     statusText.textContent = "Running Quick Test...";
+     appendLog(`> Initializing Quick Test (Dev Mode)...`, "command");
+  } else {
+     appendLog(`> Initializing ${target.toUpperCase()} build sequence...`, "command");
+  }
   
   // Reset UI
   Object.keys(steps).forEach(s => updateStep(s, null));
@@ -167,30 +194,53 @@ async function startBuild(target) {
   timerDisplay.textContent = "00:00";
 
   startTimer();
+  playStartSound();
 
   try {
     await invoke("run_build", { target });
-    statusText.textContent = `${target.toUpperCase()} Build Success`;
+    statusText.textContent = `${target.toUpperCase()} Success`;
     appendLog(`>>> ${target.toUpperCase()} PIPELINE COMPLETED SUCCESSFULLY <<<`, "success");
-    activeBtn.textContent = originalText;
+    if (activeBtn) activeBtn.textContent = originalText;
+    playSuccessSound();
     showSuccessUI(target);
   } catch (err) {
     statusText.textContent = "Build Failed";
     appendLog(`FATAL ERROR: ${err}`, "error");
-    activeBtn.textContent = "Retry Build";
+    playErrorSound();
+    if (activeBtn) activeBtn.textContent = "Retry Build";
   } finally {
     buildBtnX64.disabled = false;
-    buildBtnX86.disabled = false;
-    androidBtn.disabled = false;
+    if (buildBtnX86) buildBtnX86.disabled = false;
+    if (buildBtnBoth) buildBtnBoth.disabled = false;
+    if (androidBtn) androidBtn.disabled = false;
+    if (buildAllBtn) buildAllBtn.disabled = false;
+    if (quickTestBtn) quickTestBtn.disabled = false;
     stopTimer();
   }
 }
 
-buildBtnX64.addEventListener("click", () => startBuild("windows-x64"));
-buildBtnX86.addEventListener("click", () => startBuild("windows-x86"));
-androidBtn.addEventListener("click", () => startBuild("android"));
+if (buildBtnX64) buildBtnX64.addEventListener("click", () => startBuild("windows-x64"));
+if (buildBtnX86) buildBtnX86.addEventListener("click", () => startBuild("windows-x86"));
+if (buildBtnBoth) buildBtnBoth.addEventListener("click", () => startBuild("windows-both"));
+if (androidBtn) androidBtn.addEventListener("click", () => startBuild("android"));
+if (buildAllBtn) buildAllBtn.addEventListener("click", () => startBuild("all"));
+if (quickTestBtn) quickTestBtn.addEventListener("click", () => startBuild("quick-test"));
 
 // Initialization
-checkAdmin();
-appendLog("System ready. Project path: c:\\Blog_Client");
+(async () => {
+    checkAdmin();
+    try {
+        const projectName = await invoke("get_project_name");
+        document.querySelector("#main-title").textContent = projectName;
+        document.title = projectName;
 
+        const projectPath = await invoke("get_project_path");
+        document.querySelector("#project-path-display").textContent = projectPath;
+        document.querySelector("#open-project-dir").addEventListener("click", () => {
+            invoke("reveal_in_explorer", projectPath);
+        });
+        appendLog(`System ready. Project path: ${projectPath}`);
+    } catch (e) {
+        console.error("Failed to initialize project info:", e);
+    }
+})();

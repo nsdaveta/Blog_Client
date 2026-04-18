@@ -5,21 +5,30 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blogify</title>
+    <script src="/connectivity.js"></script>
     <script>
-      // Disable right-click context menu
-      document.addEventListener('contextmenu', (e) => e.preventDefault());
+      // Service worker and environment constants
+      const isTauri = typeof window !== 'undefined' && (window.__TAURI_INTERNALS__ !== undefined || window.__TAURI__ !== undefined || window.__TAURI__ !== undefined);
+      const isFileProtocol = window.location.protocol === 'file:';
 
-      // Disable specific browser-style hotkeys
+      // 1. Disable DevTools in production and right-click
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
       document.addEventListener('keydown', (e) => {
-        // Prevent F5 / Ctrl+R / Command+R (Reload)
-        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) {
-          e.preventDefault();
-        }
-        // Prevent Ctrl+Shift+I / F12 (DevTools - additional layer)
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-          e.preventDefault();
-        }
+        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) e.preventDefault();
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
       });
+
+      // 2. Service Worker Management
+      if ('serviceWorker' in navigator && !isTauri && !isFileProtocol) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+
+      // 3. Initialize Robust Offline Detection
+      if (typeof initConnectivityTracker === 'function') {
+        initConnectivityTracker('https://blog-server-7c1i.onrender.com/blog');
+      }
     </script>
   </head>
   <body>

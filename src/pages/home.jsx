@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api'
-import { toast } from 'react-toastify'
 import { Link } from 'react-router-dom'
+
 import './home.css'
 
 // Decode userId from the stored JWT
@@ -151,10 +151,9 @@ const BlogCard = ({ blog, index }) => {
 
   // ── Like ──────────────────────────────────────────────────
   const handleLike = async () => {
-    if (!isLoggedIn) { toast.info('Please log in to like posts'); return }
+    if (!isLoggedIn) { return }
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
     if (blog.author === storedUser.name) {
-      toast.error("Author cannot like their own post");
       return;
     }
     try {
@@ -167,14 +166,14 @@ const BlogCard = ({ blog, index }) => {
         setMyDislikes(0)
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Could not like post')
+      console.error(err);
     }
   }
 
   // ── Share ────────────────────────────────────────────────
   const handleShare = async (e) => {
     if (e) { e.preventDefault(); e.stopPropagation(); }
-    if (!isLoggedIn) { toast.info('Please log in to share posts'); return }
+    if (!isLoggedIn) { return }
 
     // ── NATIVE vs CUSTOM PRIORITY ──
     // On Mobile (Android/iOS), Native Share is still superior and stable.
@@ -206,16 +205,14 @@ const BlogCard = ({ blog, index }) => {
       setMyShares(res.data.userCount)
     } catch (err) {
       console.error('Share record failed:', err)
-      toast.error('Please login to share posts')
     }
   }
 
   // ── Dislike ───────────────────────────────────────────────
   const handleDislike = async () => {
-    if (!isLoggedIn) { toast.info('Please log in to dislike posts'); return }
+    if (!isLoggedIn) { return }
     const storedUser = JSON.parse(localStorage.getItem('userdata') || '{}');
     if (blog.author === storedUser.name) {
-      toast.error("Author cannot dislike their own post");
       return;
     }
     try {
@@ -228,7 +225,7 @@ const BlogCard = ({ blog, index }) => {
         setMyLikes(0)
       }
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Could not dislike post')
+      console.error(err);
     }
   }
 
@@ -236,16 +233,15 @@ const BlogCard = ({ blog, index }) => {
   // ── Comment ───────────────────────────────────────────────
   const handleComment = async (e) => {
     e.preventDefault()
-    if (!isLoggedIn) { toast.info('Please log in to comment'); return }
-    if (!commentText.trim()) { toast.warn('Please enter a comment'); return }
+    if (!isLoggedIn) { return }
+    if (!commentText.trim()) { return }
     setSubmitting(true)
     try {
       const res = await api.post(`/comment/${blog._id}`, { text: commentText.trim() })
       setComments(prev => [...prev, res.data.comment])
       setCommentText('')
-      toast.success('Comment posted!')
     } catch {
-      toast.error('Failed to post comment')
+      console.error('Failed to post comment')
     } finally {
       setSubmitting(false)
     }
@@ -394,13 +390,9 @@ const Home = () => {
     api.get('/').then(res => {
       if (Array.isArray(res.data)) {
         setBlogs(res.data)
-        if (res.data.length > 0) toast.success('Blogs loaded!', { autoClose: 1500 })
-      } else {
-        toast.error('Failed to load blog data')
       }
       setLoading(false)
     }).catch(() => {
-      toast.error('Failed to fetch blogs!')
       setLoading(false)
     })
   }, [])

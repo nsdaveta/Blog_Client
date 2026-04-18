@@ -20,8 +20,27 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #0f172a;
+  position: relative;
   overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 70% 30%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 30% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+  animation: meshRotate 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes meshRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 #app {
@@ -29,9 +48,9 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2.5rem;
   box-sizing: border-box;
-  animation: fadeIn 0.8s ease-out;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes fadeIn {
@@ -150,6 +169,8 @@ body {
 .header-actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .build-btn {
@@ -170,6 +191,15 @@ body {
 .android-btn {
   background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
   box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+}
+
+.all-btn {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+.test-btn {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
 
 .build-btn:hover:not(:disabled) {
@@ -223,4 +253,15 @@ body {
 
 .pulse {
   animation: pulse 2s infinite;
+}
+
+#project-path-display {
+  font-family: 'Cascadia Code', monospace;
+  opacity: 0.8;
+  cursor: help;
+}
+
+#open-project-dir:hover {
+  color: #60a5fa !important;
+  transform: scale(1.1);
 }

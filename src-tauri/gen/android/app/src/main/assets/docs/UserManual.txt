@@ -1,0 +1,23 @@
+BLOGIFY - USER MANUAL
+
+1. INTRODUCTION
+Blogify is a desktop application for content creation.
+
+2. GETTING STARTED
+- Login with your registered email and password.
+- If you haven't registered, use the "Create one" link on the login page.
+- Check your email for an OTP to verify your account.
+
+3. CREATING POSTS
+- Click "New Post" on the Dashboard.
+- Add a Title, some content, and upload an image (optional).
+- Click "Publish" to save.
+
+4. UPDATING POSTS
+- Use the "Edit" button on your dashboard items.
+
+5. SECURITY
+- Always log out if using a shared workstation.
+- Do not share your OTP with anyone.
+
+For more information, visit https://blogify-app.pro/docs

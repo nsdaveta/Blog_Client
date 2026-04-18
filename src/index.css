@@ -59,7 +59,7 @@ html {
 }
 
 body {
-  background-color: var(--bg-primary);
+  background-color: transparent; /* Critical for Mica/Acrylic transparency */
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.6;

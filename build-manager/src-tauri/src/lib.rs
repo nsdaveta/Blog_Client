@@ -22,6 +22,11 @@ struct ProcessOutput {
 }
 
 #[tauri::command]
+fn get_project_path() -> String {
+    "C:\\Blog_Client".to_string()
+}
+
+#[tauri::command]
 fn check_admin() -> bool {
     let mut cmd = Command::new("powershell");
     #[cfg(target_os = "windows")]
@@ -39,18 +44,28 @@ fn check_admin() -> bool {
 
 #[tauri::command]
 fn reveal_in_explorer(path: String) -> Result<(), String> {
-    let path = Path::new(&path);
-    if !path.exists() {
-        return Err("Path does not exist".to_string());
+    let path_buf = std::path::PathBuf::from(&path);
+    if !path_buf.exists() {
+        return Err(format!("Path does not exist: {}", path));
     }
     
     #[cfg(target_os = "windows")]
     {
-        Command::new("explorer")
-            .arg("/select,")
-            .arg(path)
-            .spawn()
-            .map_err(|e| e.to_string())?;
+        let win_path = path.replace("/", "\\");
+        if path_buf.is_dir() {
+            Command::new("cmd")
+                .args(["/c", "start", "", &win_path])
+                .creation_flags(CREATE_NO_WINDOW)
+                .spawn()
+                .map_err(|e| e.to_string())?;
+        } else {
+            Command::new("explorer")
+                .arg("/select,")
+                .arg(&win_path)
+                .creation_flags(CREATE_NO_WINDOW)
+                .spawn()
+                .map_err(|e| e.to_string())?;
+        }
     }
     Ok(())
 }
@@ -63,7 +78,7 @@ fn run_step(window: &Window, step_id: &str, command: &str, args: Vec<&str>, cwd:
     cmd.creation_flags(CREATE_NO_WINDOW);
 
     let mut child = cmd.args(["-ExecutionPolicy", "Bypass", "-Command"])
-        .arg(format!("{} {}", command, args.join(" "))) // PowerShell still likes the command string sometimes
+        .arg(format!("{} {}", command, args.join(" ")))
         .current_dir(cwd)
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
@@ -106,75 +121,136 @@ fn run_step(window: &Window, step_id: &str, command: &str, args: Vec<&str>, cwd:
 
 #[tauri::command]
 async fn run_build(window: Window, target: String) -> Result<(), String> {
-    let project_dir = "c:\\Blog_Client";
+    let project_dir = get_project_path();
 
-    // Step 1: Git Sync
+    if target == "quick-test" {
+        window.emit("process-output", ProcessOutput { 
+            content: "--- STARTING QUICK TEST (DEV MODE) ---".to_string(), 
+            is_error: false 
+        }).unwrap();
+        
+        // Skip Git and Env steps for quick test
+        window.emit("step-update", StepUpdate { step: "git".to_string(), status: "completed".to_string() }).unwrap();
+        window.emit("step-update", StepUpdate { step: "env".to_string(), status: "completed".to_string() }).unwrap();
+        
+        run_step(&window, "build", "npm", vec!["run", "tauri:dev"], &project_dir)?;
+        
+        window.emit("process-output", ProcessOutput { 
+            content: "--- QUICK TEST TERMINATED ---".to_string(), 
+            is_error: false 
+        }).unwrap();
+        return Ok(());
+    }
+
+    // Step 1: Git Sync (Only once)
     window.emit("step-update", StepUpdate { step: "git".to_string(), status: "active".to_string() }).unwrap();
     
     let mut cmd = Command::new("git");
     #[cfg(target_os = "windows")]
     cmd.creation_flags(CREATE_NO_WINDOW);
 
-    // Check if there are changes to commit
     let status_output = cmd.args(["status", "--porcelain"])
-        .current_dir(project_dir)
+        .current_dir(&project_dir)
         .output()
         .map_err(|e| format!("Failed to check git status: {}", e))?;
     
     if !status_output.stdout.is_empty() {
-        run_step(&window, "git", "git", vec!["add", "."], project_dir)?;
-        run_step(&window, "git", "git", vec!["commit", "-m", "'Sync before build (automated)'"], project_dir)?;
-        // We push if we committed
-        let _ = run_step(&window, "git", "git", vec!["push"], project_dir);
+        run_step(&window, "git", "git", vec!["add", "."], &project_dir)?;
+        run_step(&window, "git", "git", vec!["commit", "-m", "'Sync before build (automated)'"], &project_dir)?;
+        let _ = run_step(&window, "git", "git", vec!["push"], &project_dir);
     } else {
         window.emit("process-output", ProcessOutput { content: "Working tree clean, skipping commit.".to_string(), is_error: false }).unwrap();
-        // Still try to push in case of unpushed commits
-        let _ = run_step(&window, "git", "git", vec!["push"], project_dir);
+        let _ = run_step(&window, "git", "git", vec!["push"], &project_dir);
     }
+    window.emit("step-update", StepUpdate { step: "git".to_string(), status: "completed".to_string() }).unwrap();
 
-    // Step 2: Environment
-    window.emit("step-update", StepUpdate { step: "env".to_string(), status: "active".to_string() }).unwrap();
-    
-    if target == "windows" {
-        let signtool_path = "C:\\Program Files (x86)\\Windows Kits\\10\\App Certification Kit\\signtool.exe";
-        let exists = Path::new(signtool_path).exists();
-        
+    let targets = if target == "all" {
+        vec!["windows-x64", "windows-x86", "android"]
+    } else if target == "windows-both" {
+        vec!["windows-x64", "windows-x86"]
+    } else {
+        vec![target.as_str()]
+    };
+
+    for current_target in targets {
         window.emit("process-output", ProcessOutput { 
-            content: format!("Checking Signtool existence: {}", if exists { "FOUND" } else { "MISSING" }), 
-            is_error: !exists 
+            content: format!("--- STARTING BUILD FOR TARGET: {} ---", current_target), 
+            is_error: false 
         }).unwrap();
 
-        if !exists {
-            window.emit("step-update", StepUpdate { step: "env".to_string(), status: "failed".to_string() }).unwrap();
-            return Err("Signtool not found. Please install Windows SDK.".to_string());
+        // Step 2: Environment
+        window.emit("step-update", StepUpdate { step: "env".to_string(), status: "active".to_string() }).unwrap();
+        
+        if current_target.starts_with("windows") {
+            let signtool_path = "C:\\Program Files (x86)\\Windows Kits\\10\\App Certification Kit\\signtool.exe";
+            let exists = Path::new(signtool_path).exists();
+            
+            window.emit("process-output", ProcessOutput { 
+                content: format!("Checking Signtool existence: {}", if exists { "FOUND" } else { "MISSING" }), 
+                is_error: !exists 
+            }).unwrap();
+
+            if !exists {
+                window.emit("step-update", StepUpdate { step: "env".to_string(), status: "failed".to_string() }).unwrap();
+                return Err("Signtool not found. Please install Windows SDK.".to_string());
+            }
+        } else if current_target == "android" {
+            window.emit("process-output", ProcessOutput { content: "Skipping Windows Signtool check for Android build.".to_string(), is_error: false }).unwrap();
         }
-    } else if target == "android" {
-        window.emit("process-output", ProcessOutput { content: "Skipping Windows Signtool check for Android build.".to_string(), is_error: false }).unwrap();
-        // You could add Android SDK/NDK checks here if desired
-    }
 
-    window.emit("step-update", StepUpdate { step: "env".to_string(), status: "completed".to_string() }).unwrap();
+        window.emit("step-update", StepUpdate { step: "env".to_string(), status: "completed".to_string() }).unwrap();
 
-    // Step 3: Build
-    if target == "android" {
-        run_step(&window, "build", "npx", vec!["tauri", "android", "build"], project_dir)?;
-    } else if target == "windows-x86" {
-        run_step(&window, "build", "npm", vec!["run", "tauri:build:x86"], project_dir)?;
-    } else if target == "windows-x64" {
-        run_step(&window, "build", "npm", vec!["run", "tauri:build"], project_dir)?;
-    } else {
-        return Err(format!("Unknown target: {}", target));
+        // Step 3: Build
+        if current_target == "android" {
+            run_step(&window, "build", "npx", vec!["tauri", "android", "build"], &project_dir)?;
+        } else if current_target == "windows-x86" {
+            run_step(&window, "build", "npm", vec!["run", "tauri:build:x86"], &project_dir)?;
+        } else if current_target == "windows-x64" {
+            run_step(&window, "build", "npm", vec!["run", "tauri:build"], &project_dir)?;
+        } else {
+            return Err(format!("Unknown target: {}", current_target));
+        }
+
+        window.emit("process-output", ProcessOutput { 
+            content: format!("--- COMPLETED BUILD FOR TARGET: {} ---", current_target), 
+            is_error: false 
+        }).unwrap();
     }
 
     Ok(())
+}
+
+#[tauri::command]
+fn get_project_name() -> String {
+    let project_path = get_project_path();
+    let pkg_path = std::path::Path::new(&project_path).join("package.json");
+    
+    if let Ok(content) = std::fs::read_to_string(pkg_path) {
+        if let Ok(json) = serde_json::from_str::<serde_json::Value>(&content) {
+            if let Some(name) = json.get("name").and_then(|v| v.as_str()) {
+                // Capitalize first letter and replace hyphens with spaces for a cleaner look
+                let formatted = name.split(['-', '_'])
+                    .map(|s| {
+                        let mut c = s.chars();
+                        match c.next() {
+                            None => String::new(),
+                            Some(f) => f.to_uppercase().collect::<String>() + c.as_str(),
+                        }
+                    })
+                    .collect::<Vec<String>>()
+                    .join(" ");
+                return format!("{} Build Manager", formatted);
+            }
+        }
+    }
+    "Project Build Manager".to_string()
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .invoke_handler(tauri::generate_handler![run_build, check_admin, reveal_in_explorer])
+        .invoke_handler(tauri::generate_handler![run_build, check_admin, reveal_in_explorer, get_project_path, get_project_name])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-
