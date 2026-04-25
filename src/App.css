@@ -28,7 +28,7 @@
 }
 
 .tauri-mode .main-content {
-  /* No longer needs manual padding as TitleBar is in the flex flow */
+  padding-top: 32px; /* Mandatory space for fixed TitleBar */
 }
 
 /* Content Area */
