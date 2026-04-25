@@ -36,14 +36,14 @@ const Navbar = () => {
     return (
     <nav className="top-navbar">
         <div className="nav-container">
-            <div className="nav-top-row">
-                <div className="nav-left">
-                    <NavLink to="/" className="nav-brand">
-                        <img src="/favicon.svg" alt="logo" className="nav-logo" />
-                        <span>Blogify</span>
-                    </NavLink>
-                </div>
+            <div className="nav-left">
+                <NavLink to="/" className="nav-brand">
+                    <img src="/favicon.svg" alt="logo" className="nav-logo" />
+                    <span>Blogify</span>
+                </NavLink>
+            </div>
 
+            <div className="nav-right">
                 <div className="nav-links-section">
                     <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} end>
                         <VscHome /> <span>Home</span>
@@ -59,27 +59,25 @@ const Navbar = () => {
                         </>
                     )}
                 </div>
-            </div>
 
-            <div className="nav-bottom-row">
-                {user ? (
-                    <div className="user-section">
-                        <div className="user-info">
-                            <VscAccount className="user-icon" />
-                            <span className="username-display">
-                                <span className="welcome-text">Hello, </span>{user.name || 'User'}
-                            </span>
+                <div className="nav-auth-section">
+                    {user ? (
+                        <div className="user-profile">
+                            <div className="user-info">
+                                <VscAccount className="user-icon" />
+                                <span className="username-display">{user.name || 'User'}</span>
+                            </div>
+                            <button onClick={handleLogout} className="logout-btn-minimal" title="Logout">
+                                <VscSignOut />
+                            </button>
                         </div>
-                        <button onClick={handleLogout} className="top-logout-btn" title="Logout">
-                            <VscSignOut /> <span>Logout</span>
-                        </button>
-                    </div>
-                ) : (
-                    <div className="auth-links">
-                        <NavLink to="/login" className="nav-link">Login</NavLink>
-                        <NavLink to="/register" className="nav-link auth-btn">Sign Up</NavLink>
-                    </div>
-                )}
+                    ) : (
+                        <div className="auth-group">
+                            <NavLink to="/login" className="nav-link-minimal">Login</NavLink>
+                            <NavLink to="/register" className="signup-btn">Sign Up</NavLink>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     </nav>
