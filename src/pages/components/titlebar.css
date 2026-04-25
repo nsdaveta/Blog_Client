@@ -18,8 +18,30 @@
 }
 
 .titlebar-drag-region {
-  flex: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 138px; /* Leave room for controls */
   height: 100%;
+  z-index: 0;
+}
+
+.titlebar-title {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 8px;
+  pointer-events: none;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.titlebar-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .titlebar-controls {

@@ -38,9 +38,6 @@ const Sidebar = () => {
                 <div className="menu-btn" onClick={() => setIsCollapsed(!isCollapsed)}>
                     <VscMenu />
                 </div>
-                <div className="nav-brand">
-                    <span>Blogify</span>
-                </div>
             </div>
             
             <div className="sidebar-links">
