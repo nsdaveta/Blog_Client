@@ -26,10 +26,10 @@ function App() {
 
   return (
     <div className={`App ${isDesktopTauri ? 'tauri-mode' : 'web-mode'}`}>
-      {isDesktopTauri && <TitleBar />}
+      {isDesktopTauri ? <TitleBar /> : <Navbar />}
       
       <div className="app-layout">
-        {isDesktopTauri ? <Sidebar /> : <Navbar />}
+        {isDesktopTauri && <Sidebar />}
 
         <main className="main-content">
           <ToastContainer

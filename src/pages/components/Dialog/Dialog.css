@@ -88,6 +88,7 @@
     background: var(--accent-light);
 }
 
+
 .kind-danger .btn-confirm {
     background: var(--danger);
     box-shadow: 0 4px 12px rgba(255, 77, 109, 0.2);

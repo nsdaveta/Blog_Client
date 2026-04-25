@@ -20,10 +20,7 @@
 
 .tauri-mode .app-layout {
   flex-direction: row;
-}
-
-.web-mode .app-layout {
-  flex-direction: column;
+  padding-top: 32px; /* Space for fixed TitleBar */
 }
 
 /* Content Area */

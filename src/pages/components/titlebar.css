@@ -4,11 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 9999;
   user-select: none;
   font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
   color: #ffffff;
-  flex-shrink: 0;
 }
 
 .titlebar-title {
