@@ -83,7 +83,7 @@ const Dashboard = () => {
         {/* Welcome Card */}
         <div className="welcome-card">
           <div className="welcome-avatar">{avatarLetter}</div>
-          <div className="welcome-text">
+          <div className="dash-welcome-text">
             <h3>Welcome back, {user?.name || 'Author'}!</h3>
             <p>Manage your blog posts from here</p>
           </div>

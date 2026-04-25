@@ -39,14 +39,14 @@
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
-.welcome-text h3 {
+.dash-welcome-text h3 {
     font-size: 1.1rem;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     margin-bottom: 0.2rem;
 }
 
-.welcome-text p {
+.dash-welcome-text p {
     font-size: 0.85rem;
     color: var(--text-muted);
 }
