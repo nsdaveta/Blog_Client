@@ -1,9 +1,8 @@
 .titlebar {
   height: 32px;
-  background: var(--glass);
-  backdrop-filter: blur(var(--panel-blur)) saturate(1.8);
-  -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.8);
-  border-bottom: 1px solid var(--border);
+  height: 32px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle separator */
   display: flex;
   justify-content: space-between;
   align-items: center;
