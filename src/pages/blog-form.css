@@ -20,14 +20,17 @@
 }
 
 .blog-form {
-    background: var(--bg-card);
+    background: rgba(26, 30, 42, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border: 1px solid var(--border);
+    border-top-color: rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-xl);
     padding: 2.25rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
     animation: fadeInUp 0.4s ease both;
 }
 

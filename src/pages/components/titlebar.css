@@ -1,0 +1,66 @@
+.titlebar {
+  height: 32px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  user-select: none;
+  font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.titlebar-title {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.titlebar-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.titlebar-controls {
+  display: flex;
+  height: 100%;
+}
+
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 100%;
+  transition: background-color 0.1s ease;
+  cursor: default;
+}
+
+.titlebar-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.titlebar-button-close:hover {
+  background-color: #e81123 !important;
+  color: white !important;
+}
+
+.titlebar-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Light mode support if needed */
+@media (prefers-color-scheme: light) {
+  .titlebar {
+    color: #000000;
+  }
+  .titlebar-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}

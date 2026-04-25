@@ -14,37 +14,49 @@ import VerifyOtp from './pages/VerifyOtp'
 import ForgotPassword from './pages/forgot_password'
 import ResetPassword from './pages/reset_password'
 import { useBackButton } from './hooks/useBackButton'
-import Dialog from './pages/components/Dialog/Dialog'
+import TitleBar from './pages/components/TitleBar'
+import Sidebar from './pages/components/Sidebar'
+import Navbar from './pages/components/navbar'
 
 function App() {
   // Handle Android back button
   useBackButton()
+  
+  const isDesktopTauri = window.isDesktopTauri;
+
   return (
-    <div>
-      <Dialog />
-      <ToastContainer
-        position="top-right"
-        theme="dark"
-        toastStyle={{
-          background: 'var(--bg-card)',
-          border: '1px solid var(--border)',
-          color: 'var(--text-primary)',
-          borderRadius: '12px',
-        }}
-        hideProgressBar={true}
-      />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/create" element={<Create_blog />} />
-        <Route path="/read/:id" element={<ReadMore />} />
-        <Route path="/update/:id" element={<Update_blog />} />
-        <Route path="/verify-otp" element={<VerifyOtp />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-      </Routes>
+    <div className={`App ${isDesktopTauri ? 'tauri-mode' : 'web-mode'}`}>
+      {isDesktopTauri && <TitleBar />}
+      
+      <div className="app-layout">
+        {isDesktopTauri ? <Sidebar /> : <Navbar />}
+
+        <main className="main-content">
+          <ToastContainer
+            position="top-right"
+            theme="dark"
+            toastStyle={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              color: 'var(--text-primary)',
+              borderRadius: '12px',
+            }}
+            hideProgressBar={true}
+          />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/create" element={<Create_blog />} />
+            <Route path="/read/:id" element={<ReadMore />} />
+            <Route path="/update/:id" element={<Update_blog />} />
+            <Route path="/verify-otp" element={<VerifyOtp />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
+          </Routes>
+        </main>
+      </div>
     </div>
   )
 }

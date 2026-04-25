@@ -5,34 +5,85 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blogify</title>
-    <script src="/connectivity.js"></script>
     <script>
-      // Service worker and environment constants
-      const isTauri = typeof window !== 'undefined' && (window.__TAURI_INTERNALS__ !== undefined || window.__TAURI__ !== undefined || window.__TAURI__ !== undefined);
-      const isFileProtocol = window.location.protocol === 'file:';
-
-      // 1. Disable DevTools in production and right-click
-      document.addEventListener('contextmenu', (e) => e.preventDefault());
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r') || (e.metaKey && e.key === 'r')) e.preventDefault();
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) e.preventDefault();
-      });
-
-      // 2. Service Worker Management
-      if ('serviceWorker' in navigator && !isTauri && !isFileProtocol) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').catch(() => {});
-        });
-      }
-
-      // 3. Initialize Robust Offline Detection
-      if (typeof initConnectivityTracker === 'function') {
-        initConnectivityTracker('https://blog-server-7c1i.onrender.com/blog');
-      }
+      // Environment detection
+      const isTauriEnv = !!(window.__TAURI_INTERNALS__ || window.__TAURI__);
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      window.isTauri = isTauriEnv;
+      window.isDesktopTauri = isTauriEnv && !isMobileDevice;
     </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="/connectivity.js"></script>
+    <script>
+      (function() {
+        // Service worker and environment constants
+        const isTauri = window.isTauri;
+        const isFileProtocol = window.location.protocol === 'file:';
+
+        // 1. Service Worker Management
+        if ('serviceWorker' in navigator) {
+          if (isTauri) {
+            // Unregister any active service worker in Tauri environment 
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+              for (let reg of registrations) reg.unregister();
+            });
+          } else if (!isFileProtocol) {
+            window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('SW registered'))
+                .catch(err => console.log('SW registration failed:', err));
+            });
+          }
+        }
+
+        // 2. Initialize Robust Offline Detection
+        if (typeof initConnectivityTracker === 'function') {
+          initConnectivityTracker('https://blog-server-7c1i.onrender.com/blog');
+        }
+
+        // 3. App Lockdown (Disable Browser Features in Tauri)
+        if (isTauri) {
+          // Always add tauri-mode for aesthetics
+          document.body.classList.add('tauri-mode');
+
+          // Detect "Quick Test" mode (development on localhost)
+          const isQuickTest = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+          if (!isQuickTest) {
+            // Add lockdown class only in production
+            document.body.classList.add('lockdown');
+
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+            // Disable DevTools, Refresh, and System shortcuts
+            document.addEventListener('keydown', (e) => {
+              // Refresh (F5, Ctrl+R, Cmd+R)
+              if (e.key === 'F5' || (e.ctrlKey && (e.key === 'r' || e.key === 'R')) || (e.metaKey && (e.key === 'r' || e.key === 'R'))) {
+                e.preventDefault();
+              }
+              // Fullscreen (F11)
+              if (e.key === 'F11') {
+                e.preventDefault();
+              }
+              // DevTools (F12, Ctrl+Shift+I, etc)
+              if (e.key === 'F12' || 
+                  (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c'))) {
+                e.preventDefault();
+              }
+            });
+
+            // Disable Pinch Zoom
+            document.addEventListener('wheel', (e) => {
+              if (e.ctrlKey) e.preventDefault();
+            }, { passive: false });
+          }
+        }
+      })();
+    </script>
   </body>
 </html>

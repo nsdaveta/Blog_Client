@@ -256,6 +256,8 @@ const BlogCard = ({ blog, index }) => {
         className="blog-card-img"
         src={blog.image?.url}
         alt={blog.title || 'Blog Post'}
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
         onError={(e) => { e.target.style.display = 'none' }}
       />
 

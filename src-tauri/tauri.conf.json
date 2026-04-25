@@ -13,11 +13,14 @@
     "windows": [
       {
         "title": "Blogify",
-        "width": 1200,
-        "height": 800,
+        "width": 800,
+        "height": 600,
+        "minHeight": 450,
+        "center": true,
         "resizable": true,
         "fullscreen": false,
         "transparent": true,
+        "decorations": false,
         "shadow": true
       }
     ],

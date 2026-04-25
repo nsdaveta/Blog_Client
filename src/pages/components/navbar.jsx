@@ -1,66 +1,89 @@
-import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import UserContext from './UserContext/usercontext'
-import { useDialog } from './Dialog/DialogContext'
-import './navbar.css'
+import React, { useContext, useEffect } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import UserContext from './UserContext/usercontext';
+import { useDialog } from './Dialog/DialogContext';
+import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut } from 'react-icons/vsc';
+import './top-navbar.css';
 
 const Navbar = () => {
-  const { user, setUser } = useContext(UserContext);
-  const { ask } = useDialog();
+    const { user, setUser } = useContext(UserContext);
+    const { ask } = useDialog();
+    const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const storedUser = localStorage.getItem('userdata');
-    if (storedUser && !user) {
-      setUser(JSON.parse(storedUser));
-    }
-  }, [user, setUser]);
+    useEffect(() => {
+        const storedUser = localStorage.getItem('userdata');
+        if (storedUser && !user) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, [user, setUser]);
 
-  const handleLogout = async () => {
-    const confirmation = await ask('Are you sure you want to logout?', {
-      title: 'Logout',
-      kind: 'info'
-    });
-    if (confirmation) {
-      setUser(null);
-      localStorage.removeItem('userdata');
-      localStorage.removeItem('token');
-      toast.success('Logged out successfully!', { autoClose: 2000 });
-    }
-  };
+    const handleLogout = async () => {
+        const confirmed = await ask('Are you sure you want to logout?', {
+            title: 'Logout',
+            kind: 'info'
+        });
+        
+        if (!confirmed) return;
 
-  return (
-    <nav className="navbar">
-      <div className="navbar-inner">
-        <div className="navbar-brand">
-          <img src="/favicon.svg" alt="App Icon" className="navbar-logo" />
-          <span>Blogify</span>
-        </div>
-        <ul className="navbar-links">
-          <li><NavLink to="/" end>Home</NavLink></li>
-          {!user && <li><NavLink to="/register">Register</NavLink></li>}
-          <li>
-            {user ? (
-              <button className="btn-logout" onClick={handleLogout}>
-                Logout
-              </button>
-            ) : (
-              <NavLink to="/login">Login</NavLink>
-            )}
-          </li>
-          {user && (
-            <>
-              <li><NavLink to="/dashboard">Dashboard</NavLink></li>
-              <li><NavLink to="/create">+ New Post</NavLink></li>
-              <li style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginLeft: '0.5rem', display: 'flex', alignItems: 'center' }}>
-                Logged in as: <strong style={{ color: 'var(--accent)', marginLeft: '4px' }}>{user.name}</strong>
-              </li>
-            </>
-          )}
-        </ul>
-      </div>
-    </nav>
-  )
-}
+        setUser(null);
+        localStorage.removeItem('userdata');
+        localStorage.removeItem('token');
+        toast.success('Logged out successfully!', { autoClose: 2000 });
+        navigate('/');
+    };
 
-export default Navbar
+    return (
+        <nav className="top-navbar glass-panel">
+            <div className="nav-container">
+                <div className="nav-top-row">
+                    <div className="nav-left">
+                        <NavLink to="/" className="nav-brand">
+                            <img src="/favicon.svg" alt="logo" className="nav-logo" />
+                            <span>Blogify</span>
+                        </NavLink>
+                    </div>
+
+                    <div className="nav-links-section">
+                        <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} end>
+                            <VscHome /> <span>Home</span>
+                        </NavLink>
+                        {user && (
+                            <>
+                                <NavLink to="/dashboard" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                                    <VscDashboard /> <span>Dashboard</span>
+                                </NavLink>
+                                <NavLink to="/create" className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}>
+                                    <VscAdd /> <span>New Post</span>
+                                </NavLink>
+                            </>
+                        )}
+                    </div>
+                </div>
+
+                <div className="nav-bottom-row">
+                    {user ? (
+                        <div className="user-section">
+                            <div className="user-info">
+                                <VscAccount className="user-icon" />
+                                <span className="username-display">
+                                    <span className="welcome-text">Hello, </span>{user.name || 'User'}
+                                </span>
+                            </div>
+                            <button onClick={handleLogout} className="top-logout-btn" title="Logout">
+                                <VscSignOut /> <span>Logout</span>
+                            </button>
+                        </div>
+                    ) : (
+                        <div className="auth-links">
+                            <NavLink to="/login" className="nav-link">Login</NavLink>
+                            <NavLink to="/register" className="nav-link auth-btn">Sign Up</NavLink>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </nav>
+    );
+};
+
+export default Navbar;

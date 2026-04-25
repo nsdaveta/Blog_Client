@@ -125,6 +125,8 @@ const Dashboard = () => {
                   className="dashboard-blog-thumb"
                   src={blog.image?.url}
                   alt={blog.title}
+                  crossOrigin="anonymous"
+                  referrerPolicy="no-referrer"
                   onError={(e) => { e.target.style.background = 'var(--bg-secondary)'; e.target.style.display = 'flex'; }}
                 />
                 <div className="dashboard-blog-info">

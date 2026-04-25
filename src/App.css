@@ -1,5 +1,65 @@
-#root {
+/* Blog Client App Layout Styles */
+
+.App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App.web-mode {
+  height: 100dvh;
+}
+
+.app-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.tauri-mode .app-layout {
+  flex-direction: row;
+}
+
+.web-mode .app-layout {
+  flex-direction: column;
+}
+
+/* Content Area */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Custom Scrollbar for Main Content */
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: var(--accent-dark);
+  border-radius: 10px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Page Transitions */
+@keyframes pageEnter {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.main-content > * {
+  animation: pageEnter 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

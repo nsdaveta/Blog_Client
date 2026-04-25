@@ -214,7 +214,12 @@ const Update_blog = () => {
 
               <div className="image-preview">
 
-                <img src={formData.image.url} alt="Current blog" />
+                <img 
+                  src={formData.image.url} 
+                  alt="Current blog" 
+                  crossOrigin="anonymous"
+                  referrerPolicy="no-referrer"
+                />
 
               </div>
 
