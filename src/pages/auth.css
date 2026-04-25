@@ -1,10 +1,10 @@
 /* ======================= AUTH PAGES (Login & Register) ======================= */
 .auth-wrapper {
-    min-height: 100vh;
+    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     background: transparent; /* Reveal global mesh gradient */
 }
 

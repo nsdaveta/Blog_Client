@@ -44,10 +44,8 @@ const TitleBar = () => {
 
   return (
     <div className="titlebar">
-      <div data-tauri-drag-region className="titlebar-drag-region"></div>
-      <div className="titlebar-title">
-        <img src="/favicon.svg" alt="app-icon" className="titlebar-icon" />
-        <span>Blogify</span>
+      <div data-tauri-drag-region className="titlebar-drag-region">
+        {/* The entire empty area of the titlebar is now draggable */}
       </div>
       <div className="titlebar-controls">
         <div className="titlebar-button" onClick={handleMinimize}>

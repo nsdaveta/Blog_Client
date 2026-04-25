@@ -17,7 +17,7 @@
 }
 
 .tauri-mode .sidebar {
-  padding-top: 32px; /* Reserved for TitleBar drag area */
+  /* No longer needs manual padding as TitleBar is in the flex flow */
 }
 
 .sidebar.collapsed {
