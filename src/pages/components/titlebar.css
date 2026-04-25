@@ -1,6 +1,9 @@
 .titlebar {
   height: 32px;
-  background: transparent;
+  background: var(--glass);
+  backdrop-filter: blur(var(--panel-blur)) saturate(1.8);
+  -webkit-backdrop-filter: blur(var(--panel-blur)) saturate(1.8);
+  border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,14 +17,24 @@
   color: #ffffff;
 }
 
+.titlebar-drag-region {
+  position: absolute;
+  top: 0;
+  left: 54px; /* Don't block the sidebar's top buttons */
+  right: 138px; /* Don't block the window controls (3 * 46px) */
+  height: 100%;
+  z-index: -1;
+}
+
 .titlebar-title {
   display: flex;
   align-items: center;
-  padding-left: 12px;
+  padding-left: 64px; /* Shifted to avoid overlap with Sidebar hamburger (54px) */
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   gap: 8px;
   pointer-events: none;
+  opacity: 0.8;
 }
 
 .titlebar-icon {

@@ -20,7 +20,11 @@
 
 .tauri-mode .app-layout {
   flex-direction: row;
-  padding-top: 32px; /* Space for fixed TitleBar */
+  /* Removed padding-top here to allow Sidebar to go to the top */
+}
+
+.tauri-mode .main-content {
+  padding-top: 32px; /* Space for fixed TitleBar in content area */
 }
 
 /* Content Area */

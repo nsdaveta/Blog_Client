@@ -43,7 +43,8 @@ const TitleBar = () => {
   const handleClose = () => appWindow?.close();
 
   return (
-    <div data-tauri-drag-region className="titlebar">
+    <div className="titlebar">
+      <div data-tauri-drag-region className="titlebar-drag-region"></div>
       <div className="titlebar-title">
         <img src="/favicon.svg" alt="app-icon" className="titlebar-icon" />
         <span>Blogify</span>
