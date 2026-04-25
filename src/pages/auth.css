@@ -2,10 +2,11 @@
 .auth-wrapper {
     min-height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 1rem;
-    background: transparent; /* Reveal global mesh gradient */
+    flex-direction: column;
+    align-items: center; /* Horizontally centered */
+    justify-content: flex-start; /* Start from top */
+    padding: 2rem 1rem 5rem 1rem; /* More space at bottom for scrolling */
+    background: transparent;
 }
 
 .auth-card {

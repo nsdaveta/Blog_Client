@@ -11,6 +11,10 @@
   height: 100dvh;
 }
 
+.web-mode .main-content {
+  padding-top: 130px; /* Navbar height (120px) + 10px buffer */
+}
+
 .app-layout {
   display: flex;
   flex: 1;
