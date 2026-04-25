@@ -34,7 +34,7 @@ const Navbar = () => {
     };
 
     return (
-    <nav className="top-navbar glass-panel">
+    <nav className="top-navbar">
         <div className="nav-container">
             <div className="nav-top-row">
                 <div className="nav-left">
