@@ -297,28 +297,35 @@
 }
 
 @media (max-width: 480px) {
+    .nav-top-row, .nav-bottom-row {
+        padding: 10px 12px; /* Even smaller padding on tiny screens */
+    }
+
     .nav-links-section {
-        gap: 10px;
+        gap: 8px;
     }
     
     .nav-search-section {
         flex: 1;
-        min-width: 180px; /* Ensure "Search stories..." is visible */
-        margin-right: 10px;
+        min-width: 220px; /* Increased to ensure "Search stories..." is fully visible */
+        margin-right: 8px;
+    }
+
+    .nav-search-input-minimal {
+        padding: 10px 12px; /* Slightly tighter padding on mobile */
+        font-size: 0.9rem; /* Slightly smaller font to fit better */
+    }
+
+    .search-submit-btn {
+        padding: 0 12px; /* Tighter button on mobile */
+    }
+
+    .auth-group {
+        gap: 12px; /* Smaller gap on mobile */
     }
 
     .username-display {
-        display: inline;
-        font-size: 0.85rem;
-        white-space: nowrap;
-    }
-
-    .user-info {
-        gap: 4px;
-    }
-
-    .user-profile {
-        gap: 8px;
+        display: none; /* Hide username on very small screens to save space */
     }
 }
 
