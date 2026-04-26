@@ -103,26 +103,31 @@
 .search-wrapper {
     position: relative;
     display: flex;
-    align-items: center;
-}
-
-.nav-search-input-minimal {
-    width: 100%;
+    align-items: stretch;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 9.5px 12px; /* Increased by 1.5px each (3px total) */
-    padding-left: 12px;
-    padding-right: 42px; /* Space for button */
+    overflow: hidden; /* Ensures child elements follow border-radius */
+    transition: all 0.2s ease;
+}
+
+.search-wrapper:focus-within {
+    border-color: var(--accent-light);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-search-input-minimal {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 9.5px 12px;
     color: #fff;
     font-size: 0.85rem;
-    transition: all 0.2s ease;
+    outline: none;
 }
 
 .nav-search-input-minimal:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.12);
-    border-color: var(--accent-light);
 }
 
 .search-icon-inner {
@@ -130,7 +135,7 @@
 }
 
 .search-hint {
-    display: none; /* Hide to clear space for the right-side button */
+    display: none;
 }
 
 /* Auth Section */
@@ -205,22 +210,23 @@
 }
 
 .search-submit-btn {
-    position: absolute;
-    right: 8px; /* Moved to extreme right */
-    background: none;
+    background: rgba(255, 255, 255, 0.05);
     border: none;
-    color: rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: color 0.2s;
-    padding: 4px;
-    z-index: 2;
+    transition: all 0.2s;
+    padding: 0 14px;
+    font-size: 1.1rem;
 }
 
 .search-submit-btn:hover {
-    color: var(--accent-light);
+    background: var(--accent);
+    color: #fff;
+    border-left-color: transparent;
 }
 
 .search-icon-inner {
