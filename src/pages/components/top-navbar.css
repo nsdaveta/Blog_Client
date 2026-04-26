@@ -221,8 +221,6 @@
     transition: all 0.2s;
     padding: 0 3.5px;
     font-size: 1rem;
-    outline: none; /* Remove focus outline */
-    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
 }
 
 .search-submit-btn:hover {

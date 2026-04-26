@@ -106,6 +106,8 @@ const Navbar = () => {
                         <button 
                             className="search-submit-btn" 
                             onClick={handleSearchSubmit}
+                            onMouseUp={(e) => e.currentTarget.blur()}
+                            onTouchEnd={(e) => e.currentTarget.blur()}
                             title="Search"
                         >
                             <VscSearch />
