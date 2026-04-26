@@ -194,6 +194,13 @@
     color: white !important;
 }
 
+.signup-btn.active {
+    background: var(--accent-light);
+    color: white !important;
+    box-shadow: 0 0 20px rgba(165, 161, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
 .user-profile {
     display: flex;
     align-items: center;
