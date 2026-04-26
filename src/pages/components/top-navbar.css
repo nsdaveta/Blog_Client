@@ -228,6 +228,7 @@
 .search-submit-btn:active {
     background: rgba(0, 123, 255, 0.4); /* The controlled "blue highlight" */
     color: #fff;
+    transition: none !important; /* Disappear instantly on release */
 }
 
 .search-submit-btn:hover {

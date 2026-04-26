@@ -37,6 +37,10 @@ const Navbar = () => {
         if (searchQuery.trim()) {
             navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
             setSearchQuery('');
+            // Clear focus from search input/button to remove focus-within highlights
+            if (document.activeElement instanceof HTMLElement) {
+                document.activeElement.blur();
+            }
         }
     };
 
@@ -105,9 +109,23 @@ const Navbar = () => {
                         />
                         <button 
                             className="search-submit-btn" 
-                            onClick={handleSearchSubmit}
-                            onMouseUp={(e) => e.currentTarget.blur()}
-                            onTouchEnd={(e) => e.currentTarget.blur()}
+                            onClick={() => {
+                                handleSearchSubmit();
+                                window.getSelection()?.removeAllRanges();
+                                setTimeout(() => {
+                                    if (document.activeElement instanceof HTMLElement) {
+                                        document.activeElement.blur();
+                                    }
+                                }, 0);
+                            }}
+                            onMouseUp={(e) => {
+                                window.getSelection()?.removeAllRanges();
+                                setTimeout(() => e.currentTarget.blur(), 0);
+                            }}
+                            onTouchEnd={(e) => {
+                                window.getSelection()?.removeAllRanges();
+                                setTimeout(() => e.currentTarget.blur(), 0);
+                            }}
                             title="Search"
                         >
                             <VscSearch />
