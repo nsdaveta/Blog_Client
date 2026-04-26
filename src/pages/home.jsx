@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { VscArrowLeft } from 'react-icons/vsc'
 
 import './home.css'
 
@@ -387,6 +388,7 @@ const BlogCard = ({ blog, index }) => {
 const Home = () => {
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
   const [searchParams] = useSearchParams();
   const searchResult = searchParams.get('search')?.toLowerCase() || '';
 
@@ -415,6 +417,16 @@ const Home = () => {
     <>
       <title>Blogify - {searchResult ? `Search: ${searchResult}` : 'Home'}</title>
       <div className="page-wrapper">
+        
+        {searchResult && (
+          <button 
+            className="btn btn-outline btn-sm" 
+            onClick={() => navigate('/')} 
+            style={{ marginBottom: '1.5rem', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <VscArrowLeft /> Back to Feed
+          </button>
+        )}
 
         <div className="home-hero fade-in-up">
           <h1 className="gradient-text">
