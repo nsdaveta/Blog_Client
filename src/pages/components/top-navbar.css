@@ -61,6 +61,7 @@
     display: flex;
     align-items: center;
     gap: 32px;
+    margin-left: auto; /* Push to the extreme right */
 }
 
 .nav-link-secondary {
