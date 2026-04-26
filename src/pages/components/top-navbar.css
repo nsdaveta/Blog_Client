@@ -88,13 +88,13 @@
 .nav-link-secondary.active::after {
     content: '';
     position: absolute;
-    bottom: -4px; /* Lowered slightly for better spacing */
+    bottom: -4px;
     left: 0;
     width: 100%;
-    height: 3px; /* Slightly thicker for better visibility */
-    background: #ff3e81; /* Vibrant pink */
+    height: 3px;
+    background: var(--accent-light); /* Back to original purple */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 62, 129, 0.5);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 /* Search Section */
@@ -191,9 +191,9 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background: #ff3e81;
+    background: var(--accent-light);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 62, 129, 0.5);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .signup-btn {
@@ -228,13 +228,13 @@
 .signup-btn.active::after {
     content: '';
     position: absolute;
-    bottom: -8px; /* Further down because it's a button */
+    bottom: -8px;
     left: 10%;
     width: 80%;
     height: 3px;
-    background: #ff3e81;
+    background: var(--accent-light);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 62, 129, 0.5);
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .user-profile {
