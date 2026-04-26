@@ -45,6 +45,8 @@ function App() {
           />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/trending" element={<Home />} />
+            <Route path="/latest" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />

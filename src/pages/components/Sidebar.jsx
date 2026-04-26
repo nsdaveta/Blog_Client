@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import UserContext from './UserContext/usercontext';
 import { useDialog } from './Dialog/DialogContext';
-import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut, VscMenu } from 'react-icons/vsc';
+import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut, VscMenu, VscFlame, VscLayers } from 'react-icons/vsc';
 import './sidebar.css';
 
 const Sidebar = () => {
@@ -29,6 +30,7 @@ const Sidebar = () => {
         setUser(null);
         localStorage.removeItem('userdata');
         localStorage.removeItem('token');
+        toast.success('Logged out successfully!', { autoClose: 2000 });
         navigate('/');
     };
 
@@ -58,6 +60,16 @@ const Sidebar = () => {
                         </NavLink>
                     </>
                 )}
+
+                <NavLink to="/trending" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
+                    <VscFlame className="nav-icon" />
+                    {!isCollapsed && <span>Trending</span>}
+                </NavLink>
+
+                <NavLink to="/latest" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
+                    <VscLayers className="nav-icon" />
+                    {!isCollapsed && <span>Latest</span>}
+                </NavLink>
             </div>
 
             {user ? (

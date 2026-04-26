@@ -12,7 +12,7 @@
 }
 
 .web-mode .main-content {
-  padding-top: 82px; /* Navbar height (72px) + 10px buffer */
+  padding-top: 106px; /* New two-row navbar height (~96px) + 10px buffer */
 }
 
 .app-layout {
