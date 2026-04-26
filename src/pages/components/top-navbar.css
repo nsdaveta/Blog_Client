@@ -219,7 +219,7 @@
     justify-content: center;
     cursor: pointer;
     transition: all 0.2s;
-    padding: 0 2px; /* Extreme reduction */
+    padding: 0 3.5px; /* Increased by 1.5px on each side (3px total) */
     font-size: 1rem; /* Slightly smaller icon to match the compact feel */
 }
 
