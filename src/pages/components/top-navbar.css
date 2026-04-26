@@ -185,6 +185,13 @@
 
 .signup-btn:hover {
     opacity: 0.9;
+    color: white !important; /* Prevent text from disappearing by inheriting global link hover color */
+}
+
+.signup-btn:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+    color: white !important;
 }
 
 .user-profile {
