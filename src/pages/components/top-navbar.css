@@ -280,7 +280,9 @@
     }
     
     .nav-search-section {
-        flex: 0 1 150px; /* Shrink more to make room for user info */
+        flex: 1;
+        min-width: 180px; /* Ensure "Search stories..." is visible */
+        margin-right: 10px;
     }
 
     .username-display {
