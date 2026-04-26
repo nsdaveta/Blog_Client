@@ -205,6 +205,25 @@
     font-size: 0.9rem;
     font-weight: 600;
     transition: opacity 0.2s;
+    position: relative; /* Added for underscore positioning */
+}
+
+.signup-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    width: 80%;
+    height: 3px;
+    background: var(--accent-light);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.signup-btn:hover::after {
+    opacity: 1;
+    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .signup-btn:hover {
@@ -226,14 +245,7 @@
 }
 
 .signup-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 10%;
-    width: 80%;
-    height: 3px;
-    background: var(--accent-light);
-    border-radius: 10px;
+    opacity: 1;
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
