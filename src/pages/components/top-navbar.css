@@ -111,9 +111,9 @@
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 8px 12px;
-    padding-left: 36px;
-    padding-right: 50px;
+    padding: 9.5px 12px; /* Increased by 1.5px each (3px total) */
+    padding-left: 12px;
+    padding-right: 42px; /* Space for button */
     color: #fff;
     font-size: 0.85rem;
     transition: all 0.2s ease;
@@ -126,22 +126,11 @@
 }
 
 .search-icon-inner {
-    position: absolute;
-    left: 12px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1rem;
-    pointer-events: none;
+    display: none;
 }
 
 .search-hint {
-    position: absolute;
-    right: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.5);
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 0.65rem;
-    font-weight: 700;
+    display: none; /* Hide to clear space for the right-side button */
 }
 
 /* Auth Section */
@@ -217,7 +206,7 @@
 
 .search-submit-btn {
     position: absolute;
-    left: 8px;
+    right: 8px; /* Moved to extreme right */
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.5);
