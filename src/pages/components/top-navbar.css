@@ -215,6 +215,29 @@
     color: var(--danger);
 }
 
+.search-submit-btn {
+    position: absolute;
+    left: 8px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 4px;
+    z-index: 2;
+}
+
+.search-submit-btn:hover {
+    color: var(--accent-light);
+}
+
+.search-icon-inner {
+    display: none; /* Replaced by button */
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .nav-top-row, .nav-bottom-row {
@@ -223,7 +246,8 @@
 
     .nav-search-section {
         flex: 1;
-        margin-right: 15px;
+        min-width: 0; /* Allow shrinking */
+        margin-right: 12px;
     }
 
     .search-hint {
@@ -243,7 +267,7 @@
 
     .nav-link-secondary {
         padding: 8px;
-        font-size: 1.2rem; /* Make icons slightly larger */
+        font-size: 1.2rem;
     }
 
     .nav-brand span {
@@ -251,23 +275,34 @@
     }
 
     .nav-search-input-minimal {
-        padding-right: 12px; /* Remove space for hidden hint */
+        padding-right: 12px;
     }
 }
 
 @media (max-width: 480px) {
     .nav-links-section {
-        gap: 12px;
+        gap: 10px;
     }
     
+    .nav-search-section {
+        flex: 0 1 150px; /* Shrink more to make room for user info */
+    }
+
     .username-display {
-        display: none; /* Hide username on very small screens to keep search bar visible */
+        display: inline; /* Keep username visible */
+        font-size: 0.8rem;
+        max-width: 60px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .user-info {
+        gap: 4px;
     }
 
     .user-profile {
-        padding: 0;
-        background: none;
-        border: none;
+        gap: 8px;
     }
 }
 

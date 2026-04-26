@@ -422,7 +422,7 @@ const Home = () => {
           <button 
             className="btn btn-outline btn-sm" 
             onClick={() => navigate('/')} 
-            style={{ marginBottom: '1.5rem', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px' }}
+            style={{ marginTop: '1rem', marginBottom: '1.5rem', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px' }}
           >
             <VscArrowLeft /> Back to Feed
           </button>

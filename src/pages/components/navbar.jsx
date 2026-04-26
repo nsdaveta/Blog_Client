@@ -33,10 +33,16 @@ const Navbar = () => {
         };
     }, [user, setUser]);
 
-    const handleSearch = (e) => {
-        if (e.key === 'Enter' && searchQuery.trim()) {
+    const handleSearchSubmit = () => {
+        if (searchQuery.trim()) {
             navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
-            setSearchQuery(''); // Optional: clear search after navigating
+            setSearchQuery('');
+        }
+    };
+
+    const handleSearchKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchSubmit();
         }
     };
 
@@ -88,7 +94,6 @@ const Navbar = () => {
             <div className="nav-bottom-row">
                 <div className="nav-search-section">
                     <div className="search-wrapper">
-                        <VscSearch className="search-icon-inner" />
                         <input 
                             ref={searchInputRef}
                             type="text" 
@@ -96,8 +101,15 @@ const Navbar = () => {
                             className="nav-search-input-minimal" 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            onKeyDown={handleSearch}
+                            onKeyDown={handleSearchKeyDown}
                         />
+                        <button 
+                            className="search-submit-btn" 
+                            onClick={handleSearchSubmit}
+                            title="Search"
+                        >
+                            <VscSearch />
+                        </button>
                         <div className="search-hint">{navigator.platform.indexOf('Mac') > -1 ? '⌘K' : 'Ctrl+K'}</div>
                     </div>
                 </div>
