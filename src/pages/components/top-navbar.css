@@ -128,6 +128,7 @@
 
 .nav-search-input-minimal:focus {
     outline: none;
+    box-shadow: none !important; /* Override global blue glow from index.css */
 }
 
 .search-icon-inner {
