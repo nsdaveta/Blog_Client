@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import UserContext from './UserContext/usercontext';
 import { useDialog } from './Dialog/DialogContext';
@@ -10,9 +10,14 @@ const Navbar = () => {
     const { user, setUser } = useContext(UserContext);
     const { ask } = useDialog();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [searchQuery, setSearchQuery] = React.useState('');
     const searchInputRef = React.useRef(null);
+
+    const disabledPaths = ['/login', '/register', '/create', '/verify-otp', '/forgot-password', '/reset-password'];
+    const isUpdatePage = location.pathname.startsWith('/update/');
+    const isSearchDisabled = disabledPaths.includes(location.pathname) || isUpdatePage;
 
     useEffect(() => {
         const storedUser = localStorage.getItem('userdata');
@@ -35,7 +40,9 @@ const Navbar = () => {
 
     const handleSearchSubmit = () => {
         if (searchQuery.trim()) {
-            navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
+            const isDashboard = location.pathname === '/dashboard';
+            const targetPath = isDashboard ? '/dashboard' : '/';
+            navigate(`${targetPath}?search=${encodeURIComponent(searchQuery.trim())}`);
             setSearchQuery('');
             // Clear focus from search input/button to remove focus-within highlights
             if (document.activeElement instanceof HTMLElement) {
@@ -94,29 +101,26 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Bottom Row: Search and Auth */}
             <div className="nav-bottom-row">
-                <div className="nav-search-section">
+                <div className={`nav-search-section ${isSearchDisabled ? 'disabled' : ''}`}>
                     <div className="search-wrapper">
                         <input 
                             ref={searchInputRef}
                             type="text" 
-                            placeholder="Search stories..." 
+                            placeholder={isSearchDisabled ? "Search disabled" : "Search stories..."} 
                             className="nav-search-input-minimal" 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             onKeyDown={handleSearchKeyDown}
+                            disabled={isSearchDisabled}
                         />
                         <button 
                             className="search-submit-btn" 
-                            onClick={() => {
+                            disabled={isSearchDisabled}
+                            onClick={(e) => {
                                 handleSearchSubmit();
                                 window.getSelection()?.removeAllRanges();
-                                setTimeout(() => {
-                                    if (document.activeElement instanceof HTMLElement) {
-                                        document.activeElement.blur();
-                                    }
-                                }, 0);
+                                e.currentTarget.blur();
                             }}
                             onMouseUp={(e) => {
                                 window.getSelection()?.removeAllRanges();

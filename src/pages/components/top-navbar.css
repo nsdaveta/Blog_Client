@@ -97,33 +97,47 @@
 
 /* Search Section */
 .nav-search-section {
-    flex: 0 1 300px;
+    flex: 0 1 400px; /* Increased width for better search experience */
+    transition: opacity 0.3s ease;
+}
+
+.nav-search-section.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    filter: grayscale(0.5);
 }
 
 .search-wrapper {
     position: relative;
     display: flex;
     align-items: stretch;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    background: #0f1115; /* Darker background to match the image */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px; /* Slightly more rounded */
     overflow: hidden; /* Ensures child elements follow border-radius */
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .search-wrapper:focus-within {
-    border-color: var(--accent-light);
-    background: rgba(255, 255, 255, 0.12);
+    border-color: #7b61ff;
+    background: #15181e;
+    box-shadow: 0 0 0 3px rgba(123, 97, 255, 0.15);
 }
 
 .nav-search-input-minimal {
     flex: 1;
     background: none;
     border: none;
-    padding: 12px 12px; /* Increased by 2.5px each (5px total) */
+    padding: 10px 16px; 
     color: #fff;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
+    font-family: inherit;
     outline: none;
+}
+
+.nav-search-input-minimal::placeholder {
+    color: rgba(255, 255, 255, 0.45);
 }
 
 .nav-search-input-minimal:focus {
@@ -211,31 +225,30 @@
 }
 
 .search-submit-btn {
-    background: rgba(255, 255, 255, 0.05);
+    background: #7b61ff; /* Premium purple from the image */
     border: none;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.1s; /* Faster transition for instant disappearance */
-    padding: 0 3.5px;
-    font-size: 1rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 16px;
+    font-size: 1.2rem;
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
 
-.search-submit-btn:active {
-    background: rgba(0, 123, 255, 0.4); /* The controlled "blue highlight" */
+.search-submit-btn:hover {
+    background: #6a4dff;
     color: #fff;
-    transition: none !important; /* Disappear instantly on release */
 }
 
-.search-submit-btn:hover {
-    background: var(--accent);
-    color: #fff;
-    border-left-color: transparent;
+.search-submit-btn:active {
+    background: #0f1115; /* Purple highlight disappears on click */
+    color: rgba(255, 255, 255, 0.5);
+    transition: none !important; /* Disappear instantly */
+    transform: none; /* Remove scale effect for "disappearing" feel */
 }
 
 .search-icon-inner {

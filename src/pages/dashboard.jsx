@@ -1,7 +1,7 @@
 import React from 'react'
 import api from '../api'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import UserContext from './components/UserContext/usercontext'
 
 import { useDialog } from './components/Dialog/DialogContext'
@@ -13,6 +13,8 @@ const Dashboard = () => {
   const { ask } = useDialog()
   const [loading, setLoading] = useState(true)
   const [blogData, setBlogData] = useState([])
+  const [searchParams] = useSearchParams()
+  const searchQuery = searchParams.get('search')?.toLowerCase() || ''
 
   const headers = {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
@@ -105,8 +107,19 @@ const Dashboard = () => {
         </div>
 
         {/* Blog List */}
-        <div className="dashboard-header">
-          <h1 className="section-title">Your Posts</h1>
+        <div className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <h1 className="section-title">
+            {searchQuery ? `Search results for "${searchQuery}"` : 'Your Posts'}
+          </h1>
+          {searchQuery && (
+            <button 
+              className="btn btn-outline btn-sm" 
+              onClick={() => navigate('/dashboard')}
+              style={{ display: 'flex', alignItems: 'center', gap: '5px' }}
+            >
+              <span>←</span> Back to Dashboard
+            </button>
+          )}
         </div>
 
         {blogData.length === 0 ? (
@@ -119,7 +132,12 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="dashboard-blog-list">
-            {blogData.map(blog => (
+            {blogData
+              .filter(blog => 
+                blog.title?.toLowerCase().includes(searchQuery) || 
+                blog.content?.toLowerCase().includes(searchQuery)
+              )
+              .map(blog => (
               <div className="dashboard-blog-item" key={blog._id}>
                 <img
                   className="dashboard-blog-thumb"
