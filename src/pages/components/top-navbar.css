@@ -218,9 +218,16 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.1s; /* Faster transition for instant disappearance */
     padding: 0 3.5px;
     font-size: 1rem;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.search-submit-btn:active {
+    background: rgba(0, 123, 255, 0.4); /* The controlled "blue highlight" */
+    color: #fff;
 }
 
 .search-submit-btn:hover {
