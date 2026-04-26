@@ -237,6 +237,15 @@
         flex-shrink: 0;
     }
 
+    .nav-links-section .nav-link-secondary span {
+        display: none; /* Show only icons on mobile portrait */
+    }
+
+    .nav-link-secondary {
+        padding: 8px;
+        font-size: 1.2rem; /* Make icons slightly larger */
+    }
+
     .nav-brand span {
         font-size: 1.1rem;
     }
