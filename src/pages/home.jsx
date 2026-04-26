@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 import './home.css'
 
@@ -387,8 +387,11 @@ const BlogCard = ({ blog, index }) => {
 const Home = () => {
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
+  const [searchParams] = useSearchParams();
+  const searchResult = searchParams.get('search')?.toLowerCase() || '';
 
   useEffect(() => {
+    setLoading(true);
     api.get('/').then(res => {
       if (Array.isArray(res.data)) {
         setBlogs(res.data)
@@ -399,17 +402,34 @@ const Home = () => {
     })
   }, [])
 
+  const filteredBlogs = blogs.filter(blog => {
+    if (!searchResult) return true;
+    return (
+      blog.title?.toLowerCase().includes(searchResult) ||
+      blog.content?.toLowerCase().includes(searchResult) ||
+      blog.author?.toLowerCase().includes(searchResult)
+    );
+  });
+
   return (
     <>
-      <title>Blogify-Home</title>
+      <title>Blogify - {searchResult ? `Search: ${searchResult}` : 'Home'}</title>
       <div className="page-wrapper">
 
         <div className="home-hero fade-in-up">
-          <h1 className="gradient-text">Stories Worth Reading</h1>
-          <p>Discover insightful articles, tutorials, and ideas from our community of writers.</p>
+          <h1 className="gradient-text">
+            {searchResult ? `Results for "${searchResult}"` : 'Stories Worth Reading'}
+          </h1>
+          <p>
+            {searchResult 
+              ? `Found ${filteredBlogs.length} ${filteredBlogs.length === 1 ? 'story' : 'stories'} matching your search.`
+              : 'Discover insightful articles, tutorials, and ideas from our community of writers.'}
+          </p>
         </div>
 
-        <h2 className="section-title">Latest Posts</h2>
+        <h2 className="section-title">
+          {searchResult ? 'Search Results' : 'Latest Posts'}
+        </h2>
 
         {loading && (
           <div style={{ textAlign: 'center', padding: '4rem 0' }}>
@@ -417,16 +437,21 @@ const Home = () => {
           </div>
         )}
 
-        {!loading && blogs.length === 0 && (
+        {!loading && filteredBlogs.length === 0 && (
           <div className="empty-state">
-            <h3>No posts yet</h3>
-            <p>Be the first to publish something great!</p>
+            <h3>{searchResult ? 'No matches found' : 'No posts yet'}</h3>
+            <p>{searchResult ? 'Try different keywords or browse latest posts.' : 'Be the first to publish something great!'}</p>
+            {searchResult && (
+              <Link to="/" className="btn btn-outline btn-sm" style={{ marginTop: '1rem' }}>
+                Clear Search
+              </Link>
+            )}
           </div>
         )}
 
-        {!loading && blogs.length > 0 && (
+        {!loading && filteredBlogs.length > 0 && (
           <div className="blog-grid">
-            {blogs.map((blog, i) => (
+            {filteredBlogs.map((blog, i) => (
               <BlogCard key={blog._id || i} blog={blog} index={i} />
             ))}
           </div>

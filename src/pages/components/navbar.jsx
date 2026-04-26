@@ -11,6 +11,7 @@ const Navbar = () => {
     const { ask } = useDialog();
     const navigate = useNavigate();
 
+    const [searchQuery, setSearchQuery] = React.useState('');
     const searchInputRef = React.useRef(null);
 
     useEffect(() => {
@@ -31,6 +32,13 @@ const Navbar = () => {
             window.removeEventListener('keydown', handleKeyDown);
         };
     }, [user, setUser]);
+
+    const handleSearch = (e) => {
+        if (e.key === 'Enter' && searchQuery.trim()) {
+            navigate(`/?search=${encodeURIComponent(searchQuery.trim())}`);
+            setSearchQuery(''); // Optional: clear search after navigating
+        }
+    };
 
     const handleLogout = async () => {
         const confirmed = await ask('Are you sure you want to logout?', {
@@ -84,8 +92,11 @@ const Navbar = () => {
                         <input 
                             ref={searchInputRef}
                             type="text" 
-                            placeholder="Search..." 
+                            placeholder="Search stories..." 
                             className="nav-search-input-minimal" 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={handleSearch}
                         />
                         <div className="search-hint">{navigator.platform.indexOf('Mac') > -1 ? '⌘K' : 'Ctrl+K'}</div>
                     </div>
