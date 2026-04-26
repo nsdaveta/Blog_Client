@@ -1,16 +1,24 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import UserContext from './UserContext/usercontext';
 import { useDialog } from './Dialog/DialogContext';
-import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut, VscMenu, VscFlame, VscLayers } from 'react-icons/vsc';
+import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut, VscMenu, VscFlame, VscLayers, VscSearch } from 'react-icons/vsc';
 import './sidebar.css';
 
 const Sidebar = () => {
     const { user, setUser } = useContext(UserContext);
     const [isCollapsed, setIsCollapsed] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
     const { ask } = useDialog();
+    const [searchQuery, setSearchQuery] = useState('');
+    const searchInputRef = React.useRef(null);
+
+    const disabledPaths = ['/login', '/register', '/create', '/verify-otp', '/forgot-password', '/reset-password'];
+    const isUpdatePage = location.pathname.startsWith('/update/');
+    const isReadPage = location.pathname.startsWith('/read/');
+    const isSearchDisabled = disabledPaths.includes(location.pathname) || isUpdatePage || isReadPage;
 
     useEffect(() => {
         const storedUser = localStorage.getItem('userdata');
@@ -18,6 +26,24 @@ const Sidebar = () => {
             setUser(JSON.parse(storedUser));
         }
     }, [user, setUser]);
+
+    const handleSearchSubmit = () => {
+        if (searchQuery.trim()) {
+            const isDashboard = location.pathname === '/dashboard';
+            const targetPath = isDashboard ? '/dashboard' : '/';
+            navigate(`${targetPath}?search=${encodeURIComponent(searchQuery.trim())}`);
+            setSearchQuery('');
+            if (document.activeElement instanceof HTMLElement) {
+                document.activeElement.blur();
+            }
+        }
+    };
+
+    const handleSearchKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchSubmit();
+        }
+    };
 
     const handleLogout = async () => {
         const confirmed = await ask('Are you sure you want to logout?', {
@@ -39,6 +65,35 @@ const Sidebar = () => {
             <div className="sidebar-top">
                 <div className="menu-btn" onClick={() => setIsCollapsed(!isCollapsed)}>
                     <VscMenu />
+                </div>
+                {!isCollapsed && <span className="nav-brand">Blogify</span>}
+            </div>
+
+            <div className={`sidebar-search ${isCollapsed ? 'collapsed' : ''} ${isSearchDisabled ? 'disabled' : ''}`}>
+                <div className="search-wrapper">
+                    <input 
+                        ref={searchInputRef}
+                        type="text" 
+                        placeholder={isSearchDisabled ? "Disabled" : "Search stories..."} 
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onKeyDown={handleSearchKeyDown}
+                        disabled={isSearchDisabled || isCollapsed}
+                    />
+                    <button 
+                        onClick={(e) => {
+                            if (isCollapsed) {
+                                setIsCollapsed(false);
+                                setTimeout(() => searchInputRef.current?.focus(), 200);
+                            } else {
+                                handleSearchSubmit();
+                                e.currentTarget.blur();
+                            }
+                        }}
+                        disabled={isSearchDisabled}
+                    >
+                        <VscSearch />
+                    </button>
                 </div>
             </div>
             
