@@ -12,7 +12,13 @@
 }
 
 .web-mode .main-content {
-  padding-top: 106px; /* New two-row navbar height (~96px) + 10px buffer */
+  padding-top: 106px; /* Desktop two-row navbar height */
+}
+
+@media (max-width: 480px) {
+  .web-mode .main-content {
+    padding-top: 175px; /* Adjusting for stacked three-row mobile navbar */
+  }
 }
 
 .app-layout {
