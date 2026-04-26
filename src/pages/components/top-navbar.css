@@ -307,25 +307,36 @@
     
     .nav-search-section {
         flex: 1;
-        min-width: 220px; /* Increased to ensure "Search stories..." is fully visible */
+        min-width: 170px; /* Adjusted to balance with username */
         margin-right: 8px;
     }
 
     .nav-search-input-minimal {
-        padding: 10px 12px; /* Slightly tighter padding on mobile */
-        font-size: 0.9rem; /* Slightly smaller font to fit better */
+        padding: 10px 10px;
+        font-size: 0.85rem; /* Slightly smaller to fit both */
     }
 
     .search-submit-btn {
-        padding: 0 12px; /* Tighter button on mobile */
+        padding: 0 10px;
     }
 
-    .auth-group {
-        gap: 12px; /* Smaller gap on mobile */
+    .user-profile {
+        gap: 6px;
+        flex-shrink: 0;
+        max-width: 100px; /* Limit width to prevent pushing search bar out */
     }
 
     .username-display {
-        display: none; /* Hide username on very small screens to save space */
+        display: block; 
+        font-size: 0.8rem;
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .user-icon {
+        font-size: 1rem;
     }
 }
 
