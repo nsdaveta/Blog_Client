@@ -17,7 +17,8 @@ const Navbar = () => {
 
     const disabledPaths = ['/login', '/register', '/create', '/verify-otp', '/forgot-password', '/reset-password'];
     const isUpdatePage = location.pathname.startsWith('/update/');
-    const isSearchDisabled = disabledPaths.includes(location.pathname) || isUpdatePage;
+    const isReadPage = location.pathname.startsWith('/read/');
+    const isSearchDisabled = disabledPaths.includes(location.pathname) || isUpdatePage || isReadPage;
 
     useEffect(() => {
         const storedUser = localStorage.getItem('userdata');
