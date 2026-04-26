@@ -67,7 +67,12 @@
 .sidebar-search {
   padding: 0 8px;
   margin-bottom: 20px;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar.collapsed .sidebar-search {
+  padding: 0;
+  margin-bottom: 16px;
 }
 
 .sidebar-search.disabled {
@@ -108,10 +113,11 @@
   opacity: 0;
   width: 0;
   padding: 0;
+  display: none;
 }
 
 .sidebar-search button {
-  background: #7b61ff;
+  background: var(--accent);
   border: none;
   color: #fff;
   padding: 8px 12px;
@@ -124,7 +130,7 @@
 }
 
 .sidebar-search button:hover {
-  background: #6a4dff;
+  background: var(--accent-dark);
 }
 
 .sidebar-search button:active {
@@ -134,11 +140,18 @@
 }
 
 .sidebar-search.collapsed .search-wrapper {
-  border-radius: 6px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  justify-content: center;
 }
 
 .sidebar-search.collapsed button {
-  width: 100%;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .sidebar-links {

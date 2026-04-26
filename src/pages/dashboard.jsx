@@ -109,7 +109,7 @@ const Dashboard = () => {
         {/* Blog List */}
         <div className="dashboard-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <h1 className="section-title">
-            {searchQuery ? `Search results for "${searchQuery}"` : 'Your Posts'}
+            {searchQuery ? `Search results for "${searchQuery}"` : 'Your Blog Posts'}
           </h1>
           {searchQuery && (
             <button 
@@ -127,7 +127,7 @@ const Dashboard = () => {
             <h3>No posts yet</h3>
             <p>Create your first blog post to get started!</p>
             <button className="btn btn-primary" style={{ marginTop: '1rem' }} onClick={() => navigate('/create')}>
-              Write First Post
+              Write Your First Post
             </button>
           </div>
         ) : (

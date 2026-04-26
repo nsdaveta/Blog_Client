@@ -108,7 +108,7 @@ const Navbar = () => {
                         <input 
                             ref={searchInputRef}
                             type="text" 
-                            placeholder={isSearchDisabled ? "Search disabled" : "Search stories..."} 
+                            placeholder={isSearchDisabled ? "Search disabled" : "Search blogs..."} 
                             className="nav-search-input-minimal" 
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}

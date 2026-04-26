@@ -440,7 +440,7 @@ const Home = () => {
         </div>
 
         <h2 className="section-title">
-          {searchResult ? 'Search Results' : 'Latest Posts'}
+          {searchResult ? 'Search Results' : 'Recent Blog Posts'}
         </h2>
 
         {loading && (
@@ -452,7 +452,7 @@ const Home = () => {
         {!loading && filteredBlogs.length === 0 && (
           <div className="empty-state">
             <h3>{searchResult ? 'No matches found' : 'No posts yet'}</h3>
-            <p>{searchResult ? 'Try different keywords or browse latest posts.' : 'Be the first to publish something great!'}</p>
+            <p>{searchResult ? 'Try different keywords or browse recent stories.' : 'Be the first to publish something great!'}</p>
             {searchResult && (
               <Link to="/" className="btn btn-outline btn-sm" style={{ marginTop: '1rem' }}>
                 Clear Search

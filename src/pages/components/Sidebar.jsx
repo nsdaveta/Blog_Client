@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import UserContext from './UserContext/usercontext';
 import { useDialog } from './Dialog/DialogContext';
-import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut, VscMenu, VscFlame, VscLayers, VscSearch } from 'react-icons/vsc';
+import { VscHome, VscDashboard, VscAdd, VscAccount, VscSignOut, VscMenu, VscSearch } from 'react-icons/vsc';
 import './sidebar.css';
 
 const Sidebar = () => {
@@ -74,7 +74,7 @@ const Sidebar = () => {
                     <input 
                         ref={searchInputRef}
                         type="text" 
-                        placeholder={isSearchDisabled ? "Disabled" : "Search stories..."} 
+                        placeholder={isSearchDisabled ? "Search Disabled" : "Search blogs..."} 
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         onKeyDown={handleSearchKeyDown}
@@ -91,6 +91,7 @@ const Sidebar = () => {
                             }
                         }}
                         disabled={isSearchDisabled}
+                        title={isCollapsed ? "Search" : ""}
                     >
                         <VscSearch />
                     </button>
@@ -115,16 +116,6 @@ const Sidebar = () => {
                         </NavLink>
                     </>
                 )}
-
-                <NavLink to="/trending" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-                    <VscFlame className="nav-icon" />
-                    {!isCollapsed && <span>Trending</span>}
-                </NavLink>
-
-                <NavLink to="/latest" className={({ isActive }) => (isActive ? 'nav-item active' : 'nav-item')}>
-                    <VscLayers className="nav-icon" />
-                    {!isCollapsed && <span>Latest</span>}
-                </NavLink>
             </div>
 
             {user ? (
