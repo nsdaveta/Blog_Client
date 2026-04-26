@@ -50,8 +50,15 @@ const Navbar = () => {
     return (
     <nav className="top-navbar">
         <div className="nav-container">
-            {/* Top Row: Links and Search */}
+            {/* Top Row: Brand and Links */}
             <div className="nav-top-row">
+                <div className="nav-left">
+                    <NavLink to="/" className="nav-brand">
+                        <img src="/favicon.svg" alt="logo" className="nav-logo" />
+                        <span>Blogify</span>
+                    </NavLink>
+                </div>
+
                 <div className="nav-links-section">
                     <NavLink to="/" className={({ isActive }) => (isActive ? 'nav-link-secondary active' : 'nav-link-secondary')} end>
                         <VscHome /> <span>Home</span>
@@ -67,7 +74,10 @@ const Navbar = () => {
                         </>
                     )}
                 </div>
+            </div>
 
+            {/* Bottom Row: Search and Auth */}
+            <div className="nav-bottom-row">
                 <div className="nav-search-section">
                     <div className="search-wrapper">
                         <VscSearch className="search-icon-inner" />
@@ -79,16 +89,6 @@ const Navbar = () => {
                         />
                         <div className="search-hint">{navigator.platform.indexOf('Mac') > -1 ? '⌘K' : 'Ctrl+K'}</div>
                     </div>
-                </div>
-            </div>
-
-            {/* Bottom Row: Brand and Auth */}
-            <div className="nav-bottom-row">
-                <div className="nav-left">
-                    <NavLink to="/" className="nav-brand">
-                        <img src="/favicon.svg" alt="logo" className="nav-logo" />
-                        <span>Blogify</span>
-                    </NavLink>
                 </div>
 
                 <div className="nav-right">
