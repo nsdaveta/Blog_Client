@@ -289,12 +289,9 @@
     }
 
     .username-display {
-        display: inline; /* Keep username visible */
-        font-size: 0.8rem;
-        max-width: 60px;
+        display: inline;
+        font-size: 0.85rem;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     .user-info {
