@@ -45,15 +45,23 @@
 }
 
 .nav-logo {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.nav-brand:hover .nav-logo {
+    transform: rotate(15deg) scale(1.1);
 }
 
 .nav-brand span {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     color: #fff;
+    letter-spacing: -0.02em;
 }
 
 /* Links Section */

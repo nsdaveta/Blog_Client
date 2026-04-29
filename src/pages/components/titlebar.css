@@ -1,7 +1,7 @@
 .titlebar {
   height: 32px;
   background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Even subtler separator */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,6 @@
   top: 0;
   left: 0;
   right: 0;
-  padding-right: var(--tauri-frame-controls-width, 138px);
   z-index: 10000;
   user-select: none;
   font-family: 'Segoe UI Variable Display', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -20,9 +19,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  right: var(--tauri-frame-controls-width, 138px);
+  right: 138px; /* Reserve space for controls */
   height: 100%;
-  z-index: 0;
+  z-index: 1;
 }
 
 .titlebar-title {
@@ -41,11 +40,47 @@
 .titlebar-icon {
   width: 16px;
   height: 16px;
+  object-fit: contain;
 }
 
-/* Light mode support if needed */
+.titlebar-controls {
+  display: flex;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 46px;
+  height: 100%;
+  transition: background-color 0.1s ease;
+  cursor: default;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.titlebar-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.close-button:hover {
+  background-color: #e81123 !important;
+  color: white !important;
+}
+
+.titlebar-button:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Light mode support */
 @media (prefers-color-scheme: light) {
   .titlebar {
+    color: #000000;
+  }
+  .titlebar-button {
     color: #000000;
   }
   .titlebar-button:hover {
