@@ -347,7 +347,7 @@
             const originalHTML = btn.innerHTML;
             icon.style.transition = 'none';
             icon.style.animation = 'infiniteSpin 1s linear infinite';
-            btn.innerHTML = icon.outerHTML + " Searching...";
+            btn.innerHTML = icon.outerHTML + " Re-connecting...";
 
             const isOnline = await checkActualConnectivity();
             

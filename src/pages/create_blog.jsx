@@ -28,6 +28,7 @@ const Create_blog = () => {
   const [imageFile, setImageFile] = useState(null)
   const [preview, setPreview] = useState(null)
   const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e) => {
 
@@ -37,6 +38,8 @@ const Create_blog = () => {
       ...prev,
       [name]: value
     }))
+
+    if (error) setError('')
 
   }
 
@@ -52,6 +55,8 @@ const Create_blog = () => {
 
     setPreview(imagePreview)
 
+    if (error) setError('')
+
   }
 
   const handleSubmit = async (e) => {
@@ -59,9 +64,11 @@ const Create_blog = () => {
     e.preventDefault()
 
     if (!imageFile) {
-      toast.error("Cover image is required!")
+      setError("Cover image is required! Please select an image for your post.")
       return
     }
+
+    setError('')
 
     setSubmitting(true)
 
@@ -198,6 +205,23 @@ const Create_blog = () => {
 
               </div>
 
+            )}
+
+            {error && (
+              <div className="error-box fade-in" style={{ 
+                marginTop: '1rem', 
+                padding: '0.85rem', 
+                background: 'rgba(239, 68, 68, 0.1)', 
+                border: '1px solid #ef4444', 
+                color: '#ef4444', 
+                borderRadius: 'var(--radius-sm)', 
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <span>🚨</span> {error}
+              </div>
             )}
 
           </div>

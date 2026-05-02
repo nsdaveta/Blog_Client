@@ -68,17 +68,21 @@
     line-height: 1.35;
 }
 
-.blog-card-body p {
+.blog-card-preview-text {
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    line-clamp: 3;
     /* autoprefixer: ignore next */
     -webkit-box-orient: vertical;
-    box-orient: vertical;
     overflow: hidden;
+    white-space: pre-wrap;
+    user-select: text;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .blog-card-footer {

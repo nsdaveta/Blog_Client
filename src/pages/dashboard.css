@@ -139,7 +139,20 @@
     margin-bottom: 0.3rem;
 }
 
-.dashboard-blog-info p {
+.dashboard-blog-preview-text {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.dashboard-blog-author {
     font-size: 0.82rem;
     color: var(--text-muted);
 }
@@ -219,6 +232,7 @@
         display: -webkit-box;
         -webkit-line-clamp: 1;
         line-clamp: 1; /* Added standard property */
+        /* autoprefixer: ignore next */
         -webkit-box-orient: vertical;
     }
 }

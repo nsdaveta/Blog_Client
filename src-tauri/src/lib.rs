@@ -1,5 +1,6 @@
 use tauri::Manager;
 
+
 #[cfg(target_os = "windows")]
 use window_vibrancy::apply_mica;
 
@@ -24,7 +25,6 @@ pub fn run() {
         })
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
-        .plugin(tauri_plugin_frame::init())
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

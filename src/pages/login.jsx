@@ -12,6 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
 
@@ -26,13 +27,13 @@ const Login = () => {
         localStorage.setItem('userdata', JSON.stringify(res.data.user));
         navigate('/dashboard');
       })
-      .catch(error => {
-        console.error('Login error:', error);
-        if (error.response?.data?.message === 'Please verify your email first!') {
-            toast.warn('Please verify your email first! Check your inbox for the OTP sent during registration.');
+      .catch(err => {
+        console.error('Login error:', err);
+        if (err.response?.data?.message === 'Please verify your email first!') {
+            setError('Please verify your email first! Check your inbox for the OTP sent during registration.');
             return;
         }
-        toast.error(error.response?.data?.message || "Login failed! Check your credentials.");
+        setError(err.response?.data?.message || "Login failed! Check your credentials.");
       })
       .finally(() => setLoading(false));
   }
@@ -56,7 +57,10 @@ const Login = () => {
               type="email"
               placeholder="you@example.com"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                if (error) setError('');
+              }}
               required
               autoComplete="email"
             />
@@ -70,7 +74,10 @@ const Login = () => {
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (error) setError('');
+                }}
                 required
               />
               <button
@@ -90,6 +97,24 @@ const Login = () => {
             {loading ? 'Signing in...' : 'Sign In →'}
           </button>
         </form>
+
+        {error && (
+          <div className="error-box fade-in" style={{ 
+            marginTop: '1.5rem', 
+            padding: '0.85rem', 
+            background: 'rgba(239, 68, 68, 0.1)', 
+            border: '1px solid #ef4444', 
+            color: '#ef4444', 
+            borderRadius: 'var(--radius-sm)', 
+            fontSize: '0.9rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            textAlign: 'left'
+          }}>
+            <span>🚨</span> {error}
+          </div>
+        )}
 
         <div className="auth-footer">
           Don't have an account? <Link to="/register">Create one</Link>

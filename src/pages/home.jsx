@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import api from '../api'
 import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { VscArrowLeft } from 'react-icons/vsc'
@@ -149,6 +149,34 @@ const BlogCard = ({ blog, index }) => {
   const [showShareModal, setShowShareModal] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting] = useState(false)
+  const [isOverflowing, setIsOverflowing] = useState(false)
+  const textRef = useRef(null)
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current) {
+        const { scrollHeight, clientHeight } = textRef.current
+        // We use a small buffer and check if scrollHeight is significantly larger than clientHeight
+        // to account for rounding errors and line-height nuances.
+        setIsOverflowing(scrollHeight > clientHeight + 2)
+      }
+    }
+
+    checkOverflow()
+    
+    const resizeObserver = new ResizeObserver(() => {
+      // Small delay to ensure browser has finished layout
+      requestAnimationFrame(checkOverflow)
+    })
+
+    if (textRef.current) {
+      resizeObserver.observe(textRef.current)
+    }
+
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [blog.content])
 
   // ── Like ──────────────────────────────────────────────────
   const handleLike = async () => {
@@ -265,14 +293,18 @@ const BlogCard = ({ blog, index }) => {
       <div className="blog-card-body">
         <span className="badge badge-accent">Article</span>
         <h3>{blog.title || 'Untitled'}</h3>
-        <p>{(blog.content || '').slice(0, 100)}...</p>
+        <div className="blog-card-preview-text" ref={textRef} style={{ WebkitBoxOrient: 'vertical' }}>
+          {blog.content || ''}
+        </div>
       </div>
 
       <div className="blog-card-footer">
         <span className="blog-card-author">By {blog.author || 'Unknown'}</span>
-        <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
-          Read More →
-        </Link>
+        {isOverflowing && (
+          <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
+            Read More →
+          </Link>
+        )}
       </div>
 
       {/* ── Action bar ── */}
@@ -434,7 +466,7 @@ const Home = () => {
           </h1>
           <p>
             {searchResult 
-              ? `Found ${filteredBlogs.length} ${filteredBlogs.length === 1 ? 'story' : 'stories'} matching your search.`
+              ? `Found ${filteredBlogs.length} ${filteredBlogs.length === 1 ? 'blog' : 'blogs'} matching your search.`
               : 'Discover insightful articles, tutorials, and ideas from our community of writers.'}
           </p>
         </div>
@@ -452,7 +484,7 @@ const Home = () => {
         {!loading && filteredBlogs.length === 0 && (
           <div className="empty-state">
             <h3>{searchResult ? 'No matches found' : 'No posts yet'}</h3>
-            <p>{searchResult ? 'Try different keywords or browse recent stories.' : 'Be the first to publish something great!'}</p>
+            <p>{searchResult ? 'Try different keywords or browse recent blogs.' : 'Be the first to publish something great!'}</p>
             {searchResult && (
               <Link to="/" className="btn btn-outline btn-sm" style={{ marginTop: '1rem' }}>
                 Clear Search

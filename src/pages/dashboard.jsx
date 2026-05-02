@@ -1,11 +1,69 @@
 import React from 'react'
 import api from '../api'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import UserContext from './components/UserContext/usercontext'
 
 import { useDialog } from './components/Dialog/DialogContext'
 import './dashboard.css'
+
+const DashboardBlogItem = ({ blog, navigate, onDelete }) => {
+  const [isOverflowing, setIsOverflowing] = useState(false)
+  const textRef = useRef(null)
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current) {
+        const { scrollHeight, clientHeight } = textRef.current
+        setIsOverflowing(scrollHeight > clientHeight + 2)
+      }
+    }
+    checkOverflow()
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(checkOverflow)
+    })
+    if (textRef.current) resizeObserver.observe(textRef.current)
+    return () => resizeObserver.disconnect()
+  }, [blog.content])
+
+  return (
+    <div className="dashboard-blog-item">
+      <img
+        className="dashboard-blog-thumb"
+        src={blog.image?.url}
+        alt={blog.title}
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
+        onError={(e) => { e.target.style.background = 'var(--bg-secondary)'; e.target.style.display = 'flex'; }}
+      />
+      <div className="dashboard-blog-info">
+        <h3 style={{ WebkitBoxOrient: 'vertical' }}>{blog.title || 'Untitled'}</h3>
+        <div ref={textRef} className="dashboard-blog-preview-text" style={{ WebkitBoxOrient: 'vertical' }}>{blog.content || ""}</div>
+        {isOverflowing && (
+          <Link to={`/read/${blog._id}`} style={{ fontSize: '0.8rem', color: 'var(--accent)', fontWeight: '500', textDecoration: 'none', display: 'inline-block', marginTop: '0.2rem' }}>
+            Read more
+          </Link>
+        )}
+        <div className="dashboard-blog-author" style={{ marginTop: '0.4rem' }}>By {blog.author || 'Unknown'}</div>
+      </div>
+      <div className="dashboard-blog-actions">
+        <button
+          className="btn btn-outline btn-sm"
+          onClick={() => navigate(`/update/${blog._id}`)}
+        >
+          ✏️ Edit
+        </button>
+        <button
+          className="btn btn-danger btn-sm"
+          onClick={() => onDelete(blog._id, blog.image?.public_id)}
+        >
+          🗑️ Delete
+        </button>
+      </div>
+    </div>
+  )
+}
+
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -138,36 +196,13 @@ const Dashboard = () => {
                 blog.content?.toLowerCase().includes(searchQuery)
               )
               .map(blog => (
-              <div className="dashboard-blog-item" key={blog._id}>
-                <img
-                  className="dashboard-blog-thumb"
-                  src={blog.image?.url}
-                  alt={blog.title}
-                  crossOrigin="anonymous"
-                  referrerPolicy="no-referrer"
-                  onError={(e) => { e.target.style.background = 'var(--bg-secondary)'; e.target.style.display = 'flex'; }}
+                <DashboardBlogItem 
+                  key={blog._id} 
+                  blog={blog} 
+                  navigate={navigate} 
+                  onDelete={HandleDelete} 
                 />
-                <div className="dashboard-blog-info">
-                  <h3>{blog.title || 'Untitled'}</h3>
-                  <p>{(blog.content || "").slice(0, 100)}... <Link to={`/read/${blog._id}`}>Read more</Link></p>
-                  <p>By {blog.author || 'Unknown'}</p>
-                </div>
-                <div className="dashboard-blog-actions">
-                  <button
-                    className="btn btn-outline btn-sm"
-                    onClick={() => navigate(`/update/${blog._id}`)}
-                  >
-                    ✏️ Edit
-                  </button>
-                  <button
-                    className="btn btn-danger btn-sm"
-                    onClick={() => HandleDelete(blog._id, blog.image?.public_id)}
-                  >
-                    🗑️ Delete
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         )}
       </div>

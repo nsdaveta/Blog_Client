@@ -34,7 +34,7 @@
 }
 
 .tauri-mode .main-content {
-  padding-top: 32px; /* Mandatory space for fixed TitleBar */
+  padding-top: 0; /* No space needed for native titlebar */
 }
 
 /* Content Area */

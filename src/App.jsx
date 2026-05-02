@@ -14,7 +14,7 @@ import VerifyOtp from './pages/VerifyOtp'
 import ForgotPassword from './pages/forgot_password'
 import ResetPassword from './pages/reset_password'
 import { useBackButton } from './hooks/useBackButton'
-import TitleBar from './pages/components/TitleBar'
+
 import Sidebar from './pages/components/Sidebar'
 import Navbar from './pages/components/navbar'
 
@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div className={`App ${isDesktopTauri ? 'tauri-mode' : 'web-mode'}`}>
-      {isDesktopTauri ? <TitleBar /> : <Navbar />}
+      {!isDesktopTauri && <Navbar />}
       
       <div className="app-layout">
         {isDesktopTauri && <Sidebar />}
