@@ -78,6 +78,8 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
     user-select: text;
     padding: 0.5rem;
     background: rgba(0, 0, 0, 0.15);

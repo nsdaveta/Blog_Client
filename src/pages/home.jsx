@@ -293,9 +293,21 @@ const BlogCard = ({ blog, index }) => {
       <div className="blog-card-body">
         <span className="badge badge-accent">Article</span>
         <h3>{blog.title || 'Untitled'}</h3>
-        <div className="blog-card-preview-text" ref={textRef} style={{ WebkitBoxOrient: 'vertical' }}>
-          {blog.content || ''}
-        </div>
+          <div 
+            className="blog-card-preview-text" 
+            ref={textRef}
+            style={{ 
+              WebkitBoxOrient: 'vertical', 
+              overflow: 'hidden', 
+              display: '-webkit-box', 
+              WebkitLineClamp: 5, // Clamp to 5 lines (adjust as needed)
+              minHeight: '6.5em', // Ensures all cards are the same height (adjust as needed)
+              maxHeight: '6.5em', // Ensures all cards are the same height (adjust as needed)
+              lineHeight: '1.3em',
+            }}
+          >
+            {blog.content || ''}
+          </div>
       </div>
 
       <div className="blog-card-footer">

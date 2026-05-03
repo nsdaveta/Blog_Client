@@ -1,4 +1,11 @@
-/* ============================================================
+/* Fix text overflow in blog content area */
+.read-blog-content {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+  max-width: 100%;
+  box-sizing: border-box;
+}/* ============================================================
    READ BLOG PAGE — read_blog.css
    ============================================================ */
 
