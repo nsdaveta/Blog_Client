@@ -150,20 +150,27 @@ const BlogCard = ({ blog, index }) => {
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
-  // Helper: check if content should be truncated
-  const hasMoreContent = (content) => {
-    if (!content) return false;
-    // Show button if more than 7 lines OR more than 400 characters
-    return content.split(/\r?\n/).length > 7 || content.length > 400;
-  };
+  const [isOverflowing, setIsOverflowing] = useState(false)
+  const textRef = useRef(null)
 
-  // Helper: get first N lines or characters for preview
-  const getPreviewText = (content) => {
-    if (!content) return '';
-    const lines = content.split(/\r?\n/);
-    const truncated = lines.slice(0, 7).join('\n');
-    return truncated.length > 400 ? truncated.substring(0, 400) + '...' : truncated;
-  };
+  // Visual overflow detection (similar to dashboard logic)
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current) {
+        const { scrollHeight, clientHeight } = textRef.current
+        // If scrollHeight is greater than clientHeight, text is being hidden/clamped
+        setIsOverflowing(scrollHeight > clientHeight + 2)
+      }
+    }
+
+    checkOverflow()
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(checkOverflow)
+    })
+
+    if (textRef.current) resizeObserver.observe(textRef.current)
+    return () => resizeObserver.disconnect()
+  }, [blog.content])
 
   // ── Like ──────────────────────────────────────────────────
   const handleLike = async () => {
@@ -284,16 +291,17 @@ const BlogCard = ({ blog, index }) => {
         <span className="badge badge-accent">Article</span>
         <h3>{blog.title || 'Untitled'}</h3>
         <div
+          ref={textRef}
           className="blog-card-preview-text"
-          style={{ marginBottom: '0.5em', background: 'transparent' }}
+          style={{ marginBottom: '0.5em', background: 'transparent', WebkitBoxOrient: 'vertical' }}
         >
-           {getPreviewText(blog.content)}
+           {blog.content}
         </div>
       </div>
 
       <div className="blog-card-footer">
         <span className="blog-card-author">By {blog.author || 'Unknown'}</span>
-          {hasMoreContent(blog.content) && (
+        {isOverflowing && (
           <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
             Read More →
           </Link>
