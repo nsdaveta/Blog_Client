@@ -75,7 +75,7 @@
     /* Remove ellipsis and clamp, use fixed height for 7 lines */
     overflow: hidden;
     white-space: pre-line;
-    height: calc(7 * 1.6em + 1rem + 4px); /* (7 lines * 1.6 line-height) + 1rem total padding + 4px safety */
+    height: calc(7 * 1.6em + 1rem + 4px); /* (7 lines * 1.6 height) + 1rem padding + 4px safety buffer */
     min-height: calc(7 * 1.6em + 1rem + 4px);
     max-height: calc(7 * 1.6em + 1rem + 4px);
     box-sizing: border-box;
