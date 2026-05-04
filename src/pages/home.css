@@ -72,12 +72,13 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    /* autoprefixer: ignore next */
-    -webkit-box-orient: vertical;
+    /* Remove ellipsis and clamp, use fixed height for 7 lines */
     overflow: hidden;
-    white-space: pre-wrap;
+    white-space: pre-line;
+    height: calc(1.7em * 7); /* Slightly larger to ensure full 7 lines visible */
+    min-height: calc(1.7em * 7);
+    max-height: calc(1.7em * 7);
+    box-sizing: border-box;
     overflow-wrap: anywhere;
     word-break: break-word;
     user-select: text;

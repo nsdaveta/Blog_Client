@@ -149,34 +149,21 @@ const BlogCard = ({ blog, index }) => {
   const [showShareModal, setShowShareModal] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [isOverflowing, setIsOverflowing] = useState(false)
-  const textRef = useRef(null)
 
-  useEffect(() => {
-    const checkOverflow = () => {
-      if (textRef.current) {
-        const { scrollHeight, clientHeight } = textRef.current
-        // We use a small buffer and check if scrollHeight is significantly larger than clientHeight
-        // to account for rounding errors and line-height nuances.
-        setIsOverflowing(scrollHeight > clientHeight + 2)
-      }
-    }
+  // Helper: check if content should be truncated
+  const hasMoreContent = (content) => {
+    if (!content) return false;
+    // Show button if more than 7 lines OR more than 400 characters
+    return content.split(/\r?\n/).length > 7 || content.length > 400;
+  };
 
-    checkOverflow()
-    
-    const resizeObserver = new ResizeObserver(() => {
-      // Small delay to ensure browser has finished layout
-      requestAnimationFrame(checkOverflow)
-    })
-
-    if (textRef.current) {
-      resizeObserver.observe(textRef.current)
-    }
-
-    return () => {
-      resizeObserver.disconnect()
-    }
-  }, [blog.content])
+  // Helper: get first N lines or characters for preview
+  const getPreviewText = (content) => {
+    if (!content) return '';
+    const lines = content.split(/\r?\n/);
+    const truncated = lines.slice(0, 7).join('\n');
+    return truncated.length > 400 ? truncated.substring(0, 400) + '...' : truncated;
+  };
 
   // ── Like ──────────────────────────────────────────────────
   const handleLike = async () => {
@@ -290,29 +277,23 @@ const BlogCard = ({ blog, index }) => {
         onError={(e) => { e.target.style.display = 'none' }}
       />
 
-      <div className="blog-card-body">
+      <div 
+        className="blog-card-body" 
+        style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}
+      >
         <span className="badge badge-accent">Article</span>
         <h3>{blog.title || 'Untitled'}</h3>
-          <div 
-            className="blog-card-preview-text" 
-            ref={textRef}
-            style={{ 
-              WebkitBoxOrient: 'vertical', 
-              overflow: 'hidden', 
-              display: '-webkit-box', 
-              WebkitLineClamp: 5, // Clamp to 5 lines (adjust as needed)
-              minHeight: '6.5em', // Ensures all cards are the same height (adjust as needed)
-              maxHeight: '6.5em', // Ensures all cards are the same height (adjust as needed)
-              lineHeight: '1.3em',
-            }}
-          >
-            {blog.content || ''}
-          </div>
+        <div
+          className="blog-card-preview-text"
+          style={{ marginBottom: '0.5em', background: 'transparent' }}
+        >
+           {getPreviewText(blog.content)}
+        </div>
       </div>
 
       <div className="blog-card-footer">
         <span className="blog-card-author">By {blog.author || 'Unknown'}</span>
-        {isOverflowing && (
+          {hasMoreContent(blog.content) && (
           <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
             Read More →
           </Link>
