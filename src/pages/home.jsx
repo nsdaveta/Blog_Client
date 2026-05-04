@@ -158,8 +158,11 @@ const BlogCard = ({ blog, index }) => {
     const checkOverflow = () => {
       if (textRef.current) {
         const { scrollHeight, clientHeight } = textRef.current
-        // If scrollHeight is greater than clientHeight, text is overflowing
-        setIsOverflowing(scrollHeight > clientHeight)
+        // Use a 5px buffer.
+        // This prevents the "Read More" button from appearing when the content is 
+        // exactly at the line limit, accounting for browser-specific sub-pixel 
+        // rendering and font descenders (like the tails on 'g', 'j', 'p', 'y').
+        setIsOverflowing(scrollHeight > clientHeight + 5)
       }
     }
 
@@ -294,7 +297,7 @@ const BlogCard = ({ blog, index }) => {
           ref={textRef}
           className="blog-card-preview-text"
                   >
-           {blog.content}
+             {blog.content?.trim()}
         </div>
       </div>
 
