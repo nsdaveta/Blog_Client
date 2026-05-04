@@ -158,11 +158,9 @@ const BlogCard = ({ blog, index }) => {
     const checkOverflow = () => {
       if (textRef.current) {
         const { scrollHeight, clientHeight } = textRef.current
-        // Use a 5px buffer.
-        // This prevents the "Read More" button from appearing when the content is 
-        // exactly at the line limit, accounting for browser-specific sub-pixel 
-        // rendering and font descenders (like the tails on 'g', 'j', 'p', 'y').
-        setIsOverflowing(scrollHeight > clientHeight + 5)
+        // Use a 1px buffer to account for sub-pixel rendering differences.
+        // The button should appear if scrollHeight is strictly greater than clientHeight plus a minimal buffer.
+        setIsOverflowing(scrollHeight > clientHeight + 1)
       }
     }
 

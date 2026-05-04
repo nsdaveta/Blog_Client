@@ -75,13 +75,12 @@
     /* Remove ellipsis and clamp, use fixed height for 7 lines */
     overflow: hidden;
     white-space: pre-line;
-    height: calc(7 * 1.6em + 1rem + 2px); /* (7 lines * 1.6 line-height) + 1rem total padding + 2px safety */
-    min-height: calc(7 * 1.6em + 1rem + 2px);
-    max-height: calc(7 * 1.6em + 1rem + 2px);
+    height: calc(7 * 1.6em + 1rem + 4px); /* (7 lines * 1.6 line-height) + 1rem total padding + 4px safety */
+    min-height: calc(7 * 1.6em + 1rem + 4px);
+    max-height: calc(7 * 1.6em + 1rem + 4px);
     box-sizing: border-box;
     overflow-wrap: anywhere;
     word-break: break-word;
-    user-select: text;
     padding: 0.5rem;
     background: rgba(0, 0, 0, 0.15);
     border-radius: var(--radius-sm);
