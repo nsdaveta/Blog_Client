@@ -151,24 +151,37 @@ const BlogCard = ({ blog, index }) => {
   const [submitting, setSubmitting] = useState(false)
 
   const [isOverflowing, setIsOverflowing] = useState(false)
+  const [exceedsLineLimit, setExceedsLineLimit] = useState(false)
   const textRef = useRef(null)
 
-  // Visual overflow detection (similar to dashboard logic)
+  // Check if content exceeds 7 lines (by line breaks or estimated line count)
+  useEffect(() => {
+    if (!blog.content) {
+      setExceedsLineLimit(false)
+      return
+    }
+    // Count lines by splitting on newlines, but also estimate for long lines
+    const lines = blog.content.split(/\r?\n/)
+    let approxLines = 0
+    for (let line of lines) {
+      // Estimate: if line is long, it will wrap. Assume ~90 chars per line for preview width.
+      approxLines += Math.ceil(line.length / 90) || 1
+    }
+    setExceedsLineLimit(approxLines > 7)
+  }, [blog.content])
+
+  // Visual overflow detection (optional, fallback for edge cases)
   useEffect(() => {
     const checkOverflow = () => {
       if (textRef.current) {
         const { scrollHeight, clientHeight } = textRef.current
-        // Use a 1px buffer to account for sub-pixel rendering differences.
-        // The button should appear if scrollHeight is strictly greater than clientHeight plus a minimal buffer.
         setIsOverflowing(scrollHeight > clientHeight + 1)
       }
     }
-
     checkOverflow()
     const resizeObserver = new ResizeObserver(() => {
       requestAnimationFrame(checkOverflow)
     })
-
     if (textRef.current) resizeObserver.observe(textRef.current)
     return () => resizeObserver.disconnect()
   }, [blog.content])
@@ -294,14 +307,14 @@ const BlogCard = ({ blog, index }) => {
         <div
           ref={textRef}
           className="blog-card-preview-text"
-                  >
-             {blog.content?.trim()}
+        >
+          {blog.content?.trim()}
         </div>
       </div>
 
       <div className="blog-card-footer">
         <span className="blog-card-author">By {blog.author || 'Unknown'}</span>
-        {isOverflowing && (
+        {(exceedsLineLimit || isOverflowing) && (
           <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
             Read More →
           </Link>

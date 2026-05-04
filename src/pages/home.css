@@ -72,12 +72,11 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
-    /* Remove ellipsis and clamp, use fixed height for 7 lines */
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
     overflow: hidden;
-    white-space: pre-line;
-    height: calc(7 * 1.6em + 1rem + 4px); /* (7 lines * 1.6 height) + 1rem padding + 4px safety buffer */
-    min-height: calc(7 * 1.6em + 1rem + 4px);
-    max-height: calc(7 * 1.6em + 1rem + 4px);
+    white-space: normal;
     box-sizing: border-box;
     overflow-wrap: anywhere;
     word-break: break-word;
