@@ -158,8 +158,8 @@ const BlogCard = ({ blog, index }) => {
     const checkOverflow = () => {
       if (textRef.current) {
         const { scrollHeight, clientHeight } = textRef.current
-        // If scrollHeight is greater than clientHeight, text is being hidden/clamped
-        setIsOverflowing(scrollHeight > clientHeight + 2)
+        // If scrollHeight is greater than clientHeight, text is overflowing
+        setIsOverflowing(scrollHeight > clientHeight)
       }
     }
 
@@ -293,8 +293,7 @@ const BlogCard = ({ blog, index }) => {
         <div
           ref={textRef}
           className="blog-card-preview-text"
-          style={{ marginBottom: '0.5em', background: 'transparent', WebkitBoxOrient: 'vertical' }}
-        >
+                  >
            {blog.content}
         </div>
       </div>
