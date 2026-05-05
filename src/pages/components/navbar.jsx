@@ -148,7 +148,7 @@ const Navbar = () => {
                                     <span className="username-display">{user.name || 'User'}</span>
                                 </div>
                                 <button onClick={handleLogout} className="logout-btn-minimal" title="Logout">
-                                    <VscSignOut />
+                                    <VscSignOut />  <span>Logout</span>
                                 </button>
                             </div>
                         ) : (
