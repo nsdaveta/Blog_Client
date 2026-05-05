@@ -149,7 +149,7 @@ const Navbar = () => {
                                 </div>
                                 <button onClick={handleLogout} className="logout-btn-minimal" title="Logout">
                                     <VscSignOut />
-                                Logout
+                                   Logout
                                 </button>
                             </div>
                         ) : (
