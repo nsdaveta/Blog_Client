@@ -17,7 +17,7 @@ const getCurrentUserId = () => {
     }).join(''));
     return JSON.parse(jsonPayload).id || null;
   } catch (e) {
-    console.error("JWT Decode Error:", e);
+    console.error("JWT Decode Error:", e);   
     return null;
   }
 }

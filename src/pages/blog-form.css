@@ -42,6 +42,8 @@
     min-height: 180px;
     font-size: 0.95rem;
     line-height: 1.7;
+    resize: none;
+    overflow-y: auto;
 }
 
 .blog-form-actions {
@@ -137,4 +139,4 @@
     .upload-area {
         padding: 1rem;
     }
-}
+}
