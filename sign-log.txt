@@ -1150,3 +1150,25 @@ Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstAA69.tmp
 Done Adding Additional Store
 Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
 [Mon 05/04/2026 15:52:20.05] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 16:16:16.93] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Tue 05/05/2026 16:16:17.00] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Tue 05/05/2026 16:16:21.37] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 16:16:32.00] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Tue 05/05/2026 16:16:32.11] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Tue 05/05/2026 16:16:37.64] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 16:16:37.87] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Tue 05/05/2026 16:16:37.93] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+
+Number of errors: 1
+SignTool Error: The specified timestamp server either could not be reached or
+returned an invalid response.
+SignTool Error: An error occurred while attempting to sign: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Tue 05/05/2026 16:17:16.92] FAILED to sign: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll (Exit Code: 1
