@@ -102,8 +102,9 @@ const Navbar = () => {
                 </div>
             </div>
 
-            <div className="nav-bottom-row">
-                <div className={`nav-search-section ${isSearchDisabled ? 'disabled' : ''}`}>
+            {/* Desktop: Search + Auth in one row / Mobile: Only Auth */}
+            <div className="nav-bottom-row desktop-row">
+                <div className={`nav-search-section desktop-only ${isSearchDisabled ? 'disabled' : ''}`}>
                     <div className="search-wrapper">
                         <input 
                             ref={searchInputRef}
@@ -157,6 +158,44 @@ const Navbar = () => {
                                 <NavLink to="/register" className="signup-btn">Sign Up</NavLink>
                             </div>
                         )}
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile: Search in its own centered row */}
+            <div className="nav-search-row mobile-only">
+                <div className={`nav-search-section ${isSearchDisabled ? 'disabled' : ''}`}>
+                    <div className="search-wrapper">
+                        <input 
+                            ref={searchInputRef}
+                            type="text" 
+                            placeholder={isSearchDisabled ? "Search disabled" : "Search blogs..."} 
+                            className="nav-search-input-minimal" 
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={handleSearchKeyDown}
+                            disabled={isSearchDisabled}
+                        />
+                        <button 
+                            className="search-submit-btn" 
+                            disabled={isSearchDisabled}
+                            onClick={(e) => {
+                                handleSearchSubmit();
+                                window.getSelection()?.removeAllRanges();
+                                e.currentTarget.blur();
+                            }}
+                            onMouseUp={(e) => {
+                                window.getSelection()?.removeAllRanges();
+                                setTimeout(() => e.currentTarget.blur(), 0);
+                            }}
+                            onTouchEnd={(e) => {
+                                window.getSelection()?.removeAllRanges();
+                                setTimeout(() => e.currentTarget.blur(), 0);
+                            }}
+                            title="Search"
+                        >
+                            <VscSearch />
+                        </button>
                     </div>
                 </div>
             </div>

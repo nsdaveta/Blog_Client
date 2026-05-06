@@ -32,8 +32,9 @@
 .nav-bottom-row {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    padding-top: 4px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
 }
 
 /* Brand Section */
@@ -107,8 +108,18 @@
 
 /* Search Section */
 .nav-search-section {
-    flex: 0 1 400px; /* Increased width for better search experience */
+    flex: 0 1 400px;
     transition: opacity 0.3s ease;
+    margin-right: auto; /* Push to extreme left */
+}
+
+/* Desktop/Mobile visibility utilities */
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
 }
 
 .nav-search-section.disabled {
@@ -316,7 +327,7 @@
 .search-submit-btn:hover {
     background: #6a4dff;
     color: #fff;
-}
+} 
 
 .search-submit-btn:active {
     background: #0f1115; /* Purple highlight disappears on click */
@@ -337,7 +348,7 @@
 
     .nav-search-section {
         flex: 1;
-        min-width: 0; /* Allow shrinking */
+        min-width: 0;
         margin-right: 12px;
     }
 
@@ -371,24 +382,35 @@
 }
 
 @media (max-width: 480px) {
-    .nav-top-row, .nav-bottom-row {
-        padding: 10px 12px; /* Even smaller padding on tiny screens */
+    .nav-top-row {
+        padding: 10px 12px;
     }
 
     .nav-links-section {
         gap: 8px;
     }
     
-    .nav-bottom-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        padding: 12px 12px 20px 12px; /* Increased bottom padding to 20px */
+    /* Mobile: hide desktop elements */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: flex !important;
+    }
+    
+    /* Mobile: Search gets its own centered row */
+    .nav-search-row {
+        display: flex;
+        justify-content: center;
+        padding: 12px;
+        width: 100%;
+        order: 3; /* Put search in third row */
     }
 
     .nav-search-section {
         width: 100%;
-        min-width: 0;
+        max-width: 400px;
         margin-right: 0;
     }
 
