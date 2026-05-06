@@ -30,10 +30,10 @@
 }
 
 .nav-bottom-row {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 40px;
+    justify-content: flex-end;
+    padding-top: 4px;
 }
 
 /* Brand Section */
