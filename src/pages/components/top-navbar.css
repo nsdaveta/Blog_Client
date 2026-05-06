@@ -280,14 +280,18 @@
 }
 
 .logout-btn-minimal {
-    background: grey;
-    border: 1px solid black;
-    color: red;
-    cursor: pointer;
-    font-size: 1.2rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ff99a4;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 6px 14px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
-    transition: color 0.2s;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .logout-btn-minimal:hover {
