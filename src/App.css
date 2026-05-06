@@ -12,12 +12,12 @@
 }
 
 .web-mode .main-content {
-  padding-top: 106px; /* Desktop two-row navbar height */
+  padding-top: 120px; /* Desktop two-row navbar height */
 }
 
 @media (max-width: 480px) {
   .web-mode .main-content {
-    padding-top: 175px; /* Adjusting for stacked three-row mobile navbar */
+    padding-top: 180px; /* Adjusting for stacked three-row mobile navbar */
   }
 }
 
