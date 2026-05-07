@@ -77,42 +77,42 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
-    transition: all 0.2s ease;
-    padding: 4px 0;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 }
 
 .nav-link-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
     color: #fff;
-    transform: translateY(-2px);
 }
 
 .nav-link-secondary::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
+    bottom: -8px;
+    left: 20%;
+    right: 20%;
     height: 3px;
     background: var(--accent-light);
-    border-radius: 10px;
+    border-radius: 2px;
     opacity: 0;
-    transform: scaleX(0);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
 .nav-link-secondary:hover::after,
 .nav-link-secondary.active::after {
     opacity: 1;
-    transform: scaleX(1);
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .nav-link-secondary.active {
+    background: rgba(255, 255, 255, 0.08);
     color: var(--accent-light);
 }
 
@@ -197,96 +197,87 @@
 }
 
 .nav-link-minimal {
+    padding: 8px 16px;
+    border-radius: 6px;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 600;
     position: relative;
-    transition: all 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
 }
 
 .nav-link-minimal:hover {
+    background: rgba(255, 255, 255, 0.05);
     color: #fff;
-    transform: translateY(-2px);
 }
 
 .nav-link-minimal::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 100%;
+    bottom: -8px;
+    left: 20%;
+    right: 20%;
     height: 3px;
     background: var(--accent-light);
-    border-radius: 10px;
+    border-radius: 2px;
     opacity: 0;
-    transform: scaleX(0);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s ease;
 }
 
 .nav-link-minimal:hover::after,
 .nav-link-minimal.active::after {
     opacity: 1;
-    transform: scaleX(1);
     box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .nav-link-minimal.active {
+    background: rgba(255, 255, 255, 0.08);
     color: #fff;
 }
 
 .signup-btn {
     background: var(--accent);
-    color: white;
+    color: white !important;
     text-decoration: none;
-    padding: 6px 16px;
+    padding: 8px 16px;
     border-radius: 6px;
     font-size: 0.9rem;
     font-weight: 600;
-    transition: opacity 0.2s;
-    position: relative; /* Added for underscore positioning */
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+.signup-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.95;
+    box-shadow: 0 4px 12px var(--accent-glow);
 }
 
 .signup-btn::after {
     content: '';
     position: absolute;
     bottom: -8px;
-    left: 10%;
-    width: 80%;
+    left: 20%;
+    right: 20%;
     height: 3px;
-    background: var(--accent-light);
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 2px;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
 }
 
-.signup-btn:hover::after {
+.signup-btn:hover::after,
+.signup-btn.active::after {
     opacity: 1;
-    box-shadow: 0 0 10px var(--accent-glow);
-}
-
-.signup-btn:hover {
-    opacity: 0.9;
-    color: white !important; /* Prevent text from disappearing by inheriting global link hover color */
-}
-
-.signup-btn:active {
-    transform: scale(0.95);
-    opacity: 0.8;
-    color: white !important;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
 .signup-btn.active {
     background: var(--accent-light);
-    color: white !important;
     box-shadow: 0 0 20px rgba(165, 161, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-}
-
-.signup-btn.active::after {
-    opacity: 1;
-    box-shadow: 0 0 10px var(--accent-glow);
 }
 
 .user-profile {
