@@ -88,22 +88,32 @@
 
 .nav-link-secondary:hover {
     color: #fff;
+    transform: translateY(-2px);
 }
 
-.nav-link-secondary.active {
-    color: var(--accent-light);
-}
-
-.nav-link-secondary.active::after {
+.nav-link-secondary::after {
     content: '';
     position: absolute;
     bottom: -4px;
     left: 0;
     width: 100%;
     height: 3px;
-    background: var(--accent-light); /* Back to original purple */
+    background: var(--accent-light);
     border-radius: 10px;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-secondary:hover::after,
+.nav-link-secondary.active::after {
+    opacity: 1;
+    transform: scaleX(1);
     box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-link-secondary.active {
+    color: var(--accent-light);
 }
 
 /* Search Section */
@@ -192,18 +202,16 @@
     font-size: 0.9rem;
     font-weight: 600;
     position: relative;
-    transition: color 0.2s;
+    transition: all 0.2s;
+    display: inline-block;
 }
 
 .nav-link-minimal:hover {
     color: #fff;
+    transform: translateY(-2px);
 }
 
-.nav-link-minimal.active {
-    color: #fff;
-}
-
-.nav-link-minimal.active::after {
+.nav-link-minimal::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -212,7 +220,20 @@
     height: 3px;
     background: var(--accent-light);
     border-radius: 10px;
+    opacity: 0;
+    transform: scaleX(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link-minimal:hover::after,
+.nav-link-minimal.active::after {
+    opacity: 1;
+    transform: scaleX(1);
     box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-link-minimal.active {
+    color: #fff;
 }
 
 .signup-btn {

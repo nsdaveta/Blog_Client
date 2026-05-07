@@ -154,8 +154,8 @@ const Navbar = () => {
                             </div>
                         ) : (
                             <div className="auth-group">
-                                <NavLink to="/login" className="nav-link-minimal">Login</NavLink>
-                                <NavLink to="/register" className="signup-btn">Sign Up</NavLink>
+                                <NavLink to="/login" className={({ isActive }) => (isActive ? 'nav-link-minimal active' : 'nav-link-minimal')}>Login</NavLink>
+                                <NavLink to="/register" className={({ isActive }) => (isActive ? 'signup-btn active' : 'signup-btn')}>Sign Up</NavLink>
                             </div>
                         )}
                     </div>
