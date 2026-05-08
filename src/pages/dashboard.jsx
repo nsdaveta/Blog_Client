@@ -92,7 +92,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     document.title = searchQuery
-      ? `Blogify - Search: "${searchQuery}"`
+      ? `Blogify - Dashboard - Search: "${searchQuery}"`
       : 'Blogify - Dashboard';
   }, [searchQuery]);
 
