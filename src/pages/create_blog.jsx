@@ -86,7 +86,8 @@ const Create_blog = () => {
 
       await api.post('/create', form, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       })
 

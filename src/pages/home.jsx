@@ -134,8 +134,7 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
 }
 
 // Individual blog card
-const BlogCard = ({ blog, index }) => {
-  const currentUserId = getCurrentUserId()
+const BlogCard = ({ blog, index, currentUserId }) => {
   const isLoggedIn = !!currentUserId
 
   const [likes, setLikes] = useState(totalCount(blog.likes))
@@ -194,7 +193,11 @@ const BlogCard = ({ blog, index }) => {
       return;
     }
     try {
-      const res = await api.post(`/like/${blog._id}`)
+      const res = await api.post(`/like/${blog._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setLikes(res.data.total)
       setMyLikes(res.data.userCount)
       // Clear dislike locally if server removed it
@@ -237,7 +240,11 @@ const BlogCard = ({ blog, index }) => {
   const recordShare = async () => {
     try {
       if (!blog || !blog._id) return;
-      const res = await api.post(`/share/${blog._id}`)
+      const res = await api.post(`/share/${blog._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setShares(res.data.total)
       setMyShares(res.data.userCount)
     } catch (err) {
@@ -253,7 +260,11 @@ const BlogCard = ({ blog, index }) => {
       return;
     }
     try {
-      const res = await api.post(`/dislike/${blog._id}`)
+      const res = await api.post(`/dislike/${blog._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setDislikes(res.data.total)
       setMyDislikes(res.data.userCount)
       // Clear like locally if server removed it
@@ -274,7 +285,11 @@ const BlogCard = ({ blog, index }) => {
     if (!commentText.trim()) { return }
     setSubmitting(true)
     try {
-      const res = await api.post(`/comment/${blog._id}`, { text: commentText.trim() })
+      const res = await api.post(`/comment/${blog._id}`, { text: commentText.trim() }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setComments(prev => [...prev, res.data.comment])
       setCommentText('')
     } catch {
@@ -438,6 +453,8 @@ const Home = () => {
   const [searchParams] = useSearchParams();
   const searchResult = searchParams.get('search')?.toLowerCase() || '';
 
+  const currentUserId = getCurrentUserId();
+
   useEffect(() => {
     setLoading(true);
     api.get('/').then(res => {
@@ -513,7 +530,7 @@ const Home = () => {
         {!loading && filteredBlogs.length > 0 && (
           <div className="blog-grid">
             {filteredBlogs.map((blog, i) => (
-              <BlogCard key={blog._id || i} blog={blog} index={i} />
+              <BlogCard key={blog._id || i} blog={blog} index={i} currentUserId={currentUserId} />
             ))}
           </div>
         )}

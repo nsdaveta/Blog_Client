@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import axios from 'axios'
 import api from '../api'
 import { toast } from 'react-toastify'
 import UserContext from './components/UserContext/usercontext'
