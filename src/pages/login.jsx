@@ -35,15 +35,11 @@ const Login = () => {
         setError(err.response?.data?.message || "Login failed! Check your credentials.");
       })
       .finally(() => setLoading(false));
-  }
-
-  useEffect(() => {
-    document.title = 'Blogify - Login';
-  }, []);
+  };
 
   return (
     <>
-
+    <title>Blogify-Login</title>
     <div className="auth-wrapper">
       <div className="auth-card">
         <div className="auth-header">
