@@ -459,9 +459,12 @@ const Home = () => {
     );
   });
 
+  useEffect(() => {
+    document.title = `Blogify - ${searchResult ? `Search: ${searchResult}` : 'Home'}`;
+  }, [searchResult]);
+
   return (
     <>
-      <title>Blogify - {searchResult ? `Search: ${searchResult}` : 'Home'}</title>
       <div className="page-wrapper">
         
         {searchResult && (

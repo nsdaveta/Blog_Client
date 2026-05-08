@@ -117,9 +117,13 @@ const Update_blog = () => {
 
   }
 
+  useEffect(() => {
+    document.title = 'Blogify - Update Blog';
+  }, []);
+
   return (
     <>
-      <title>Blogify-Update Blog</title>
+
       <div className="blog-form-wrapper">
 
         <div className="blog-form-header fade-in-up">

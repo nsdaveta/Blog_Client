@@ -54,9 +54,13 @@ const ResetPassword = () => {
         }
     };
 
+    useEffect(() => {
+        document.title = 'Blogify - Reset Password';
+    }, []);
+
     return (
         <>
-        <title>Blogify-Reset Password</title>
+
         <div className="auth-wrapper">
             <div className="auth-card">
                 <div className="auth-header">

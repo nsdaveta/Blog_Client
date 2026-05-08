@@ -112,9 +112,13 @@ const Create_blog = () => {
 
   }
 
+  useEffect(() => {
+    document.title = 'Blogify - Create Blog';
+  }, []);
+
   return (
     <>
-      <title>Blogify-Create Blog</title>
+
       <div className="blog-form-wrapper">
 
         <div className="blog-form-header fade-in-up">

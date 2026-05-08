@@ -301,9 +301,13 @@ const Register = () => {
         </form>
     );
 
+    useEffect(() => {
+        document.title = 'Blogify - Register';
+    }, []);
+
     return (
         <>
-            <title>Blogify-Register</title>
+
             <div className="auth-wrapper">
                 <div className="auth-card">
                     <div className="auth-header">

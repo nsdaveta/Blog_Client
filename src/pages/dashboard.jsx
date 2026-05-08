@@ -136,9 +136,12 @@ const Dashboard = () => {
   // Get first letter of user's name for avatar
   const avatarLetter = user?.name ? user.name[0].toUpperCase() : '?';
 
+  useEffect(() => {
+    document.title = 'Blogify - Dashboard';
+  }, []);
+
   return (
     <>
-      <title>Blogify-Dashboard</title>
       <div className="page-wrapper">
         {/* Welcome Card */}
         <div className="welcome-card">

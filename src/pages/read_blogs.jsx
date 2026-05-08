@@ -42,9 +42,15 @@ const ReadMore = () => {
         </div>
     )
 
+    useEffect(() => {
+        if (blog?.title) {
+            document.title = `Blogify — ${blog.title}`;
+        }
+    }, [blog]);
+
     return (
         <>
-            <title>Blogify — {blog.title}</title>
+
 
             <div className="read-blog-container fade-in">
                 <button className="btn btn-outline btn-sm" onClick={() => navigate(-1)} style={{ marginBottom: '2rem' }}>
