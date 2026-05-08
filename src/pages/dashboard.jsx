@@ -90,6 +90,12 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    document.title = searchQuery
+      ? `Blogify - Search: "${searchQuery}"`
+      : 'Blogify - Dashboard';
+  }, [searchQuery]);
+
   // Listen for spontaneous logout events on an active dashboard session
   useEffect(() => {
     if (!loading && !user) {
@@ -136,9 +142,7 @@ const Dashboard = () => {
   // Get first letter of user's name for avatar
   const avatarLetter = user?.name ? user.name[0].toUpperCase() : '?';
 
-  useEffect(() => {
-    document.title = 'Blogify - Dashboard';
-  }, []);
+
 
   return (
     <>
