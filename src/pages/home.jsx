@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import api from '../api'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
+import { VscArrowLeft } from 'react-icons/vsc'
 
 import './home.css'
 
@@ -16,7 +17,7 @@ const getCurrentUserId = () => {
     }).join(''));
     return JSON.parse(jsonPayload).id || null;
   } catch (e) {
-    console.error("JWT Decode Error:", e);
+    console.error("JWT Decode Error:", e);   
     return null;
   }
 }
@@ -133,8 +134,7 @@ const ShareModal = ({ blog, onClose, onShareRecorded }) => {
 }
 
 // Individual blog card
-const BlogCard = ({ blog, index }) => {
-  const currentUserId = getCurrentUserId()
+const BlogCard = ({ blog, index, currentUserId }) => {
   const isLoggedIn = !!currentUserId
 
   const [likes, setLikes] = useState(totalCount(blog.likes))
@@ -149,6 +149,42 @@ const BlogCard = ({ blog, index }) => {
   const [commentText, setCommentText] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
+  const [isOverflowing, setIsOverflowing] = useState(false)
+  const [exceedsLineLimit, setExceedsLineLimit] = useState(false)
+  const textRef = useRef(null)
+
+  // Check if content exceeds 7 lines (by line breaks or estimated line count)
+  useEffect(() => {
+    if (!blog.content) {
+      setExceedsLineLimit(false)
+      return
+    }
+    // Count lines by splitting on newlines, but also estimate for long lines
+    const lines = blog.content.split(/\r?\n/)
+    let approxLines = 0
+    for (let line of lines) {
+      // Estimate: if line is long, it will wrap. Assume ~90 chars per line for preview width.
+      approxLines += Math.ceil(line.length / 90) || 1
+    }
+    setExceedsLineLimit(approxLines > 7)
+  }, [blog.content])
+
+  // Visual overflow detection (optional, fallback for edge cases)
+  useEffect(() => {
+    const checkOverflow = () => {
+      if (textRef.current) {
+        const { scrollHeight, clientHeight } = textRef.current
+        setIsOverflowing(scrollHeight > clientHeight + 1)
+      }
+    }
+    checkOverflow()
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(checkOverflow)
+    })
+    if (textRef.current) resizeObserver.observe(textRef.current)
+    return () => resizeObserver.disconnect()
+  }, [blog.content])
+
   // ── Like ──────────────────────────────────────────────────
   const handleLike = async () => {
     if (!isLoggedIn) { return }
@@ -157,7 +193,11 @@ const BlogCard = ({ blog, index }) => {
       return;
     }
     try {
-      const res = await api.post(`/like/${blog._id}`)
+      const res = await api.post(`/like/${blog._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setLikes(res.data.total)
       setMyLikes(res.data.userCount)
       // Clear dislike locally if server removed it
@@ -200,7 +240,11 @@ const BlogCard = ({ blog, index }) => {
   const recordShare = async () => {
     try {
       if (!blog || !blog._id) return;
-      const res = await api.post(`/share/${blog._id}`)
+      const res = await api.post(`/share/${blog._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setShares(res.data.total)
       setMyShares(res.data.userCount)
     } catch (err) {
@@ -216,7 +260,11 @@ const BlogCard = ({ blog, index }) => {
       return;
     }
     try {
-      const res = await api.post(`/dislike/${blog._id}`)
+      const res = await api.post(`/dislike/${blog._id}`, {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setDislikes(res.data.total)
       setMyDislikes(res.data.userCount)
       // Clear like locally if server removed it
@@ -237,7 +285,11 @@ const BlogCard = ({ blog, index }) => {
     if (!commentText.trim()) { return }
     setSubmitting(true)
     try {
-      const res = await api.post(`/comment/${blog._id}`, { text: commentText.trim() })
+      const res = await api.post(`/comment/${blog._id}`, { text: commentText.trim() }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
       setComments(prev => [...prev, res.data.comment])
       setCommentText('')
     } catch {
@@ -256,20 +308,32 @@ const BlogCard = ({ blog, index }) => {
         className="blog-card-img"
         src={blog.image?.url}
         alt={blog.title || 'Blog Post'}
+        crossOrigin="anonymous"
+        referrerPolicy="no-referrer"
         onError={(e) => { e.target.style.display = 'none' }}
       />
 
-      <div className="blog-card-body">
+      <div 
+        className="blog-card-body" 
+        style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}
+      >
         <span className="badge badge-accent">Article</span>
         <h3>{blog.title || 'Untitled'}</h3>
-        <p>{(blog.content || '').slice(0, 100)}...</p>
+        <div
+          ref={textRef}
+          className="blog-card-preview-text"
+        >
+          {blog.content?.trim()}
+        </div>
       </div>
 
       <div className="blog-card-footer">
         <span className="blog-card-author">By {blog.author || 'Unknown'}</span>
-        <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
-          Read More →
-        </Link>
+        {(exceedsLineLimit || isOverflowing) && (
+          <Link to={`/read/${blog._id}`} className="btn btn-outline btn-sm">
+            Read More →
+          </Link>
+        )}
       </div>
 
       {/* ── Action bar ── */}
@@ -385,8 +449,14 @@ const BlogCard = ({ blog, index }) => {
 const Home = () => {
   const [blogs, setBlogs] = useState([])
   const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams();
+  const searchResult = searchParams.get('search')?.toLowerCase() || '';
+
+  const currentUserId = getCurrentUserId();
 
   useEffect(() => {
+    setLoading(true);
     api.get('/').then(res => {
       if (Array.isArray(res.data)) {
         setBlogs(res.data)
@@ -397,17 +467,47 @@ const Home = () => {
     })
   }, [])
 
+  const filteredBlogs = blogs.filter(blog => {
+    if (!searchResult) return true;
+    return (
+      blog.title?.toLowerCase().includes(searchResult) ||
+      blog.content?.toLowerCase().includes(searchResult) ||
+      blog.author?.toLowerCase().includes(searchResult)
+    );
+  });
+
+  useEffect(() => {
+    document.title = `Blogify - ${searchResult ? `Search: ${searchResult}` : 'Home'}`;
+  }, [searchResult]);
+
   return (
     <>
-      <title>Blogify-Home</title>
       <div className="page-wrapper">
+        
+        {searchResult && (
+          <button 
+            className="btn btn-outline btn-sm" 
+            onClick={() => navigate('/')} 
+            style={{ marginTop: '1rem', marginBottom: '1.5rem', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: '8px' }}
+          >
+            <VscArrowLeft /> Back to Feed
+          </button>
+        )}
 
         <div className="home-hero fade-in-up">
-          <h1 className="gradient-text">Stories Worth Reading</h1>
-          <p>Discover insightful articles, tutorials, and ideas from our community of writers.</p>
+          <h1 className="gradient-text">
+            {searchResult ? `Results for "${searchResult}"` : 'Stories Worth Reading'}
+          </h1>
+          <p>
+            {searchResult 
+              ? `Found ${filteredBlogs.length} ${filteredBlogs.length === 1 ? 'blog' : 'blogs'} matching your search.`
+              : 'Discover insightful articles, tutorials, and ideas from our community of writers.'}
+          </p>
         </div>
 
-        <h2 className="section-title">Latest Posts</h2>
+        <h2 className="section-title">
+          {searchResult ? 'Search Results' : 'Recent Blog Posts'}
+        </h2>
 
         {loading && (
           <div style={{ textAlign: 'center', padding: '4rem 0' }}>
@@ -415,17 +515,22 @@ const Home = () => {
           </div>
         )}
 
-        {!loading && blogs.length === 0 && (
+        {!loading && filteredBlogs.length === 0 && (
           <div className="empty-state">
-            <h3>No posts yet</h3>
-            <p>Be the first to publish something great!</p>
+            <h3>{searchResult ? 'No matches found' : 'No posts yet'}</h3>
+            <p>{searchResult ? 'Try different keywords or browse recent blogs.' : 'Be the first to publish something great!'}</p>
+            {searchResult && (
+              <Link to="/" className="btn btn-outline btn-sm" style={{ marginTop: '1rem' }}>
+                Clear Search
+              </Link>
+            )}
           </div>
         )}
 
-        {!loading && blogs.length > 0 && (
+        {!loading && filteredBlogs.length > 0 && (
           <div className="blog-grid">
-            {blogs.map((blog, i) => (
-              <BlogCard key={blog._id || i} blog={blog} index={i} />
+            {filteredBlogs.map((blog, i) => (
+              <BlogCard key={blog._id || i} blog={blog} index={i} currentUserId={currentUserId} />
             ))}
           </div>
         )}

@@ -301,9 +301,13 @@ const Register = () => {
         </form>
     );
 
+    useEffect(() => {
+        document.title = 'Blogify - Register';
+    }, []);
+
     return (
         <>
-            <title>Blogify-Register</title>
+
             <div className="auth-wrapper">
                 <div className="auth-card">
                     <div className="auth-header">
@@ -314,9 +318,24 @@ const Register = () => {
 
                     {!isRegistered ? renderRegisterForm() : renderOtpForm()}
 
-                    <div className="message-container" style={{ marginTop: '1rem', textAlign: 'center' }}>
-                        {error && <p className="error-message" style={{ color: 'var(--error, red)' }}>{error}</p>}
-                        {successMessage && <p className="success-message" style={{ color: 'var(--success, lightgreen)' }}>{successMessage}</p>}
+                    <div className="message-container" style={{ marginTop: '1.5rem', textAlign: 'center' }}>
+                        {error && (
+                          <div className="error-box fade-in" style={{ 
+                            padding: '0.85rem', 
+                            background: 'rgba(239, 68, 68, 0.1)', 
+                            border: '1px solid #ef4444', 
+                            color: '#ef4444', 
+                            borderRadius: 'var(--radius-sm)', 
+                            fontSize: '0.9rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.5rem',
+                            textAlign: 'left'
+                          }}>
+                            <span>🚨</span> {error}
+                          </div>
+                        )}
+                        {successMessage && <p className="success-message" style={{ color: 'var(--success, lightgreen)', marginTop: '1rem' }}>{successMessage}</p>}
                     </div>
                 </div>
             </div>

@@ -96,9 +96,13 @@ const VerifyOtp = () => {
         }
     };
 
+    useEffect(() => {
+        document.title = 'Blogify - Verify OTP';
+    }, []);
+
     return (
         <>
-        <title>Blogify - Verify OTP</title>
+
         <div className="auth-wrapper">
             <div className="auth-card">
                 <div className="auth-header">

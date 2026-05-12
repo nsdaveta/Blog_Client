@@ -45,9 +45,13 @@ const ForgotPassword = () => {
         }
     };
 
+    useEffect(() => {
+        document.title = 'Blogify - Forgot Password';
+    }, []);
+
     return (
         <>
-        <title>Blogify-Forgot Password</title>
+
         <div className="auth-wrapper">
             <div className="auth-card">
                 <div className="auth-header">

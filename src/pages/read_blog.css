@@ -1,4 +1,11 @@
-/* ============================================================
+/* Fix text overflow in blog content area */
+.read-blog-content {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+  max-width: 100%;
+  box-sizing: border-box;
+}/* ============================================================
    READ BLOG PAGE — read_blog.css
    ============================================================ */
 
@@ -74,7 +81,9 @@
     align-items: center;
     gap: 0.75rem;
     padding: 1rem 1.25rem;
-    background: var(--bg-card);
+    background: rgba(26, 30, 42, 0.4);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     margin-bottom: 2rem;
@@ -131,7 +140,9 @@
 
 /* ── Comments section ── */
 .comments-section {
-    background: var(--bg-card);
+    background: rgba(26, 30, 42, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 1.75rem;

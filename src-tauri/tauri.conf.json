@@ -12,12 +12,17 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "Blogify",
-        "width": 1200,
-        "height": 800,
+        "width": 800,
+        "height": 600,
+        "minWidth": 600,
+        "minHeight": 450,
+        "center": true,
         "resizable": true,
         "fullscreen": false,
-        "transparent": true,
+        "transparent": false,
+        "decorations": true,
         "shadow": true
       }
     ],

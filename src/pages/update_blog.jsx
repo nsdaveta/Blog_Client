@@ -20,6 +20,7 @@ const Update_blog = () => {
   const [imageFile, setImageFile] = useState(null)
   const [preview, setPreview] = useState(null)
   const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
 
@@ -42,9 +43,7 @@ const Update_blog = () => {
 
       })
       .catch(() => {
-
-        toast.error("Failed to load blog")
-
+        setError("Failed to load blog data. Please try refreshing the page.")
       })
 
   }, [id, navigate])
@@ -57,6 +56,8 @@ const Update_blog = () => {
       ...prev,
       [name]: value
     }))
+
+    if (error) setError('')
 
   }
 
@@ -71,6 +72,8 @@ const Update_blog = () => {
     const previewImage = URL.createObjectURL(file)
 
     setPreview(previewImage)
+
+    if (error) setError('')
 
   }
 
@@ -107,20 +110,20 @@ const Update_blog = () => {
       navigate('/dashboard')
 
     } catch (err) {
-
-      toast.error(err.response?.data?.message || "Update failed")
-
+      setError(err.response?.data?.message || "Update failed. Please try again.")
     } finally {
-
       setSubmitting(false)
-
     }
 
   }
 
+  useEffect(() => {
+    document.title = 'Blogify - Update Blog';
+  }, []);
+
   return (
     <>
-      <title>Blogify-Update Blog</title>
+
       <div className="blog-form-wrapper">
 
         <div className="blog-form-header fade-in-up">
@@ -214,11 +217,33 @@ const Update_blog = () => {
 
               <div className="image-preview">
 
-                <img src={formData.image.url} alt="Current blog" />
+                <img 
+                  src={formData.image.url} 
+                  alt="Current blog" 
+                  crossOrigin="anonymous"
+                  referrerPolicy="no-referrer"
+                />
 
               </div>
 
             ) : null}
+
+            {error && (
+              <div className="error-box fade-in" style={{ 
+                marginTop: '1rem', 
+                padding: '0.85rem', 
+                background: 'rgba(239, 68, 68, 0.1)', 
+                border: '1px solid #ef4444', 
+                color: '#ef4444', 
+                borderRadius: 'var(--radius-sm)', 
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}>
+                <span>🚨</span> {error}
+              </div>
+            )}
 
           </div>
 

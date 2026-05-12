@@ -5,15 +5,17 @@ import App from './App.jsx'
 import { HashRouter } from 'react-router-dom'
 import { UserContextProvider } from './pages/components/UserContext/usercontext'
 import { DialogProvider } from './pages/components/Dialog/DialogContext'
-import Navbar from './pages/components/navbar.jsx'
+import Dialog from './pages/components/Dialog/Dialog'
 
 createRoot(document.getElementById('root')).render(
-    <DialogProvider>
-        <UserContextProvider>
-            <HashRouter>
-                <Navbar />
-                <App />
-            </HashRouter>
-        </UserContextProvider>
-    </DialogProvider>
+    <StrictMode>
+        <DialogProvider>
+            <UserContextProvider>
+                <HashRouter>
+                    <App />
+                    <Dialog />
+                </HashRouter>
+            </UserContextProvider>
+        </DialogProvider>
+    </StrictMode>
 )

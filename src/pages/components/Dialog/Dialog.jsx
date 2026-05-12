@@ -26,20 +26,20 @@ const Dialog = () => {
     const { title, message, kind, onConfirm, onCancel } = dialogConfig || {};
 
     return (
-        <div className={`dialog-overlay ${isClosing ? 'fade-out' : 'fade-in'}`}>
-            <div className={`dialog-container ${isClosing ? 'scale-down' : 'scale-up'} kind-${kind}`}>
+        <div className={`dialog-overlay ${isClosing ? 'fade-out' : 'fade-in'}`} onClick={onCancel}>
+            <div className={`dialog-container ${isClosing ? 'scale-down' : 'scale-up'} kind-${kind}`} onClick={e => e.stopPropagation()}>
                 <div className="dialog-header">
-                    <h3>{title}</h3>
+                    <h3>{title || 'Confirmation'}</h3>
                 </div>
                 <div className="dialog-body">
                     <p>{message}</p>
                 </div>
                 <div className="dialog-footer">
-                    <button className="btn btn-outline btn-sm" onClick={onCancel}>
+                    <button className="dialog-btn btn-cancel" onClick={onCancel}>
                         Cancel
                     </button>
                     <button 
-                        className={`btn btn-sm ${kind === 'warning' || kind === 'danger' ? 'btn-danger' : 'btn-primary'}`} 
+                        className="dialog-btn btn-confirm" 
                         onClick={onConfirm}
                     >
                         Confirm

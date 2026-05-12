@@ -7,7 +7,17 @@
   ],
   "permissions": [
     "core:default",
+    "core:window:allow-start-dragging",
+    "core:window:allow-minimize",
+    "core:window:allow-maximize",
+    "core:window:allow-toggle-maximize",
+    "core:window:allow-close",
+    "core:window:allow-is-maximized",
+    "core:window:allow-set-focus",
+    "core:window:allow-set-size",
+    "core:window:allow-center",
     "dialog:default",
-    "opener:default"
+    "opener:default",
+    "log:default"
   ]
 }

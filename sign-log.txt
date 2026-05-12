@@ -1,0 +1,1318 @@
+-------------------------------------------------- 
+[Sat 04/25/2026 10:23:55.95] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sat 04/25/2026 10:23:55.97] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sat 04/25/2026 10:23:59.29] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:24:00.99] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Sat 04/25/2026 10:24:01.01] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Sat 04/25/2026 10:24:05.05] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:24:05.12] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Sat 04/25/2026 10:24:05.14] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Sat 04/25/2026 10:24:12.40] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:00.49] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Sat 04/25/2026 10:25:00.52] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Sat 04/25/2026 10:25:01.69] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:01.85] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sat 04/25/2026 10:25:01.87] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sat 04/25/2026 10:25:03.57] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:03.74] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Sat 04/25/2026 10:25:03.76] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Sat 04/25/2026 10:25:04.95] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:05.02] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Sat 04/25/2026 10:25:05.03] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Sat 04/25/2026 10:25:07.91] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:07.98] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Sat 04/25/2026 10:25:08.00] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Sat 04/25/2026 10:25:08.89] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:08.95] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Sat 04/25/2026 10:25:08.97] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Sat 04/25/2026 10:25:10.24] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:10.33] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sat 04/25/2026 10:25:10.35] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sat 04/25/2026 10:25:11.45] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:20.61] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst2787.tmp" 
+[Sat 04/25/2026 10:25:20.64] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst2787.tmp
+[Sat 04/25/2026 10:25:23.01] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst2787.tmp 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:25:32.36] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Sat 04/25/2026 10:25:32.38] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Sat 04/25/2026 10:25:35.37] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:29:59.63] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sat 04/25/2026 10:29:59.67] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sat 04/25/2026 10:30:01.75] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:30:03.49] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Sat 04/25/2026 10:30:03.53] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Sat 04/25/2026 10:30:05.48] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:30:05.65] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Sat 04/25/2026 10:30:05.69] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Sat 04/25/2026 10:30:15.30] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:12.71] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Sat 04/25/2026 10:31:12.74] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Sat 04/25/2026 10:31:14.21] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:14.41] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sat 04/25/2026 10:31:14.43] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sat 04/25/2026 10:31:16.36] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:16.66] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Sat 04/25/2026 10:31:16.70] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Sat 04/25/2026 10:31:18.19] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:18.34] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Sat 04/25/2026 10:31:18.38] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Sat 04/25/2026 10:31:19.49] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:19.61] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Sat 04/25/2026 10:31:19.64] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Sat 04/25/2026 10:31:20.83] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:20.99] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Sat 04/25/2026 10:31:21.03] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Sat 04/25/2026 10:31:22.30] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:22.45] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sat 04/25/2026 10:31:22.49] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sat 04/25/2026 10:31:24.28] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:30.32] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstCB7F.tmp" 
+[Sat 04/25/2026 10:31:30.35] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstCB7F.tmp
+[Sat 04/25/2026 10:31:32.63] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstCB7F.tmp 
+-------------------------------------------------- 
+[Sat 04/25/2026 10:31:44.19] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Sat 04/25/2026 10:31:44.23] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Sat 04/25/2026 10:31:47.44] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:34:08.15] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sat 04/25/2026 14:34:08.20] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sat 04/25/2026 14:34:13.59] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:34:34.71] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Sat 04/25/2026 14:34:34.77] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Sat 04/25/2026 14:34:56.66] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:34:56.90] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Sat 04/25/2026 14:34:57.21] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Sat 04/25/2026 14:35:00.21] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:25.86] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Sat 04/25/2026 14:36:25.91] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Sat 04/25/2026 14:36:27.66] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:28.53] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sat 04/25/2026 14:36:28.57] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sat 04/25/2026 14:36:33.77] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:36.39] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Sat 04/25/2026 14:36:36.42] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Sat 04/25/2026 14:36:38.09] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:38.32] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Sat 04/25/2026 14:36:38.37] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Sat 04/25/2026 14:36:39.92] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:40.14] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Sat 04/25/2026 14:36:40.19] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Sat 04/25/2026 14:36:41.89] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:42.11] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Sat 04/25/2026 14:36:42.15] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Sat 04/25/2026 14:36:43.72] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:43.92] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sat 04/25/2026 14:36:43.96] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sat 04/25/2026 14:36:45.60] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:36:49.97] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst9241.tmp" 
+[Sat 04/25/2026 14:36:50.02] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst9241.tmp
+[Sat 04/25/2026 14:36:51.69] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst9241.tmp 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:37:14.87] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Sat 04/25/2026 14:37:14.98] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Sat 04/25/2026 14:37:18.42] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:44:23.36] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sat 04/25/2026 14:44:23.76] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sat 04/25/2026 14:44:27.54] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:44:31.67] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Sat 04/25/2026 14:44:31.83] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Sat 04/25/2026 14:44:38.60] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:44:39.57] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Sat 04/25/2026 14:44:39.71] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Sat 04/25/2026 14:45:05.73] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:47:17.75] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Sat 04/25/2026 14:47:17.76] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Sat 04/25/2026 14:47:19.34] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:47:19.46] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sat 04/25/2026 14:47:19.48] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sat 04/25/2026 14:47:20.60] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 14:47:21.18] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Sat 04/25/2026 14:47:21.20] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Sat 04/25/2026 15:20:45.49] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 15:20:45.62] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Sat 04/25/2026 15:20:45.64] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Sat 04/25/2026 15:20:57.53] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 15:20:58.54] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Sat 04/25/2026 15:20:59.02] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Sat 04/25/2026 15:21:14.15] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 15:21:14.26] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Sat 04/25/2026 15:21:14.28] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Sat 04/25/2026 15:21:29.97] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 15:21:30.30] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sat 04/25/2026 15:21:30.32] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sat 04/25/2026 15:21:43.81] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 15:22:42.21] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst8EE9.tmp" 
+[Sat 04/25/2026 15:22:42.27] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst8EE9.tmp
+[Sat 04/25/2026 15:22:54.47] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst8EE9.tmp 
+-------------------------------------------------- 
+[Sat 04/25/2026 15:23:19.50] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Sat 04/25/2026 15:23:19.56] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Sat 04/25/2026 15:23:30.51] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:13:08.18] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sat 04/25/2026 22:13:08.19] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sat 04/25/2026 22:13:09.98] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:13:11.35] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Sat 04/25/2026 22:13:11.37] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Sat 04/25/2026 22:13:24.36] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:13:24.45] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Sat 04/25/2026 22:13:24.47] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Sat 04/25/2026 22:13:25.55] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:00.77] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Sat 04/25/2026 22:14:00.78] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Sat 04/25/2026 22:14:01.74] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:01.84] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sat 04/25/2026 22:14:01.86] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sat 04/25/2026 22:14:03.14] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:03.29] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Sat 04/25/2026 22:14:03.30] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Sat 04/25/2026 22:14:04.80] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:04.88] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Sat 04/25/2026 22:14:04.90] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Sat 04/25/2026 22:14:05.87] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:05.97] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Sat 04/25/2026 22:14:05.99] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Sat 04/25/2026 22:14:07.26] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:07.32] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Sat 04/25/2026 22:14:07.33] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Sat 04/25/2026 22:14:08.23] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:08.29] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sat 04/25/2026 22:14:08.30] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sat 04/25/2026 22:14:09.17] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:14.93] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst5666.tmp" 
+[Sat 04/25/2026 22:14:14.94] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst5666.tmp
+[Sat 04/25/2026 22:14:16.40] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst5666.tmp 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:14:22.43] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Sat 04/25/2026 22:14:22.45] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Sat 04/25/2026 22:14:26.42] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:18:48.95] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sat 04/25/2026 22:18:48.97] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sat 04/25/2026 22:18:50.17] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:18:53.99] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Sat 04/25/2026 22:18:54.01] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Sat 04/25/2026 22:18:56.19] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:18:56.28] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Sat 04/25/2026 22:18:56.30] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Sat 04/25/2026 22:19:01.12] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:27.26] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Sat 04/25/2026 22:19:27.28] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Sat 04/25/2026 22:19:28.29] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:28.39] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sat 04/25/2026 22:19:28.41] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sat 04/25/2026 22:19:29.33] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:29.58] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Sat 04/25/2026 22:19:29.60] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Sat 04/25/2026 22:19:30.47] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:30.53] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Sat 04/25/2026 22:19:30.54] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Sat 04/25/2026 22:19:31.43] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:31.49] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Sat 04/25/2026 22:19:31.51] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Sat 04/25/2026 22:19:32.40] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:32.47] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Sat 04/25/2026 22:19:32.49] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Sat 04/25/2026 22:19:33.55] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:33.62] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sat 04/25/2026 22:19:33.64] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sat 04/25/2026 22:19:34.70] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:37.18] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst4120.tmp" 
+[Sat 04/25/2026 22:19:37.21] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst4120.tmp
+[Sat 04/25/2026 22:19:38.50] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst4120.tmp 
+-------------------------------------------------- 
+[Sat 04/25/2026 22:19:46.57] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Sat 04/25/2026 22:19:46.59] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Sat 04/25/2026 22:19:48.37] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:23:56.62] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sun 04/26/2026 16:23:56.67] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sun 04/26/2026 16:23:59.97] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:24:07.82] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Sun 04/26/2026 16:24:07.94] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Sun 04/26/2026 16:24:15.62] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:24:15.81] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Sun 04/26/2026 16:24:15.85] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Sun 04/26/2026 16:24:17.23] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:07.34] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Sun 04/26/2026 16:25:07.36] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Sun 04/26/2026 16:25:08.57] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:08.93] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sun 04/26/2026 16:25:08.95] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sun 04/26/2026 16:25:10.27] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:10.65] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Sun 04/26/2026 16:25:10.68] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Sun 04/26/2026 16:25:11.91] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:11.98] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Sun 04/26/2026 16:25:11.99] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Sun 04/26/2026 16:25:12.95] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:13.41] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Sun 04/26/2026 16:25:13.43] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Sun 04/26/2026 16:25:14.50] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:15.52] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Sun 04/26/2026 16:25:15.56] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Sun 04/26/2026 16:25:16.54] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:17.91] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sun 04/26/2026 16:25:17.95] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sun 04/26/2026 16:25:19.34] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:27.62] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst9C02.tmp" 
+[Sun 04/26/2026 16:25:27.66] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst9C02.tmp
+[Sun 04/26/2026 16:25:29.08] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst9C02.tmp 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:25:39.83] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Sun 04/26/2026 16:25:39.86] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Sun 04/26/2026 16:25:44.21] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:34:46.46] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sun 04/26/2026 16:34:46.88] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sun 04/26/2026 16:34:49.15] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:35:08.11] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Sun 04/26/2026 16:35:08.15] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Sun 04/26/2026 16:35:18.56] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:35:18.67] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Sun 04/26/2026 16:35:18.68] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Sun 04/26/2026 16:35:26.51] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:23.45] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Sun 04/26/2026 16:37:23.48] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Sun 04/26/2026 16:37:25.26] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:25.43] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sun 04/26/2026 16:37:25.46] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sun 04/26/2026 16:37:26.63] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:28.00] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Sun 04/26/2026 16:37:28.02] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Sun 04/26/2026 16:37:35.81] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:35.96] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Sun 04/26/2026 16:37:35.99] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Sun 04/26/2026 16:37:37.56] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:37.71] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Sun 04/26/2026 16:37:37.75] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Sun 04/26/2026 16:37:39.13] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:39.26] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Sun 04/26/2026 16:37:39.29] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Sun 04/26/2026 16:37:42.28] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:37:42.35] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sun 04/26/2026 16:37:42.37] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sun 04/26/2026 16:37:46.51] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:38:02.87] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst23E9.tmp" 
+[Sun 04/26/2026 16:38:02.89] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst23E9.tmp
+[Sun 04/26/2026 16:38:09.40] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst23E9.tmp 
+-------------------------------------------------- 
+[Sun 04/26/2026 16:38:16.49] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Sun 04/26/2026 16:38:16.51] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Sun 04/26/2026 16:38:20.46] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:04:19.60] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sun 04/26/2026 18:04:19.62] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sun 04/26/2026 18:04:21.49] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:04:25.91] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Sun 04/26/2026 18:04:25.93] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Sun 04/26/2026 18:04:37.05] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:04:37.18] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Sun 04/26/2026 18:04:37.22] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Sun 04/26/2026 18:04:39.10] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:06:47.91] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Sun 04/26/2026 18:06:47.94] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Sun 04/26/2026 18:06:49.44] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:06:49.64] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Sun 04/26/2026 18:06:49.67] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Sun 04/26/2026 18:06:52.77] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:06:53.22] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Sun 04/26/2026 18:06:53.30] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Sun 04/26/2026 18:06:56.54] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:06:56.62] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Sun 04/26/2026 18:06:56.64] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Sun 04/26/2026 18:06:57.77] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:06:57.86] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Sun 04/26/2026 18:06:57.88] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Sun 04/26/2026 18:06:58.93] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:06:59.01] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Sun 04/26/2026 18:06:59.04] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Sun 04/26/2026 18:07:00.11] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:07:00.17] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sun 04/26/2026 18:07:00.19] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sun 04/26/2026 18:07:01.46] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:07:17.51] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstBC03.tmp" 
+[Sun 04/26/2026 18:07:17.54] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstBC03.tmp
+[Sun 04/26/2026 18:07:21.14] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstBC03.tmp 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:07:31.94] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Sun 04/26/2026 18:07:31.96] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Sun 04/26/2026 18:07:39.99] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:13:16.61] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sun 04/26/2026 18:13:18.05] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sun 04/26/2026 18:13:20.22] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:13:24.43] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Sun 04/26/2026 18:13:24.46] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Sun 04/26/2026 18:13:41.00] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:13:42.46] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Sun 04/26/2026 18:13:42.49] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Sun 04/26/2026 18:13:44.61] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:14:49.60] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Sun 04/26/2026 18:14:49.64] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Sun 04/26/2026 18:14:51.45] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:14:51.79] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Sun 04/26/2026 18:14:51.83] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Sun 04/26/2026 18:14:53.33] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:14:53.72] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Sun 04/26/2026 18:14:53.77] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Sun 04/26/2026 18:14:55.82] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:14:55.99] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Sun 04/26/2026 18:14:56.04] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Sun 04/26/2026 18:14:57.43] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:14:57.63] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Sun 04/26/2026 18:14:57.68] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Sun 04/26/2026 18:14:59.30] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:14:59.46] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Sun 04/26/2026 18:14:59.51] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Sun 04/26/2026 18:15:01.59] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:15:01.77] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Sun 04/26/2026 18:15:01.82] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Sun 04/26/2026 18:15:03.39] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:15:08.77] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstE90D.tmp" 
+[Sun 04/26/2026 18:15:09.13] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstE90D.tmp
+[Sun 04/26/2026 18:15:15.64] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstE90D.tmp 
+-------------------------------------------------- 
+[Sun 04/26/2026 18:15:25.87] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Sun 04/26/2026 18:15:25.92] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Sun 04/26/2026 18:15:29.46] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:17:12.17] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Mon 04/27/2026 15:17:12.41] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Mon 04/27/2026 15:17:26.05] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:17:31.47] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Mon 04/27/2026 15:17:31.57] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Mon 04/27/2026 15:17:33.96] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:17:34.23] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Mon 04/27/2026 15:17:34.28] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Mon 04/27/2026 15:17:44.72] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:26.42] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Mon 04/27/2026 15:19:26.53] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Mon 04/27/2026 15:19:29.04] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:29.56] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Mon 04/27/2026 15:19:29.65] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Mon 04/27/2026 15:19:38.17] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:38.85] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Mon 04/27/2026 15:19:38.95] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Mon 04/27/2026 15:19:41.19] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:41.49] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Mon 04/27/2026 15:19:41.53] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Mon 04/27/2026 15:19:43.79] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:44.13] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Mon 04/27/2026 15:19:44.19] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Mon 04/27/2026 15:19:47.03] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:47.45] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Mon 04/27/2026 15:19:47.57] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Mon 04/27/2026 15:19:50.43] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:19:50.79] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Mon 04/27/2026 15:19:50.85] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Mon 04/27/2026 15:19:52.93] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:20:11.36] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst6C4A.tmp" 
+[Mon 04/27/2026 15:20:11.43] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst6C4A.tmp
+[Mon 04/27/2026 15:20:13.41] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst6C4A.tmp 
+-------------------------------------------------- 
+[Mon 04/27/2026 15:20:35.41] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Mon 04/27/2026 15:20:35.47] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Mon 04/27/2026 15:20:39.61] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:02:18.09] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Mon 04/27/2026 16:02:18.23] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Mon 04/27/2026 16:02:22.23] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:02:29.25] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Mon 04/27/2026 16:02:29.35] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Mon 04/27/2026 16:02:41.81] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:02:42.31] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Mon 04/27/2026 16:02:42.42] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Mon 04/27/2026 16:02:44.59] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:09.14] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Mon 04/27/2026 16:04:09.18] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Mon 04/27/2026 16:04:10.86] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:11.25] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Mon 04/27/2026 16:04:11.29] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Mon 04/27/2026 16:04:13.01] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:13.62] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Mon 04/27/2026 16:04:13.66] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Mon 04/27/2026 16:04:15.23] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:15.46] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Mon 04/27/2026 16:04:15.58] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Mon 04/27/2026 16:04:17.18] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:17.41] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Mon 04/27/2026 16:04:17.46] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Mon 04/27/2026 16:04:19.10] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:19.33] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Mon 04/27/2026 16:04:19.38] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Mon 04/27/2026 16:04:21.16] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:21.74] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Mon 04/27/2026 16:04:21.80] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Mon 04/27/2026 16:04:23.64] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:29.54] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstFB78.tmp" 
+[Mon 04/27/2026 16:04:29.68] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstFB78.tmp
+[Mon 04/27/2026 16:04:31.86] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstFB78.tmp 
+-------------------------------------------------- 
+[Mon 04/27/2026 16:04:51.17] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Mon 04/27/2026 16:04:51.23] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Mon 04/27/2026 16:04:54.97] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:00:52.75] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Wed 04/29/2026 22:00:52.80] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Wed 04/29/2026 22:00:57.38] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:01:00.52] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Wed 04/29/2026 22:01:00.57] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Wed 04/29/2026 22:01:12.85] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:01:13.21] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Wed 04/29/2026 22:01:13.26] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Wed 04/29/2026 22:01:15.24] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:34.64] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Wed 04/29/2026 22:02:34.69] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Wed 04/29/2026 22:02:36.33] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:36.66] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Wed 04/29/2026 22:02:36.70] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Wed 04/29/2026 22:02:42.33] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:42.80] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Wed 04/29/2026 22:02:42.84] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Wed 04/29/2026 22:02:44.80] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:44.97] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Wed 04/29/2026 22:02:45.01] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Wed 04/29/2026 22:02:46.76] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:46.93] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Wed 04/29/2026 22:02:46.98] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Wed 04/29/2026 22:02:48.55] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:48.74] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Wed 04/29/2026 22:02:48.80] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Wed 04/29/2026 22:02:50.41] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:02:50.62] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Wed 04/29/2026 22:02:50.66] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Wed 04/29/2026 22:02:52.22] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:03:10.74] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstB228.tmp" 
+[Wed 04/29/2026 22:03:10.79] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstB228.tmp
+[Wed 04/29/2026 22:03:13.09] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstB228.tmp 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:03:35.03] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Wed 04/29/2026 22:03:35.09] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Wed 04/29/2026 22:03:41.96] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:09:20.42] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Wed 04/29/2026 22:09:20.46] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Wed 04/29/2026 22:09:21.82] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:09:22.78] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Wed 04/29/2026 22:09:22.80] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Wed 04/29/2026 22:09:23.75] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:09:23.81] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Wed 04/29/2026 22:09:23.82] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Wed 04/29/2026 22:09:28.20] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:00.52] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Wed 04/29/2026 22:10:00.54] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Wed 04/29/2026 22:10:01.81] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:01.92] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Wed 04/29/2026 22:10:01.93] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Wed 04/29/2026 22:10:02.87] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:03.01] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Wed 04/29/2026 22:10:03.03] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Wed 04/29/2026 22:10:03.94] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:04.00] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Wed 04/29/2026 22:10:04.02] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Wed 04/29/2026 22:10:04.89] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:04.95] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Wed 04/29/2026 22:10:04.97] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Wed 04/29/2026 22:10:05.85] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:05.92] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Wed 04/29/2026 22:10:05.94] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Wed 04/29/2026 22:10:06.89] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:06.95] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Wed 04/29/2026 22:10:06.97] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Wed 04/29/2026 22:10:07.92] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:09.49] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst16B1.tmp" 
+[Wed 04/29/2026 22:10:09.51] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst16B1.tmp
+[Wed 04/29/2026 22:10:10.75] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst16B1.tmp 
+-------------------------------------------------- 
+[Wed 04/29/2026 22:10:16.53] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Wed 04/29/2026 22:10:16.55] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Wed 04/29/2026 22:10:18.34] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:42:55.52] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Mon 05/04/2026 15:42:55.54] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Mon 05/04/2026 15:42:57.32] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:42:58.51] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Mon 05/04/2026 15:42:58.54] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Mon 05/04/2026 15:43:00.28] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:43:00.35] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Mon 05/04/2026 15:43:00.36] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Mon 05/04/2026 15:43:06.66] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:14.21] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Mon 05/04/2026 15:44:14.23] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Mon 05/04/2026 15:44:19.79] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:19.97] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Mon 05/04/2026 15:44:19.99] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Mon 05/04/2026 15:44:21.80] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:22.01] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Mon 05/04/2026 15:44:22.03] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Mon 05/04/2026 15:44:24.97] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:25.06] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Mon 05/04/2026 15:44:25.08] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Mon 05/04/2026 15:44:26.26] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:26.35] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Mon 05/04/2026 15:44:26.37] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Mon 05/04/2026 15:44:27.87] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:27.98] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Mon 05/04/2026 15:44:28.01] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Mon 05/04/2026 15:44:29.12] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:29.19] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Mon 05/04/2026 15:44:29.21] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Mon 05/04/2026 15:44:31.20] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:41.39] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstDE5C.tmp" 
+[Mon 05/04/2026 15:44:41.42] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstDE5C.tmp
+[Mon 05/04/2026 15:44:47.79] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstDE5C.tmp 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:44:57.48] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Mon 05/04/2026 15:44:57.51] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Mon 05/04/2026 15:45:00.79] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:00.35] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Mon 05/04/2026 15:51:00.36] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Mon 05/04/2026 15:51:01.88] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:09.87] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Mon 05/04/2026 15:51:09.89] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Mon 05/04/2026 15:51:10.94] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:11.05] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Mon 05/04/2026 15:51:11.06] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Mon 05/04/2026 15:51:15.08] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:50.46] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Mon 05/04/2026 15:51:50.50] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Mon 05/04/2026 15:51:52.14] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:52.33] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Mon 05/04/2026 15:51:52.36] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Mon 05/04/2026 15:51:53.59] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:53.88] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Mon 05/04/2026 15:51:53.91] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Mon 05/04/2026 15:51:55.05] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:55.18] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Mon 05/04/2026 15:51:55.24] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Mon 05/04/2026 15:51:56.36] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:57.22] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Mon 05/04/2026 15:51:57.25] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Mon 05/04/2026 15:51:58.35] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:58.45] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Mon 05/04/2026 15:51:58.48] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Mon 05/04/2026 15:51:59.53] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:51:59.62] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Mon 05/04/2026 15:51:59.65] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Mon 05/04/2026 15:52:00.73] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:52:06.84] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstAA69.tmp" 
+[Mon 05/04/2026 15:52:06.87] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstAA69.tmp
+[Mon 05/04/2026 15:52:08.32] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstAA69.tmp 
+-------------------------------------------------- 
+[Mon 05/04/2026 15:52:17.66] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Mon 05/04/2026 15:52:17.71] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Mon 05/04/2026 15:52:20.05] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 16:16:16.93] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Tue 05/05/2026 16:16:17.00] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Tue 05/05/2026 16:16:21.37] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 16:16:32.00] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Tue 05/05/2026 16:16:32.11] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Tue 05/05/2026 16:16:37.64] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 16:16:37.87] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Tue 05/05/2026 16:16:37.93] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+
+Number of errors: 1
+SignTool Error: The specified timestamp server either could not be reached or
+returned an invalid response.
+SignTool Error: An error occurred while attempting to sign: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Tue 05/05/2026 16:17:16.92] FAILED to sign: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll (Exit Code: 1
+-------------------------------------------------- 
+[Tue 05/05/2026 18:51:38.56] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Tue 05/05/2026 18:51:40.70] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Tue 05/05/2026 18:52:46.15] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:52:58.37] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Tue 05/05/2026 18:52:58.41] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Tue 05/05/2026 18:53:18.57] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:53:18.75] Called with: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Tue 05/05/2026 18:53:18.79] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Tue 05/05/2026 18:53:45.66] Successfully signed: C:\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:31.51] Called with: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Tue 05/05/2026 18:55:31.68] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Tue 05/05/2026 18:55:40.56] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:40.94] Called with: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+[Tue 05/05/2026 18:55:40.97] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe
+[Tue 05/05/2026 18:55:46.59] Successfully signed: C:\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:47.81] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Tue 05/05/2026 18:55:47.85] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Tue 05/05/2026 18:55:49.84] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:50.00] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Tue 05/05/2026 18:55:50.05] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Tue 05/05/2026 18:55:51.80] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:52.05] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Tue 05/05/2026 18:55:52.09] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Tue 05/05/2026 18:55:53.53] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:53.71] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Tue 05/05/2026 18:55:53.77] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Tue 05/05/2026 18:55:56.42] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:55:56.61] Called with: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Tue 05/05/2026 18:55:56.65] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Tue 05/05/2026 18:55:58.39] Successfully signed: C:\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:56:14.65] Called with: "C:\Users\nsdav\AppData\Local\Temp\nstFFE7.tmp" 
+[Tue 05/05/2026 18:56:14.68] Working directory: C:\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstFFE7.tmp
+[Tue 05/05/2026 18:56:17.43] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nstFFE7.tmp 
+-------------------------------------------------- 
+[Tue 05/05/2026 18:56:33.77] Called with: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Tue 05/05/2026 18:56:33.82] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Tue 05/05/2026 18:56:40.47] Successfully signed: C:\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:07:15.69] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Tue 05/05/2026 19:07:15.98] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Tue 05/05/2026 19:07:19.33] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:07:28.77] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+[Tue 05/05/2026 19:07:28.79] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll
+[Tue 05/05/2026 19:07:40.24] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:07:40.51] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+[Tue 05/05/2026 19:07:40.53] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll
+[Tue 05/05/2026 19:08:06.07] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\wix\x86\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:14.84] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+[Tue 05/05/2026 19:09:14.87] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi
+[Tue 05/05/2026 19:09:16.21] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/msi/Blogify_1.0.3_x86_en-US.msi 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:16.36] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+[Tue 05/05/2026 19:09:16.38] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe
+[Tue 05/05/2026 19:09:17.55] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:18.78] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+[Tue 05/05/2026 19:09:18.81] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll
+[Tue 05/05/2026 19:09:25.18] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:25.60] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+[Tue 05/05/2026 19:09:25.62] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll
+[Tue 05/05/2026 19:09:27.98] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:28.20] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+[Tue 05/05/2026 19:09:28.22] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll
+[Tue 05/05/2026 19:09:29.26] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:29.33] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+[Tue 05/05/2026 19:09:29.35] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll
+[Tue 05/05/2026 19:09:30.88] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:30.95] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Tue 05/05/2026 19:09:31.00] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Tue 05/05/2026 19:09:33.02] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:35.77] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst396B.tmp" 
+[Tue 05/05/2026 19:09:35.79] Working directory: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\nsis\x86 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst396B.tmp
+[Tue 05/05/2026 19:09:44.30] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst396B.tmp 
+-------------------------------------------------- 
+[Tue 05/05/2026 19:09:51.26] Called with: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+[Tue 05/05/2026 19:09:51.28] Working directory: C:\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
+[Tue 05/05/2026 19:09:57.23] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
