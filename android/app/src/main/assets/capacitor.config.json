@@ -1,0 +1,11 @@
+{
+	"appId": "com.blogapp.app",
+	"appName": "Blog App",
+	"webDir": "dist",
+	"server": {
+		"androidScheme": "https"
+	},
+	"android": {
+		"allowMixedContent": true
+	}
+}
