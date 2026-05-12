@@ -1,4 +1,13 @@
 # Auto detect text files and perform LF normalization
 * text=auto
-build-manager/src-tauri/target/** filter=lfs diff=lfs merge=lfs -text
-src-tauri/target/** filter=lfs diff=lfs merge=lfs -text
+
+# Track everything in the target folders via LFS
+# We use 'text' instead of '-text' at the end to allow Git to generate diffs for readable files
+build-manager/src-tauri/target/** filter=lfs diff=lfs merge=lfs text
+src-tauri/target/** filter=lfs diff=lfs merge=lfs text
+
+# Standard LFS tracking for common large binary types (Optional but recommended)
+*.exe filter=lfs diff=lfs merge=lfs -text
+*.deb filter=lfs diff=lfs merge=lfs -text
+*.msi filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
