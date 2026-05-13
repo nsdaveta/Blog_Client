@@ -33,3 +33,5 @@ cert.pfx
 *.pfx
 
 
+node_modules
+
