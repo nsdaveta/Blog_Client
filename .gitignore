@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+
 dist
 dist-ssr
 dist-electron
@@ -25,7 +25,6 @@ dist-temp
 *.njsproj
 *.sln
 # Electron Build Output
-release
 dist-electron
 dist-temp
 
@@ -33,8 +32,4 @@ dist-temp
 cert.pfx
 *.pfx
 
-# Executables
-*.exe
-*.msi
 
-*.sw?
