@@ -23,7 +23,7 @@ struct ProcessOutput {
 
 #[tauri::command]
 fn get_project_path() -> String {
-    "C:\\Blog_Client".to_string()
+    "C:\\Users\\nsdav\\OneDrive\\Desktop\\MERN_STACK\\Blog\\Blog_Client".to_string()
 }
 
 #[tauri::command]
