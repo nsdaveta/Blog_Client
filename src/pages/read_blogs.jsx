@@ -26,6 +26,16 @@ const ReadMore = () => {
         fetchBlog()
     }, [id])
 
+    // Must be called before any early returns (Rules of Hooks)
+    useEffect(() => {
+        if (blog?.title) {
+            document.title = `Blogify — ${blog.title}`
+        }
+        return () => {
+            document.title = 'Blogify'
+        }
+    }, [blog])
+
     if (loading) return (
         <div className="read-loading">
             <div className="spinner" />
@@ -41,12 +51,6 @@ const ReadMore = () => {
             </button>
         </div>
     )
-
-    useEffect(() => {
-        if (blog?.title) {
-            document.title = `Blogify — ${blog.title}`;
-        }
-    }, [blog]);
 
     return (
         <>
@@ -86,9 +90,11 @@ const ReadMore = () => {
                     </div>
                 </article>
 
-                <div className="read-blog-content glass-card" style={{ padding: '2rem', borderLeft: 'none' }}>
-                    {blog.content}
-                </div>
+                <div
+                    className="read-blog-content glass-card"
+                    style={{ padding: '2rem', borderLeft: 'none' }}
+                    dangerouslySetInnerHTML={{ __html: blog.content }}
+                />
 
                 <div className="read-action-bar">
                     <span style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>Liked this story? Share it with your friends!</span>
