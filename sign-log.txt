@@ -1578,3 +1578,80 @@ SignTool Error: The specified timestamp server either could not be reached or
 returned an invalid response.
 SignTool Error: An error occurred while attempting to sign: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
 [Tue 05/19/2026  0:51:09.14] FAILED to sign: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll (Exit Code: 1
+-------------------------------------------------- 
+[Tue 05/19/2026  1:01:42.56] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+[Tue 05/19/2026  1:01:42.59] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:01:42.62] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe
+[Tue 05/19/2026  1:01:44.23] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:01:52.28] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Tue 05/19/2026  1:01:52.30] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:01:52.32] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Tue 05/19/2026  1:01:57.65] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:01:57.75] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Tue 05/19/2026  1:01:57.77] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:01:57.79] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Tue 05/19/2026  1:01:58.88] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:36.06] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Tue 05/19/2026  1:02:36.08] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:36.11] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Tue 05/19/2026  1:02:37.20] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:37.36] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+[Tue 05/19/2026  1:02:37.38] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:37.41] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe
+[Tue 05/19/2026  1:02:39.51] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:39.68] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Tue 05/19/2026  1:02:39.70] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:39.73] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Tue 05/19/2026  1:02:40.59] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:40.68] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Tue 05/19/2026  1:02:40.70] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:40.72] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Tue 05/19/2026  1:02:41.57] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:41.66] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Tue 05/19/2026  1:02:41.67] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:41.70] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Tue 05/19/2026  1:02:42.67] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:42.76] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Tue 05/19/2026  1:02:42.78] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:42.81] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Tue 05/19/2026  1:02:43.70] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:43.77] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Tue 05/19/2026  1:02:43.79] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:43.82] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Tue 05/19/2026  1:02:44.69] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Tue 05/19/2026  1:02:52.60] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Tue 05/19/2026  1:02:52.62] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+[Tue 05/19/2026  1:02:52.65] Attempting sign with DigiCert... 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Tue 05/19/2026  1:02:55.02] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
