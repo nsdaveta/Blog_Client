@@ -29,7 +29,7 @@ const ReadMore = () => {
     // Must be called before any early returns (Rules of Hooks)
     useEffect(() => {
         if (blog?.title) {
-            document.title = `Blogify — ${blog.title}`
+            document.title = `Blogify - ${blog.title}`
         }
         return () => {
             document.title = 'Blogify'
