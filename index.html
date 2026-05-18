@@ -82,7 +82,12 @@
               if (e.ctrlKey) e.preventDefault();
             }, { passive: false });
 
-            // Prevent Browser Status Bar URL Preview Tooltip on Hover in Tauri
+            // Inject CSS to ensure <a> tags with data-href retain 100% identical styling and cursor
+            const style = document.createElement('style');
+            style.innerHTML = `a[data-href] { cursor: pointer !important; }`;
+            document.head.appendChild(style);
+
+            // Prevent Browser Status Bar URL Preview Tooltip on Hover in Tauri without flickering
             document.addEventListener('mouseover', (e) => {
               let a = e.target.closest('a');
               if (a && a.hasAttribute('href')) {
@@ -93,8 +98,11 @@
             document.addEventListener('mouseout', (e) => {
               let a = e.target.closest('a');
               if (a && a.hasAttribute('data-href')) {
-                a.setAttribute('href', a.getAttribute('data-href'));
-                a.removeAttribute('data-href');
+                // Only restore href if mouse is actually leaving the entire <a> element
+                if (!e.relatedTarget || !a.contains(e.relatedTarget)) {
+                  a.setAttribute('href', a.getAttribute('data-href'));
+                  a.removeAttribute('data-href');
+                }
               }
             });
             document.addEventListener('click', (e) => {
