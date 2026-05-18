@@ -49,7 +49,7 @@
       "wix": {
           "language": "en-US"
        },
-      "signCommand": "C:/Blog_Client/sign-app.bat %1",
+      "signCommand": "C:/Users/nsdav/OneDrive/Desktop/MERN_STACK/Blog/Blog_Client/sign-app.bat %1",
       "nsis": {
         "installMode": "currentUser"
       }
