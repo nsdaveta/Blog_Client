@@ -21,10 +21,54 @@ struct ProcessOutput {
     is_error: bool,
 }
 
+/// Walk up from a starting path to find the main project root at runtime.
+/// Used only as a fallback if the compile-time path is somehow unavailable.
+fn find_project_root(start: &std::path::Path) -> Option<String> {
+    let mut current = start.to_path_buf();
+    for _ in 0..10 {
+        if current.file_name().map(|n| n == "build-manager").unwrap_or(false) {
+            if let Some(parent) = current.parent() {
+                if parent.join("package.json").exists() {
+                    return Some(parent.to_string_lossy().to_string());
+                }
+            }
+        }
+        if current.join("package.json").exists() && current.join("build-manager").exists() {
+            return Some(current.to_string_lossy().to_string());
+        }
+        if !current.pop() {
+            break;
+        }
+    }
+    None
+}
+
 #[tauri::command]
 fn get_project_path() -> String {
-    "C:\\Users\\nsdav\\OneDrive\\Desktop\\MERN_STACK\\Blog\\Blog_Client".to_string()
+    // Strategy 1 (Primary): Compile-time path baked in by build.rs.
+    // This is 100% correct regardless of which drive/folder the exe is launched from.
+    let compile_time_path = env!("PROJECT_ROOT");
+    if !compile_time_path.is_empty() && compile_time_path != "." {
+        return compile_time_path.to_string();
+    }
+
+    // Strategy 2 (Fallback): Walk up from the exe's physical location on disk.
+    if let Ok(exe_path) = std::env::current_exe() {
+        if let Some(result) = find_project_root(&exe_path) {
+            return result;
+        }
+    }
+
+    // Strategy 3 (Last resort): Walk up from current working directory.
+    if let Ok(cwd) = std::env::current_dir() {
+        if let Some(result) = find_project_root(&cwd) {
+            return result;
+        }
+    }
+
+    ".".to_string()
 }
+
 
 #[tauri::command]
 fn check_admin() -> bool {

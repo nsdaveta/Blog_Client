@@ -6,12 +6,13 @@
   "scripts": {
     "tauri": "tauri",
     "dev": "vite",
-    "build": "tauri build",
+    "build": "cross-env PATH=\"%PATH%;%INIT_CWD%\" tauri build",
     "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build",
-    "build:x86": "tauri build --target i686-pc-windows-msvc --config src-tauri/tauri.x86.conf.json"
+    "tauri:build": "cross-env PATH=\"%PATH%;%INIT_CWD%\" tauri build",
+    "build:x86": "cross-env PATH=\"%PATH%;%INIT_CWD%\" tauri build --target i686-pc-windows-msvc --config src-tauri/tauri.x86.conf.json"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^2"
+    "@tauri-apps/cli": "^2",
+    "cross-env": "^10.1.0"
   }
 }

@@ -27,7 +27,7 @@
     "publisher": "Navjot Singh Daveta",
     "targets": "all",
     "windows": {
-      "signCommand": "c:\\Users\\nsdav\\OneDrive\\Desktop\\MERN_STACK\\Blog\\Blog_Client\\build-manager\\sign-app.bat %1"
+      "signCommand": "sign-app.bat %1"
     },
     "icon": [
       "icons/32x32.png",

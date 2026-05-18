@@ -2,7 +2,27 @@
 # This script ensures it runs in the project directory regardless of where it is called from.
 
 # 1. Set the working directory to the project root
-$ProjectDir = "c:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client"
+$ProjectDir = $PSScriptRoot
+if (-not $ProjectDir) {
+    # Fallback if copy-pasted interactively: dynamically discover project folder without hardcoded paths
+    $searchPaths = @(
+        "$env:USERPROFILE\OneDrive\Desktop",
+        "$env:USERPROFILE\Desktop",
+        "$env:USERPROFILE\Documents",
+        "$env:USERPROFILE\source\repos",
+        "C:\", "D:\", "E:\"
+    )
+    foreach ($basePath in $searchPaths) {
+        if (Test-Path $basePath) {
+            $found = Get-ChildItem -Path $basePath -Filter "Blog_Client" -Recurse -Directory -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($found) {
+                $ProjectDir = $found.FullName
+                break
+            }
+        }
+    }
+    if (-not $ProjectDir) { $ProjectDir = $PWD.Path }
+}
 Set-Location -Path $ProjectDir
 
 # 2. Add Signtool to PATH and check for Administrator privileges
