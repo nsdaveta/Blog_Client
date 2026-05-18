@@ -2,7 +2,7 @@
 # This script ensures it runs in the project directory regardless of where it is called from.
 
 # 1. Set the working directory to the project root
-$ProjectDir = "c:\Blog_Client"
+$ProjectDir = "c:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client"
 Set-Location -Path $ProjectDir
 
 # 2. Add Signtool to PATH and check for Administrator privileges

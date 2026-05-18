@@ -1316,3 +1316,75 @@ Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst396B.tmp
 Done Adding Additional Store
 Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe
 [Tue 05/05/2026 19:09:57.23] Successfully signed: C:\Blog_Client\src-tauri\target\i686-pc-windows-msvc\release\bundle/nsis/Blogify_1.0.3_x86-setup.exe 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:10:37.51] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+[Mon 05/18/2026 22:10:37.54] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe
+[Mon 05/18/2026 22:10:40.24] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:10:50.39] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+[Mon 05/18/2026 22:10:50.42] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll
+[Mon 05/18/2026 22:10:51.69] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUIExtension.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:10:51.76] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+[Mon 05/18/2026 22:10:51.79] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll
+[Mon 05/18/2026 22:10:56.62] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\wix\x64\wix\WixUtilExtension.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:22.73] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+[Mon 05/18/2026 22:11:22.76] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi
+[Mon 05/18/2026 22:11:24.60] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/msi/Blogify_1.0.3_x64_en-US.msi 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:24.82] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+[Mon 05/18/2026 22:11:24.84] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe
+[Mon 05/18/2026 22:11:29.10] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\blogify.exe 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:30.96] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+[Mon 05/18/2026 22:11:30.98] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll
+[Mon 05/18/2026 22:11:34.90] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\NSISdl.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:34.98] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+[Mon 05/18/2026 22:11:35.00] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll
+[Mon 05/18/2026 22:11:35.95] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\StartMenu.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:36.12] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+[Mon 05/18/2026 22:11:36.59] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll
+[Mon 05/18/2026 22:11:37.68] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\System.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:37.75] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+[Mon 05/18/2026 22:11:37.78] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll
+[Mon 05/18/2026 22:11:39.15] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\nsDialogs.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:39.22] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+[Mon 05/18/2026 22:11:39.23] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll
+[Mon 05/18/2026 22:11:40.88] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64\Plugins\x86-unicode\additional/nsis_tauri_utils.dll 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:47.72] Called with: "C:\Users\nsdav\AppData\Local\Temp\nst8A34.tmp" 
+[Mon 05/18/2026 22:11:47.75] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\nsis\x64 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst8A34.tmp
+[Mon 05/18/2026 22:11:49.56] Successfully signed: C:\Users\nsdav\AppData\Local\Temp\nst8A34.tmp 
+-------------------------------------------------- 
+[Mon 05/18/2026 22:11:56.85] Called with: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
+[Mon 05/18/2026 22:11:56.86] Working directory: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri 
+Done Adding Additional Store
+Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe
+[Mon 05/18/2026 22:11:58.95] Successfully signed: C:\Users\nsdav\OneDrive\Desktop\MERN_STACK\Blog\Blog_Client\src-tauri\target\release\bundle/nsis/Blogify_1.0.3_x64-setup.exe 
