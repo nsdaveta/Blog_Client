@@ -54,8 +54,6 @@ const ReadMore = () => {
 
     return (
         <>
-
-
             <div className="read-blog-container fade-in">
                 <button className="btn btn-outline btn-sm" onClick={() => navigate(-1)} style={{ marginBottom: '2rem' }}>
                     <VscArrowLeft /> Back
