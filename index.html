@@ -81,6 +81,28 @@
             document.addEventListener('wheel', (e) => {
               if (e.ctrlKey) e.preventDefault();
             }, { passive: false });
+
+            // Prevent Browser Status Bar URL Preview Tooltip on Hover in Tauri
+            document.addEventListener('mouseover', (e) => {
+              let a = e.target.closest('a');
+              if (a && a.hasAttribute('href')) {
+                a.setAttribute('data-href', a.getAttribute('href'));
+                a.removeAttribute('href');
+              }
+            });
+            document.addEventListener('mouseout', (e) => {
+              let a = e.target.closest('a');
+              if (a && a.hasAttribute('data-href')) {
+                a.setAttribute('href', a.getAttribute('data-href'));
+                a.removeAttribute('data-href');
+              }
+            });
+            document.addEventListener('click', (e) => {
+              let a = e.target.closest('a');
+              if (a && a.hasAttribute('data-href')) {
+                a.setAttribute('href', a.getAttribute('data-href'));
+              }
+            }, { capture: true });
           }
         }
       })();
